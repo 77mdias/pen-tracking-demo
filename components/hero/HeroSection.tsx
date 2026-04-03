@@ -9,6 +9,8 @@ import HeroMobile from "@/components/hero/HeroMobile";
 import HeroScrollCue from "@/components/hero/HeroScrollCue";
 import useDeviceCapabilities from "@/hooks/useDeviceCapabilities";
 import useHeroScrollProgress from "@/hooks/useHeroScrollProgress";
+import useScrollHijack from "@/hooks/useScrollHijack";
+import type { PenPose } from "@/lib/three/penPoses";
 import useHeroTimeline from "@/hooks/useHeroTimeline";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useReducedMotion from "@/hooks/useReducedMotion";
@@ -27,8 +29,9 @@ const HeroCanvas = dynamic(() => import("@/components/hero/HeroCanvas"), {
   ),
 });
 
-export default function HeroSection() {
+export default function HeroSection({ children }: { children?: React.ReactNode }) {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const productIntroContainerRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
@@ -43,54 +46,71 @@ export default function HeroSection() {
     scope: sectionRef,
     reducedMotion: !enableScrollNarrative,
   });
+  
+  const penTargetRef = useRef<PenPose | null>(null);
+  useScrollHijack({
+    scope: productIntroContainerRef,
+    penTargetRef,
+    reducedMotion: !enableScrollNarrative,
+  });
 
   useHeroTimeline({ scope: sectionRef, reducedMotion, scrollProgressRef, enableScrollNarrative });
 
   return (
-    <section
-      ref={sectionRef}
-      className={`relative overflow-hidden bg-[var(--color-bg)] text-white ${
-        isMobile ? "h-[92svh]" : "h-screen"
-      }`}
-    >
-      <div className="noise-overlay z-[19]" aria-hidden />
-
-      <div className="absolute inset-0 z-0" aria-hidden>
+    <div className="relative w-full bg-[var(--color-bg)]">
+      {/* Base background restricted to the Hero's initial height */}
+      <div className={`absolute top-0 left-0 right-0 z-0 overflow-hidden ${isMobile ? "h-[92svh]" : "h-screen"}`} aria-hidden>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(0,123,255,0.14),transparent_52%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050a14] via-[#050a14]/50 to-transparent" />
       </div>
 
-      <div className="hero-scene-layer absolute inset-0 z-[1]">
-        {shouldUseFallback ? (
-          <HeroFallback className="absolute inset-0" reducedMotion={reducedMotion} />
-        ) : isMobile ? (
-          <HeroMobile className="absolute inset-0" reducedMotion={reducedMotion} />
-        ) : (
-          <HeroCanvas
-            reducedMotion={reducedMotion}
-            enablePointerParallax={enablePointerParallax}
-            scrollProgressRef={scrollProgressRef}
-            motionScale={motionScale}
-            maxDpr={recommendedMaxDpr}
-            tier={tier}
-          />
-        )}
+      <div className="hero-scene-layer absolute inset-0 z-[1] pointer-events-none">
+        <div className="sticky top-0 h-screen w-full pointer-events-auto">
+          {shouldUseFallback ? (
+            <HeroFallback className="absolute inset-0" reducedMotion={reducedMotion} />
+          ) : isMobile ? (
+            <HeroMobile className="absolute inset-0" reducedMotion={reducedMotion} />
+          ) : (
+            <HeroCanvas
+              reducedMotion={reducedMotion}
+              enablePointerParallax={enablePointerParallax}
+              scrollProgressRef={scrollProgressRef}
+              penTargetRef={penTargetRef}
+              motionScale={motionScale}
+              maxDpr={recommendedMaxDpr}
+              tier={tier}
+            />
+          )}
+        </div>
       </div>
 
-      <div
-        className={`relative z-[10] mx-auto flex h-full w-full max-w-7xl px-6 ${
-          isMobile
-            ? "items-start justify-center pt-24 pb-12"
-            : isTablet
-              ? "items-center justify-center py-10"
-              : "items-center justify-center"
+      <section
+        ref={sectionRef}
+        className={`relative z-[10] text-white ${
+          isMobile ? "h-[92svh]" : "h-screen"
         }`}
       >
-        <HeroContent isMobile={isMobile} isTablet={isTablet} />
-      </div>
+        <div className="noise-overlay z-[19]" aria-hidden />
 
-      {!isMobile && tier !== "low" && !reducedMotion ? <HeroAmbientDetails /> : null}
-      {!isMobile && !reducedMotion ? <HeroScrollCue /> : null}
-    </section>
+        <div
+          className={`relative z-[10] mx-auto flex h-full w-full max-w-7xl px-6 ${
+            isMobile
+              ? "items-start justify-center pt-24 pb-12"
+              : isTablet
+                ? "items-center justify-center py-10"
+                : "items-center justify-center"
+          }`}
+        >
+          <HeroContent isMobile={isMobile} isTablet={isTablet} />
+        </div>
+
+        {!isMobile && tier !== "low" && !reducedMotion ? <HeroAmbientDetails /> : null}
+        {!isMobile && !reducedMotion ? <HeroScrollCue /> : null}
+      </section>
+
+      <div className="relative z-[10] w-full" ref={productIntroContainerRef}>
+        {children}
+      </div>
+    </div>
   );
 }

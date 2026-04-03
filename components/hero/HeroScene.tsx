@@ -6,7 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import type { DeviceTier } from "@/hooks/useDeviceCapabilities";
 import { clamp } from "@/lib/utils/clamp";
 import { lerp } from "@/lib/utils/lerp";
-import { Group, Object3D } from "three";
+import { Group, Object3D, Color, PointLight, PerspectiveCamera } from "three";
 import { useMemo, useRef } from "react";
 import { heroLighting } from "@/lib/three/heroLighting";
 import { heroSceneConfig } from "@/lib/three/heroSceneConfig";
@@ -15,6 +15,7 @@ type HeroSceneProps = {
   reducedMotion: boolean;
   enablePointerParallax: boolean;
   scrollProgressRef: { current: number };
+  penTargetRef: { current: import("@/lib/three/penPoses").PenPose | null };
   motionScale: number;
   tier: DeviceTier;
 };
@@ -23,10 +24,15 @@ export default function HeroScene({
   reducedMotion,
   enablePointerParallax,
   scrollProgressRef,
+  penTargetRef,
   motionScale,
   tier,
 }: HeroSceneProps) {
   const penGroupRef = useRef<Group>(null);
+  const accentLightRef = useRef<PointLight>(null);
+  const accentColor = useMemo(() => new Color(), []);
+  const tempColor = useMemo(() => new Color(), []);
+
   const gltf = useGLTF("/models/pen3D.glb");
   const penModel = useMemo(() => {
     const clone = gltf.scene.clone(true);
@@ -50,12 +56,12 @@ export default function HeroScene({
     if (!penGroupRef.current) return;
 
     const elapsedTime = state.clock.elapsedTime;
-    let targetPosX = penX;
-    let targetPosY = penY;
-    const targetPosZ = penZ;
-    let targetRotX = penRotX;
-    let targetRotY = penRotY;
-    let targetRotZ = penRotZ;
+    let targetPosX: number = penX;
+    let targetPosY: number = penY;
+    let targetPosZ: number = penZ;
+    let targetRotX: number = penRotX;
+    let targetRotY: number = penRotY;
+    let targetRotZ: number = penRotZ;
     const scrollProgress = reducedMotion ? 0 : scrollProgressRef.current;
     const rotationRangeRadians = (heroSceneConfig.scroll.rotationRangeDegrees * Math.PI) / 180;
 
@@ -75,7 +81,46 @@ export default function HeroScene({
     targetRotY += scrollProgress * rotationRangeRadians * motionScale;
     targetRotX += scrollProgress * 0.06 * motionScale;
 
+    let targetCameraX = camBaseX + scrollProgress * heroSceneConfig.scroll.cameraShift * motionScale;
+    let targetCameraY = camBaseY + scrollProgress * 0.08 * motionScale;
+    let targetCameraZ = camBaseZ - scrollProgress * 0.12 * motionScale;
+    let targetFov: number = heroSceneConfig.camera.fov;
+
     const factor = clamp(delta * 4.5, 0, 1);
+
+    // Product Intro: override com pose discreta quando penTargetRef está ativo
+    const activePose = penTargetRef?.current;
+    if (activePose && !reducedMotion) {
+      targetPosX = activePose.pen.position[0];
+      targetPosY = activePose.pen.position[1];
+      targetPosZ = activePose.pen.position[2];
+      targetRotX = activePose.pen.rotation[0];
+      targetRotY = activePose.pen.rotation[1];
+      targetRotZ = activePose.pen.rotation[2];
+      targetCameraX = activePose.camera.position[0];
+      targetCameraY = activePose.camera.position[1];
+      targetCameraZ = activePose.camera.position[2];
+      targetFov = activePose.camera.fov;
+
+      if (accentLightRef.current) {
+        const acc = activePose.lighting.accent;
+        const targetIntensity = acc ? acc.intensity : 0;
+        accentLightRef.current.intensity = lerp(
+          accentLightRef.current.intensity,
+          targetIntensity,
+          factor,
+        );
+        if (acc) {
+          accentLightRef.current.position.set(
+            acc.position[0],
+            acc.position[1],
+            acc.position[2],
+          );
+          accentLightRef.current.color.set(acc.color);
+        }
+      }
+    }
+
     penGroupRef.current.position.x = lerp(penGroupRef.current.position.x, targetPosX, factor);
     penGroupRef.current.position.y = lerp(penGroupRef.current.position.y, targetPosY, factor);
     penGroupRef.current.position.z = lerp(penGroupRef.current.position.z, targetPosZ, factor);
@@ -83,13 +128,14 @@ export default function HeroScene({
     penGroupRef.current.rotation.y = lerp(penGroupRef.current.rotation.y, targetRotY, factor);
     penGroupRef.current.rotation.z = lerp(penGroupRef.current.rotation.z, targetRotZ, factor);
 
-    const targetCameraX = camBaseX + scrollProgress * heroSceneConfig.scroll.cameraShift * motionScale;
-    const targetCameraY = camBaseY + scrollProgress * 0.08 * motionScale;
-    const targetCameraZ = camBaseZ - scrollProgress * 0.12 * motionScale;
     state.camera.position.x = lerp(state.camera.position.x, targetCameraX, factor);
     state.camera.position.y = lerp(state.camera.position.y, targetCameraY, factor);
     state.camera.position.z = lerp(state.camera.position.z, targetCameraZ, factor);
     state.camera.lookAt(0, 0, 0);
+
+    const cam = state.camera as PerspectiveCamera;
+    cam.fov = lerp(cam.fov, targetFov, factor);
+    cam.updateProjectionMatrix();
   });
 
   return (
@@ -106,6 +152,7 @@ export default function HeroScene({
         color="#8da8d7"
       />
       <pointLight position={[rimX, rimY, rimZ]} intensity={heroLighting.rim.intensity} color="#7cc2ff" />
+      <pointLight ref={accentLightRef} intensity={0} />
 
       <group ref={penGroupRef} position={[penX, penY, penZ]} rotation={[penRotX, penRotY, penRotZ]}>
         <primitive object={penModel} />

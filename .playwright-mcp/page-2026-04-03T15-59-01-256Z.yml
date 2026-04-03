@@ -1,0 +1,61 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - generic [ref=e18]: Smart Pen Premium Demo
+          - heading "The pen, reimagined." [level=1] [ref=e19]:
+            - generic [ref=e21]: The pen,
+            - generic [ref=e23]: reimagined.
+          - paragraph [ref=e24]: A premium writing experience designed around precision, focus, and a new intelligent layer of control.
+          - paragraph [ref=e25]: Designed for focused writing sessions with a subtle intelligent layer.
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - button "Join the Private Beta" [ref=e28]
+              - button "Watch the Experience" [ref=e29]
+            - paragraph [ref=e30]: Limited early access to the demo system.
+        - generic:
+          - generic: Scroll Down
+      - generic [ref=e32]:
+        - generic [ref=e36]:
+          - heading "More than a pen." [level=2] [ref=e37]:
+            - generic [ref=e39]: More than
+            - generic [ref=e41]: a pen.
+          - paragraph [ref=e42]: A new kind of writing experience — where premium hardware meets an intelligent digital layer.
+        - generic [ref=e43]:
+          - generic [ref=e44]: "[ 01. PRODUCT ]"
+          - generic [ref=e45]:
+            - heading "More than a pen." [level=2] [ref=e46]:
+              - generic [ref=e48]: More than
+              - generic [ref=e50]: a pen.
+            - paragraph [ref=e51]: A new kind of writing experience — where premium hardware meets an intelligent digital layer.
+          - generic [ref=e52]:
+            - generic [ref=e54] [cursor=pointer]:
+              - img [ref=e56]
+              - img [ref=e60]
+              - generic [ref=e63]: AI WRITING ASSIST
+              - heading "Write. Refine. Evolve." [level=3] [ref=e64]
+              - paragraph [ref=e65]: Intelligent suggestions that sharpen your clarity without breaking your flow. The pen learns your style, suggests refinements, and keeps your voice intact.
+            - img [ref=e69]
+          - generic [ref=e72]:
+            - generic [ref=e74] [cursor=pointer]:
+              - img [ref=e76]
+              - img [ref=e80]
+              - generic [ref=e82]: SMART SYNC
+              - heading "Every stroke, everywhere." [level=3] [ref=e83]
+              - paragraph [ref=e84]: Your writing syncs seamlessly across devices in real-time. From pen to cloud to screen — nothing is ever lost.
+            - img [ref=e88]
+          - generic [ref=e93]:
+            - generic [ref=e95] [cursor=pointer]:
+              - img [ref=e97]
+              - img [ref=e101]
+              - generic [ref=e105]: FOCUS MODE
+              - heading "Silence the noise." [level=3] [ref=e106]
+              - paragraph [ref=e107]: A distraction-free writing mode that strips away everything but you and the page. Deep work, protected.
+            - img [ref=e111]
+          - generic [ref=e115]:
+            - button "Join the Private Beta" [ref=e116] [cursor=pointer]
+            - paragraph [ref=e117]: Limited spots available. Early access waves closing soon.
+  - button "Open Next.js Dev Tools" [ref=e123] [cursor=pointer]:
+    - img [ref=e124]
+  - alert [ref=e131]

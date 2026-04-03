@@ -106,3 +106,14 @@ body {
     transform: translate(30px, 50px) scale(1.1);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .section-label,
+  .section-headline-line,
+  .section-body,
+  .section-details,
+  .section-stat,
+  .section-glow {
+    opacity: 1 !important;
+  }
+}

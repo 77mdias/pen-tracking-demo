@@ -10,6 +10,7 @@ type HeroCanvasProps = {
   reducedMotion: boolean;
   enablePointerParallax: boolean;
   scrollProgressRef: { current: number };
+  penTargetRef: { current: import('@/lib/three/penPoses').PenPose | null };
   motionScale: number;
   maxDpr: number;
   tier: DeviceTier;
@@ -19,6 +20,7 @@ export default function HeroCanvas({
   reducedMotion,
   enablePointerParallax,
   scrollProgressRef,
+  penTargetRef,
   motionScale,
   maxDpr,
   tier,
@@ -42,6 +44,7 @@ export default function HeroCanvas({
             reducedMotion={reducedMotion}
             enablePointerParallax={enablePointerParallax}
             scrollProgressRef={scrollProgressRef}
+            penTargetRef={penTargetRef}
             motionScale={motionScale}
             tier={tier}
           />
