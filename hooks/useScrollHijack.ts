@@ -4,12 +4,13 @@ import { RefObject, MutableRefObject } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "@/lib/gsap/registerGsap";
-import { PEN_POSES, PenPose } from "@/lib/three/penPoses";
+import { PEN_POSES, MOBILE_PEN_POSES, PenPose } from "@/lib/three/penPoses";
 
 type UseScrollHijackProps = {
   scope: RefObject<HTMLElement | null>;
   penTargetRef: MutableRefObject<PenPose | null>;
   reducedMotion: boolean;
+  isMobile: boolean;
 };
 
 /**
@@ -19,7 +20,7 @@ type UseScrollHijackProps = {
  *
  * No pin, no scrub. Animations play automatically on section arrival.
  */
-export default function useScrollHijack({ scope, penTargetRef, reducedMotion }: UseScrollHijackProps) {
+export default function useScrollHijack({ scope, penTargetRef, reducedMotion, isMobile }: UseScrollHijackProps) {
   useGSAP(() => {
     if (reducedMotion) return;
     if (!scope.current) return;
@@ -45,8 +46,11 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion }: 
 
       const playEnter = () => {
         // Update pen pose when section enters
-        if (sectionId && PEN_POSES[sectionId]) {
-          penTargetRef.current = PEN_POSES[sectionId];
+        if (sectionId) {
+          // Cast to Record<string, PenPose> to avoid TypeScript narrowing issues
+          // caused by MOBILE_PEN_POSES not having the "hero" key.
+          const poses: Record<string, PenPose> = isMobile ? MOBILE_PEN_POSES : PEN_POSES;
+          if (poses[sectionId]) penTargetRef.current = poses[sectionId];
         }
 
         const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
@@ -113,12 +117,12 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion }: 
         trigger: focusModeEl,
         start: "bottom 50%",
         onEnter: () => {
-          penTargetRef.current = PEN_POSES.cta;
+          penTargetRef.current = isMobile ? MOBILE_PEN_POSES.cta : PEN_POSES.cta;
         },
         onLeaveBack: () => {
-          penTargetRef.current = PEN_POSES.focusMode;
+          penTargetRef.current = isMobile ? MOBILE_PEN_POSES.focusMode : PEN_POSES.focusMode;
         },
       });
     }
-  }, { scope, dependencies: [reducedMotion, penTargetRef] });
+  }, { scope, dependencies: [reducedMotion, isMobile, penTargetRef] });
 }
