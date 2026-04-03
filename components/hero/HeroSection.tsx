@@ -55,6 +55,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     scope: productIntroContainerRef,
     penTargetRef,
     reducedMotion: !enableScrollNarrative,
+    isMobile,
   });
 
   // Wheel/touch snap navigation between sections
@@ -63,6 +64,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     containerRef: productIntroContainerRef,
     penTargetRef,
     reducedMotion: !enableScrollNarrative,
+    isMobile,
   });
 
   useHeroTimeline({ scope: sectionRef, reducedMotion, scrollProgressRef, enableScrollNarrative });

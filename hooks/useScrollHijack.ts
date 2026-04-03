@@ -29,7 +29,7 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion, is
     if (!sections.length) return;
 
     sections.forEach((el) => {
-      const sectionId = el.getAttribute("data-scroll-section") as keyof typeof PEN_POSES | null;
+      const sectionId = el.getAttribute("data-scroll-section");
 
       // ── Query content elements ──
       const glow = el.querySelector(".section-glow");
