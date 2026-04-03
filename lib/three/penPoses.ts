@@ -63,11 +63,13 @@ export const PEN_POSES = {
  */
 export const MOBILE_PEN_POSES = {
   bridge: {
+    // Pen centered, slightly forward — text-heavy section, pen stays neutral
     pen: { rotation: [0.0, 0.3, 0.0], position: [0, 0.1, -0.5] },
     camera: { position: [0, 0.2, 5.0], fov: 26 },
     lighting: { accent: null },
   },
   aiWriting: {
+    // Pen lightly left — keeps directionality without clipping on narrow viewport
     pen: { rotation: [0.5, -0.4, 0.15], position: [-0.3, -0.1, 0] },
     camera: { position: [0.05, 0.25, 4.0], fov: 30 },
     lighting: {
@@ -75,6 +77,7 @@ export const MOBILE_PEN_POSES = {
     },
   },
   smartSync: {
+    // Pen lightly right — mirrored from aiWriting, both stay fully in frame
     pen: { rotation: [0.05, 1.2, 0.0], position: [0.3, 0, 0] },
     camera: { position: [-0.05, 0.1, 4.2], fov: 30 },
     lighting: {
@@ -82,11 +85,13 @@ export const MOBILE_PEN_POSES = {
     },
   },
   focusMode: {
+    // Pen centered, raised — y reduced from 1.1 to 0.5 to stay within viewport
     pen: { rotation: [0.03, 0.0, 0.0], position: [0, 0.5, -0.3] },
     camera: { position: [0, 0.15, 4.0], fov: 27 },
     lighting: { accent: null },
   },
   cta: {
+    // Pen slightly right, low — parks out of CTA text area without leaving frame
     pen: { rotation: [0.15, 0.5, 0.05], position: [0.25, 0.2, -0.3] },
     camera: { position: [0, 0.1, 4.5], fov: 28 },
     lighting: { accent: null },
