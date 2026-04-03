@@ -127,5 +127,5 @@ export default function useSnapScroll({
       window.removeEventListener("touchend", handleTouchEnd);
       if (scrollTween) scrollTween.kill();
     };
-  }, [reducedMotion, heroRef, containerRef, penTargetRef]);
+  }, [reducedMotion, heroRef, containerRef, penTargetRef, isMobile]);
 }
