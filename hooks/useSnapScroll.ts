@@ -2,7 +2,7 @@
 
 import { RefObject, MutableRefObject, useEffect } from "react";
 import { gsap } from "@/lib/gsap/registerGsap";
-import { PEN_POSES, PenPose, PoseName } from "@/lib/three/penPoses";
+import { PEN_POSES, MOBILE_PEN_POSES, PenPose, PoseName } from "@/lib/three/penPoses";
 import { SCROLL_HIJACK_CONFIG } from "@/lib/gsap/scrollHijackConfig";
 
 type UseSnapScrollProps = {
@@ -10,6 +10,7 @@ type UseSnapScrollProps = {
   containerRef: RefObject<HTMLDivElement | null>;
   penTargetRef: MutableRefObject<PenPose | null>;
   reducedMotion: boolean;
+  isMobile: boolean;
 };
 
 /** Maps data-scroll-section values to PEN_POSES keys */
@@ -34,6 +35,7 @@ export default function useSnapScroll({
   containerRef,
   penTargetRef,
   reducedMotion,
+  isMobile,
 }: UseSnapScrollProps) {
   useEffect(() => {
     if (reducedMotion) return;
@@ -61,7 +63,10 @@ export default function useSnapScroll({
       }
       const sectionId = targets[index].getAttribute("data-scroll-section");
       if (sectionId && SECTION_TO_POSE[sectionId]) {
-        penTargetRef.current = PEN_POSES[SECTION_TO_POSE[sectionId]];
+        // Cast to Record<string, PenPose> to avoid TypeScript narrowing issues
+        // caused by MOBILE_PEN_POSES not having the "hero" key.
+        const poses: Record<string, PenPose> = isMobile ? MOBILE_PEN_POSES : PEN_POSES;
+        penTargetRef.current = poses[SECTION_TO_POSE[sectionId]];
       }
     };
 
