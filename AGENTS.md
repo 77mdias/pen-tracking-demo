@@ -46,40 +46,41 @@ PenFlow77 is a **premium, Apple-like product demo website** for a fictional smar
 
 ```
 penflow77/
-├── app/                          # Next.js App Router
-│   ├── layout.tsx                # Root layout
-│   ├── globals.css               # Global styles + Tailwind + design tokens
-│   ├── page.tsx                  # Landing page (marketing)
-│   └── favicon.ico
-├── components/
-│   └── hero/                     # Hero section components
-│       ├── HeroSection.tsx       # Layout shell, responsive gate
-│       ├── HeroCanvas.tsx        # R3F Canvas wrapper (dynamic, ssr:false)
-│       ├── HeroScene.tsx         # 3D scene (model, lighting, camera, idle)
-│       ├── HeroContent.tsx       # Headline, subheadline, text layer
-│       ├── HeroCTA.tsx           # Primary + secondary CTA buttons
-│       ├── HeroAmbientDetails.tsx # Optional premium ambient UI hints
-│       ├── HeroScrollCue.tsx     # Subtle scroll indicator
-│       ├── HeroFallback.tsx      # Non-WebGL static/video fallback
-│       └── HeroMobile.tsx        # Mobile-specific hero variant
-├── hooks/
-│   ├── useHeroTimeline.ts        # GSAP intro + scroll timeline
-│   ├── useHeroScrollProgress.ts  # Normalized scroll 0→1 via ScrollTrigger
-│   ├── useReducedMotion.ts       # prefers-reduced-motion detection
-│   ├── useDeviceCapabilities.ts  # Device tier detection (high/med/low)
-│   └── useMediaQuery.ts          # Responsive breakpoint detection
-├── lib/
-│   ├── gsap/
-│   │   └── registerGsap.ts      # One-time GSAP plugin registration
-│   ├── three/
-│   │   ├── heroSceneConfig.ts    # All tunable 3D constants
-│   │   ├── heroLighting.ts       # Lighting configuration
-│   │   ├── heroMaterials.ts      # Material definitions
-│   │   └── heroCamera.ts         # Camera configuration
-│   └── utils/
-│       ├── lerp.ts               # Linear interpolation
-│       ├── clamp.ts              # Value clamping
-│       └── rafThrottle.ts        # RAF-based throttling
+├── src/
+│   ├── app/                      # Next.js App Router
+│   │   ├── layout.tsx            # Root layout
+│   │   ├── globals.css           # Global styles + Tailwind + design tokens
+│   │   ├── page.tsx              # Landing page (marketing)
+│   │   └── favicon.ico
+│   ├── components/
+│   │   └── hero/                 # Hero section components
+│   │       ├── HeroSection.tsx       # Layout shell, responsive gate
+│   │       ├── HeroCanvas.tsx        # R3F Canvas wrapper (dynamic, ssr:false)
+│   │       ├── HeroScene.tsx         # 3D scene (model, lighting, camera, idle)
+│   │       ├── HeroContent.tsx       # Headline, subheadline, text layer
+│   │       ├── HeroCTA.tsx           # Primary + secondary CTA buttons
+│   │       ├── HeroAmbientDetails.tsx # Optional premium ambient UI hints
+│   │       ├── HeroScrollCue.tsx     # Subtle scroll indicator
+│   │       ├── HeroFallback.tsx      # Non-WebGL static/video fallback
+│   │       └── HeroMobile.tsx        # Mobile-specific hero variant
+│   ├── hooks/
+│   │   ├── useHeroTimeline.ts        # GSAP intro + scroll timeline
+│   │   ├── useHeroScrollProgress.ts  # Normalized scroll 0→1 via ScrollTrigger
+│   │   ├── useReducedMotion.ts       # prefers-reduced-motion detection
+│   │   ├── useDeviceCapabilities.ts  # Device tier detection (high/med/low)
+│   │   └── useMediaQuery.ts          # Responsive breakpoint detection
+│   └── lib/
+│       ├── gsap/
+│       │   └── registerGsap.ts      # One-time GSAP plugin registration
+│       ├── three/
+│       │   ├── heroSceneConfig.ts    # All tunable 3D constants
+│       │   ├── heroLighting.ts       # Lighting configuration
+│       │   ├── heroMaterials.ts      # Material definitions
+│       │   └── heroCamera.ts         # Camera configuration
+│       └── utils/
+│           ├── lerp.ts               # Linear interpolation
+│           ├── clamp.ts              # Value clamping
+│           └── rafThrottle.ts        # RAF-based throttling
 ├── public/
 │   ├── models/                   # 3D assets (.glb)
 │   └── videos/
@@ -141,7 +142,7 @@ The design system is defined in `design-system.html`. All implementations MUST u
 ### Architecture
 - Components follow single-responsibility principle
 - 3D scene logic is completely separate from DOM text/UI logic
-- Scene configuration values (positions, intensities, amplitudes) centralized in `lib/three/heroSceneConfig.ts`
+- Scene configuration values (positions, intensities, amplitudes) centralized in `src/lib/three/heroSceneConfig.ts`
 - No magic numbers scattered across files
 
 ### Performance
@@ -179,7 +180,7 @@ The design system is defined in `design-system.html`. All implementations MUST u
 
 ## Path Aliases
 
-- `@/*` maps to project root (configured in `tsconfig.json`)
+- `@/*` maps to `src/*` (configured in `tsconfig.json`)
 - Example: `import { lerp } from '@/lib/utils/lerp'`
 
 ---

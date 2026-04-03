@@ -14,21 +14,21 @@
 
 | File | Change |
 |------|--------|
-| `lib/three/penPoses.ts` | Add `MOBILE_PEN_POSES` export |
-| `hooks/useSnapScroll.ts` | Add `isMobile` prop; use mobile poses in `updatePenPose` |
-| `hooks/useScrollHijack.ts` | Add `isMobile` prop; use mobile poses in `playEnter` + focusMode→cta |
-| `components/hero/HeroSection.tsx` | Pass `isMobile` to both hooks |
+| `src/lib/three/penPoses.ts` | Add `MOBILE_PEN_POSES` export |
+| `src/hooks/useSnapScroll.ts` | Add `isMobile` prop; use mobile poses in `updatePenPose` |
+| `src/hooks/useScrollHijack.ts` | Add `isMobile` prop; use mobile poses in `playEnter` + focusMode→cta |
+| `src/components/hero/HeroSection.tsx` | Pass `isMobile` to both hooks |
 
 ---
 
-## Task 1 — Add `MOBILE_PEN_POSES` to `lib/three/penPoses.ts`
+## Task 1 — Add `MOBILE_PEN_POSES` to `src/lib/three/penPoses.ts`
 
 **Files:**
-- Modify: `lib/three/penPoses.ts`
+- Modify: `src/lib/three/penPoses.ts`
 
 - [ ] **Step 1: Open the file and read current `PEN_POSES`**
 
-  File: `lib/three/penPoses.ts`. Note: `PenPose` type and `PEN_POSES` are already exported. `MOBILE_PEN_POSES` uses the same `PenPose` type. It needs exactly 5 keys (same as the `data-scroll-section` values used in the product intro): `bridge`, `aiWriting`, `smartSync`, `focusMode`, `cta`. The `hero` key is deliberately omitted — the hero section is fine on mobile and uses `null` in `penTargetRef`.
+  File: `src/lib/three/penPoses.ts`. Note: `PenPose` type and `PEN_POSES` are already exported. `MOBILE_PEN_POSES` uses the same `PenPose` type. It needs exactly 5 keys (same as the `data-scroll-section` values used in the product intro): `bridge`, `aiWriting`, `smartSync`, `focusMode`, `cta`. The `hero` key is deliberately omitted — the hero section is fine on mobile and uses `null` in `penTargetRef`.
 
 - [ ] **Step 2: Append `MOBILE_PEN_POSES` after the existing `PEN_POSES` block**
 
@@ -84,10 +84,10 @@
 
 ---
 
-## Task 2 — Update `hooks/useSnapScroll.ts`
+## Task 2 — Update `src/hooks/useSnapScroll.ts`
 
 **Files:**
-- Modify: `hooks/useSnapScroll.ts`
+- Modify: `src/hooks/useSnapScroll.ts`
 
 - [ ] **Step 1: Add `MOBILE_PEN_POSES` import**
 
@@ -152,10 +152,10 @@
 
 ---
 
-## Task 3 — Update `hooks/useScrollHijack.ts`
+## Task 3 — Update `src/hooks/useScrollHijack.ts`
 
 **Files:**
-- Modify: `hooks/useScrollHijack.ts`
+- Modify: `src/hooks/useScrollHijack.ts`
 
 - [ ] **Step 1: Add `MOBILE_PEN_POSES` import**
 
@@ -225,10 +225,10 @@
 
 ---
 
-## Task 4 — Wire `isMobile` in `components/hero/HeroSection.tsx`
+## Task 4 — Wire `isMobile` in `src/components/hero/HeroSection.tsx`
 
 **Files:**
-- Modify: `components/hero/HeroSection.tsx`
+- Modify: `src/components/hero/HeroSection.tsx`
 
 - [ ] **Step 1: Pass `isMobile` to `useScrollHijack`**
 

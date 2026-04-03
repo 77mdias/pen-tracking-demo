@@ -1,3 +1,5 @@
+import { CloudSync, MonitorSmartphone, PenLine } from 'lucide-react';
+
 export default function FeatureSmartSync() {
   return (
     <div
@@ -32,17 +34,23 @@ export default function FeatureSmartSync() {
 
           <div className="grid grid-cols-3 gap-3">
             <div className="editorial-border-dashed bg-white/2 p-4 text-center hover:border-[#ef233c]/30 transition-colors duration-300">
-              <div className="text-lg mb-1">✍️</div>
+              <div className="mb-1 flex justify-center text-[#ef233c]" aria-hidden="true">
+                <PenLine className="h-[18px] w-[18px]" strokeWidth={1.8} />
+              </div>
               <p className="font-inter text-[10px] uppercase tracking-wider text-zinc-500">Capture</p>
               <p className="font-inter text-xs text-zinc-700 mt-1">On pen</p>
             </div>
             <div className="editorial-border-dashed bg-white/2 p-4 text-center hover:border-[#ef233c]/30 transition-colors duration-300">
-              <div className="text-lg mb-1">☁️</div>
+              <div className="mb-1 flex justify-center text-[#ef233c]" aria-hidden="true">
+                <CloudSync className="h-[18px] w-[18px]" strokeWidth={1.8} />
+              </div>
               <p className="font-inter text-[10px] uppercase tracking-wider text-zinc-500">Sync</p>
               <p className="font-inter text-xs text-zinc-700 mt-1">&lt;2s</p>
             </div>
             <div className="editorial-border-dashed bg-white/2 p-4 text-center hover:border-[#ef233c]/30 transition-colors duration-300">
-              <div className="text-lg mb-1">💻</div>
+              <div className="mb-1 flex justify-center text-[#ef233c]" aria-hidden="true">
+                <MonitorSmartphone className="h-[18px] w-[18px]" strokeWidth={1.8} />
+              </div>
               <p className="font-inter text-[10px] uppercase tracking-wider text-zinc-500">Access</p>
               <p className="font-inter text-xs text-zinc-700 mt-1">Any device</p>
             </div>

@@ -955,4 +955,3 @@ When building, prioritize in this order:
 
 If the first five are strong, the hero already wins.
 If only the last four are strong, the hero usually feels flashy but weak.
-

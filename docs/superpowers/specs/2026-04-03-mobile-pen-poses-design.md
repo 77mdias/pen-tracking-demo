@@ -27,7 +27,7 @@ Mobile-specific pen poses for all product-intro sections: pen stays within the v
 
 ## File Changes
 
-### 1. `lib/three/penPoses.ts`
+### 1. `src/lib/three/penPoses.ts`
 
 Add `MOBILE_PEN_POSES` export (same type as `PEN_POSES`). Rotations are identical to desktop — only position and camera are adjusted for the narrower viewport.
 
@@ -41,7 +41,7 @@ Add `MOBILE_PEN_POSES` export (same type as `PEN_POSES`). Rotations are identica
 
 All lighting configs are inherited unchanged from `PEN_POSES`.
 
-### 2. `hooks/useSnapScroll.ts`
+### 2. `src/hooks/useSnapScroll.ts`
 
 Add `isMobile: boolean` to `UseSnapScrollProps`. In `updatePenPose`, select:
 
@@ -50,7 +50,7 @@ const poses = isMobile ? MOBILE_PEN_POSES : PEN_POSES;
 penTargetRef.current = poses[SECTION_TO_POSE[sectionId]];
 ```
 
-### 3. `hooks/useScrollHijack.ts`
+### 3. `src/hooks/useScrollHijack.ts`
 
 Add `isMobile: boolean` to `UseScrollHijackProps`. In `playEnter` and the focusMode→cta transition, select:
 
@@ -59,7 +59,7 @@ const poses = isMobile ? MOBILE_PEN_POSES : PEN_POSES;
 penTargetRef.current = poses[sectionId];
 ```
 
-### 4. `components/hero/HeroSection.tsx`
+### 4. `src/components/hero/HeroSection.tsx`
 
 Pass `isMobile` (already available) to both hooks:
 

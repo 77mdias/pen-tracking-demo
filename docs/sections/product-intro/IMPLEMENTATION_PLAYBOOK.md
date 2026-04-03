@@ -27,10 +27,10 @@ The implementing agent **MUST** consult these files before any task:
 | 🔴 Critical | `docs/sections/product-intro/SPEC.md` | Creative direction, narrative, copy, visual rules |
 | 🔴 Critical | `design-system.html` | Design tokens, colors, typography, components, motion |
 | 🔴 Critical | `AGENTS.md` | Global stack rules, animation ownership, performance rules |
-| 🟡 Reference | `components/hero/HeroSection.tsx` | Current hero layout — integration point |
-| 🟡 Reference | `components/hero/HeroScene.tsx` | Current 3D pen scene — continuity reference |
-| 🟡 Reference | `hooks/useHeroScrollProgress.ts` | Scroll progress pattern to replicate |
-| 🟡 Reference | `lib/three/heroSceneConfig.ts` | Scene config pattern to replicate |
+| 🟡 Reference | `src/components/hero/HeroSection.tsx` | Current hero layout — integration point |
+| 🟡 Reference | `src/components/hero/HeroScene.tsx` | Current 3D pen scene — continuity reference |
+| 🟡 Reference | `src/hooks/useHeroScrollProgress.ts` | Scroll progress pattern to replicate |
+| 🟡 Reference | `src/lib/three/heroSceneConfig.ts` | Scene config pattern to replicate |
 | 🟡 Reference | `PRD_production.md` | Product vision, features |
 | 🟡 Reference | `UI_SPEC_production.md` | UI/UX constraints |
 | 🟢 Docs | `node_modules/next/dist/docs/` | Next.js 16 App Router specifics |
@@ -99,16 +99,16 @@ Key dependencies:
 - **Prerequisites:** Hero section completed
 - **Files to create:**
   ```
-  components/product-intro/ProductIntroSection.tsx
-  components/product-intro/ProductIntroBridge.tsx
-  components/product-intro/FeatureCard.tsx
-  components/product-intro/FeatureAIWriting.tsx
-  components/product-intro/FeatureSmartSync.tsx
-  components/product-intro/FeatureFocusMode.tsx
-  components/product-intro/ProductIntroCTA.tsx
-  hooks/useProductIntroTimeline.ts
-  hooks/useProductIntroScrollProgress.ts
-  lib/three/productIntroSceneConfig.ts
+  src/components/product-intro/ProductIntroSection.tsx
+  src/components/product-intro/ProductIntroBridge.tsx
+  src/components/product-intro/FeatureCard.tsx
+  src/components/product-intro/FeatureAIWriting.tsx
+  src/components/product-intro/FeatureSmartSync.tsx
+  src/components/product-intro/FeatureFocusMode.tsx
+  src/components/product-intro/ProductIntroCTA.tsx
+  src/hooks/useProductIntroTimeline.ts
+  src/hooks/useProductIntroScrollProgress.ts
+  src/lib/three/productIntroSceneConfig.ts
   ```
 - **Implementation notes:**
   - Each file: minimal valid export (`export default function X() { return null; }`)
@@ -122,7 +122,7 @@ Key dependencies:
 - **Objective:** Define 3D pen pose targets for each narrative beat
 - **Why:** Centralizes all tunable 3D values; prevents magic numbers scattered across files
 - **Prerequisites:** T0.1
-- **Files affected:** `lib/three/productIntroSceneConfig.ts`
+- **Files affected:** `src/lib/three/productIntroSceneConfig.ts`
 - **Implementation notes:**
   - Define pen target poses for 4 beats:
     ```ts
@@ -173,7 +173,7 @@ Key dependencies:
 - **Objective:** Build the section container with proper spacing and layering
 - **Why:** Establishes spatial composition before content
 - **Prerequisites:** T0.1
-- **Files affected:** `components/product-intro/ProductIntroSection.tsx`, `app/page.tsx`
+- **Files affected:** `src/components/product-intro/ProductIntroSection.tsx`, `src/app/page.tsx`
 - **Implementation notes:**
   - Section element with `ref` for scroll triggers
   - `relative`, `overflow-hidden` (but not viewport-locked)
@@ -182,7 +182,7 @@ Key dependencies:
   - Max container: `max-w-7xl mx-auto px-6`
   - Section label tag at top: `[ 01. PRODUCT ]` micro style
   - `'use client'` component
-  - Integrate into `app/page.tsx` below `<HeroSection />`
+  - Integrate into `src/app/page.tsx` below `<HeroSection />`
 - **Acceptance criteria:** Section renders below hero; proper spacing; label visible
 - **Common mistakes:** Forgetting to add to page.tsx; wrong z-index vs hero
 - **Definition of done:** Empty section shell visible below hero with correct spacing
@@ -192,7 +192,7 @@ Key dependencies:
 - **Objective:** Add visual transition between hero and product-intro
 - **Why:** Prevents a harsh visual cut between sections
 - **Prerequisites:** T1.1
-- **Files affected:** `components/product-intro/ProductIntroSection.tsx`
+- **Files affected:** `src/components/product-intro/ProductIntroSection.tsx`
 - **Implementation notes:**
   - Top of section: a subtle gradient fade from hero's bottom to section bg
   - Can be a `div` with `absolute -top-32` and `bg-gradient-to-b from-transparent to-[#050a14]`
@@ -206,7 +206,7 @@ Key dependencies:
 - **Objective:** Render the "More than a pen" bridge statement
 - **Why:** Signals narrative deepening from hero
 - **Prerequisites:** T1.1
-- **Files affected:** `components/product-intro/ProductIntroBridge.tsx`, `ProductIntroSection.tsx`
+- **Files affected:** `src/components/product-intro/ProductIntroBridge.tsx`, `ProductIntroSection.tsx`
 - **Implementation notes:**
   - Headline: "More than a pen." — `font-heading text-4xl md:text-5xl font-medium tracking-tight text-white`
   - Supporting text: "A new kind of writing experience — where premium hardware meets an intelligent digital layer."
@@ -228,7 +228,7 @@ Key dependencies:
 - **Objective:** Build reusable glass-panel feature card component
 - **Why:** All three features use the same card structure; DRY
 - **Prerequisites:** T1.1
-- **Files affected:** `components/product-intro/FeatureCard.tsx`
+- **Files affected:** `src/components/product-intro/FeatureCard.tsx`
 - **Implementation notes:**
   - Props: `icon: ReactNode`, `label: string`, `headline: string`, `body: string`, `align?: 'left' | 'right'`
   - Glass-panel class from design system (`.glass-panel rounded-2xl p-8`)
@@ -246,7 +246,7 @@ Key dependencies:
 
 - **Objective:** Beat 2 feature layout with AI Writing content
 - **Prerequisites:** T2.1
-- **Files affected:** `components/product-intro/FeatureAIWriting.tsx`, `ProductIntroSection.tsx`
+- **Files affected:** `src/components/product-intro/FeatureAIWriting.tsx`, `ProductIntroSection.tsx`
 - **Implementation notes:**
   - Uses `FeatureCard` with:
     - Icon: sparkle/brain from Lucide (via SVG import or Heroicons)
@@ -264,7 +264,7 @@ Key dependencies:
 
 - **Objective:** Beat 3 feature layout with Smart Sync content
 - **Prerequisites:** T2.1
-- **Files affected:** `components/product-intro/FeatureSmartSync.tsx`, `ProductIntroSection.tsx`
+- **Files affected:** `src/components/product-intro/FeatureSmartSync.tsx`, `ProductIntroSection.tsx`
 - **Implementation notes:**
   - Uses `FeatureCard` with:
     - Icon: cloud/arrows from Lucide
@@ -280,7 +280,7 @@ Key dependencies:
 
 - **Objective:** Beat 4 feature layout + end-of-section CTA block
 - **Prerequisites:** T2.1
-- **Files affected:** `components/product-intro/FeatureFocusMode.tsx`, `components/product-intro/ProductIntroCTA.tsx`, `ProductIntroSection.tsx`
+- **Files affected:** `src/components/product-intro/FeatureFocusMode.tsx`, `src/components/product-intro/ProductIntroCTA.tsx`, `ProductIntroSection.tsx`
 - **Implementation notes:**
   - FeatureFocusMode uses `FeatureCard` with:
     - Icon: target/circle from Lucide
@@ -307,7 +307,7 @@ Key dependencies:
 - **Objective:** Make the R3F canvas span both hero and product-intro sections
 - **Why:** Creates seamless visual continuity for the 3D pen
 - **Prerequisites:** T1.1, hero completed
-- **Files affected:** `app/page.tsx`, `components/hero/HeroSection.tsx` or a new wrapper
+- **Files affected:** `src/app/page.tsx`, `src/components/hero/HeroSection.tsx` or a new wrapper
 - **Implementation notes:**
   - **Approach A (Sticky Canvas):** Make `HeroCanvas` or a new `GlobalCanvas` `position: sticky; top: 0` within a wrapper that spans both sections
   - **Approach B (Extended parent):** Wrap both sections in a parent div; place canvas as a sibling with absolute positioning spanning full height
@@ -323,7 +323,7 @@ Key dependencies:
 
 - **Objective:** `useProductIntroScrollProgress` that returns progress 0→1 for this section
 - **Prerequisites:** T3.1
-- **Files affected:** `hooks/useProductIntroScrollProgress.ts`
+- **Files affected:** `src/hooks/useProductIntroScrollProgress.ts`
 - **Implementation notes:**
   - Follow exact pattern of `useHeroScrollProgress.ts`
   - Uses `ScrollTrigger.create()` on product-intro section element
@@ -340,7 +340,7 @@ Key dependencies:
 
 - **Objective:** Wire product-intro scroll progress into the existing HeroScene
 - **Prerequisites:** T3.2
-- **Files affected:** `components/hero/HeroScene.tsx` (add new prop), `HeroCanvas.tsx`, relevant parent components
+- **Files affected:** `src/components/hero/HeroScene.tsx` (add new prop), `HeroCanvas.tsx`, relevant parent components
 - **Implementation notes:**
   - Add optional `productIntroProgressRef?: { current: number }` prop to HeroScene
   - In `useFrame`: after hero scroll logic, read product-intro progress
@@ -360,7 +360,7 @@ Key dependencies:
 
 - **Objective:** GSAP scroll-triggered entrance animations for section content
 - **Prerequisites:** T2.4, T0.1
-- **Files affected:** `hooks/useProductIntroTimeline.ts`
+- **Files affected:** `src/hooks/useProductIntroTimeline.ts`
 - **Implementation notes:**
   - Use `useGSAP` from `@gsap/react` — NOT raw `useEffect`
   - Pass section container ref as `scope`
@@ -382,7 +382,7 @@ Key dependencies:
 
 - **Objective:** When reduced motion is enabled, make all content immediately visible
 - **Prerequisites:** T4.1
-- **Files affected:** `hooks/useProductIntroTimeline.ts`, `ProductIntroSection.tsx`
+- **Files affected:** `src/hooks/useProductIntroTimeline.ts`, `ProductIntroSection.tsx`
 - **Implementation notes:**
   - If `reducedMotion`, set all animated elements to `opacity: 1`, `transform: none` immediately
   - Skip ScrollTrigger creation entirely
@@ -400,7 +400,7 @@ Key dependencies:
 
 - **Objective:** Map raw section scroll progress to individual beat progress values
 - **Prerequisites:** T3.3, T0.2
-- **Files affected:** `components/hero/HeroScene.tsx` or a new utility
+- **Files affected:** `src/components/hero/HeroScene.tsx` or a new utility
 - **Implementation notes:**
   - Given section progress `0→1`, calculate which beat is active:
     ```ts
@@ -417,7 +417,7 @@ Key dependencies:
 
 - **Objective:** Smoothly interpolate pen rotation, position, and lighting per beat
 - **Prerequisites:** T5.1
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - In `useFrame`, after existing hero logic:
   - If product-intro progress > 0:

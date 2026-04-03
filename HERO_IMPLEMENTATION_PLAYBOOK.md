@@ -205,10 +205,10 @@ Key dependencies:
 - **Prerequisites:** T0.1
 - **Files affected:** Multiple new files
 - **Implementation notes:**
-  - Create stubs for all components in `components/hero/` (HeroSection, HeroScene, HeroCanvas, HeroContent, HeroCTA, HeroAmbientDetails, HeroScrollCue, HeroFallback, HeroMobile)
-  - Create hooks in `hooks/` (useHeroTimeline, useHeroScrollProgress, useReducedMotion, useDeviceCapabilities, useMediaQuery)
-  - Create lib files in `lib/gsap/` (registerGsap), `lib/three/` (heroSceneConfig, heroLighting, heroMaterials, heroCamera), `lib/utils/` (lerp, clamp, rafThrottle)
-  - Current project uses `app/` not `src/app/` — adapt accordingly
+  - Create stubs for all components in `src/components/hero/` (HeroSection, HeroScene, HeroCanvas, HeroContent, HeroCTA, HeroAmbientDetails, HeroScrollCue, HeroFallback, HeroMobile)
+  - Create hooks in `src/hooks/` (useHeroTimeline, useHeroScrollProgress, useReducedMotion, useDeviceCapabilities, useMediaQuery)
+  - Create lib files in `src/lib/gsap/` (registerGsap), `src/lib/three/` (heroSceneConfig, heroLighting, heroMaterials, heroCamera), `src/lib/utils/` (lerp, clamp, rafThrottle)
+  - Current project uses `src/app/` — adapt accordingly
   - Each file: minimal valid export (`export default function X() { return null; }`)
 - **Acceptance criteria:** All files exist with valid TypeScript exports; project compiles
 - **Common mistakes:** Wrong directory; forgetting `'use client'` on interactive components
@@ -218,7 +218,7 @@ Key dependencies:
 - **Objective:** Set up GSAP plugin registration and shared utility functions
 - **Why:** Centralizes setup, prevents duplicate registration
 - **Prerequisites:** T0.1, T0.2
-- **Files affected:** `lib/gsap/registerGsap.ts`, `lib/utils/lerp.ts`, `lib/utils/clamp.ts`
+- **Files affected:** `src/lib/gsap/registerGsap.ts`, `src/lib/utils/lerp.ts`, `src/lib/utils/clamp.ts`
 - **Implementation notes:**
   - `registerGsap.ts`: `gsap.registerPlugin(ScrollTrigger)`, export gsap
   - `lerp.ts`: `(start, end, factor) => start + (end - start) * factor`
@@ -237,7 +237,7 @@ Key dependencies:
 - **Objective:** Map design-system tokens into Tailwind/CSS custom properties
 - **Why:** All hero styling must use design system values
 - **Prerequisites:** T0.2
-- **Files affected:** `app/globals.css`
+- **Files affected:** `src/app/globals.css`
 - **Implementation notes:**
   - CSS vars: `--color-bg: #050a14`, `--color-primary: #007bff`, etc.
   - Import Montserrat + Open Sans via `next/font/google`
@@ -251,14 +251,14 @@ Key dependencies:
 - **Objective:** Build full-viewport hero container with proper layering
 - **Why:** Establishes spatial composition before content or 3D
 - **Prerequisites:** T1.1
-- **Files affected:** `components/hero/HeroSection.tsx`, marketing page
+- **Files affected:** `src/components/hero/HeroSection.tsx`, marketing page
 - **Implementation notes:**
   - `h-screen`, `relative`, `overflow-hidden`
   - z-index layers: bg(0) → canvas(1) → content(10) → ambient(15) → scroll cue(20)
   - Dark background using `--color-bg`
   - `'use client'` component
   - Subtle gradient overlay at bottom for depth
-  - Integrate into marketing page route (`app/(marketing)/page.tsx` or `app/page.tsx`)
+  - Integrate into marketing page route (`src/app/(marketing)/page.tsx` or `src/app/page.tsx`)
 - **Acceptance criteria:** Hero fills viewport; dark bg; layers stack correctly
 - **Common mistakes:** Fixed height vs viewport units; z-index conflicts with nav
 - **Definition of done:** Empty dark hero section renders full-viewport
@@ -267,7 +267,7 @@ Key dependencies:
 - **Objective:** Reserve 3D canvas area with temporary visual placeholder
 - **Why:** Validates spatial composition before real 3D exists
 - **Prerequisites:** T1.2
-- **Files affected:** `components/hero/HeroSection.tsx`
+- **Files affected:** `src/components/hero/HeroSection.tsx`
 - **Implementation notes:**
   - Centered placeholder (gradient circle or glass-panel div)
   - Position: centered, slightly offset vertically per spec
@@ -279,7 +279,7 @@ Key dependencies:
 - **Objective:** Add film-grain noise overlay and liquid blob ambient elements
 - **Why:** Creates premium atmospheric depth from design system
 - **Prerequisites:** T1.2
-- **Files affected:** `components/hero/HeroSection.tsx`
+- **Files affected:** `src/components/hero/HeroSection.tsx`
 - **Implementation notes:**
   - Noise: `fixed`, `opacity: 0.04`, `mix-blend-mode: overlay`, SVG noise
   - Liquid blobs: `blur(80px)`, primary blue + purple + cyan, `pointer-events: none`
@@ -297,7 +297,7 @@ Key dependencies:
 - **Objective:** Mount React Three Fiber canvas into hero layout
 - **Why:** Canvas must be properly configured before loading 3D content
 - **Prerequisites:** T1.2, T0.1
-- **Files affected:** `components/hero/HeroCanvas.tsx`, `components/hero/HeroSection.tsx`
+- **Files affected:** `src/components/hero/HeroCanvas.tsx`, `src/components/hero/HeroSection.tsx`
 - **Implementation notes:**
   - `'use client'` component; use `next/dynamic` with `ssr: false` when imported into page
   - Canvas props: `dpr={[1, 1.5]}`, `gl={{ antialias: true, alpha: true }}`, camera from heroSceneConfig
@@ -314,7 +314,7 @@ Key dependencies:
 - **Objective:** Define tunable 3D scene values in centralized config
 - **Why:** Prevents magic numbers; makes tuning easy
 - **Prerequisites:** T0.2
-- **Files affected:** `lib/three/heroSceneConfig.ts`
+- **Files affected:** `src/lib/three/heroSceneConfig.ts`
 - **Implementation notes:**
   - Camera: `position [0, 0.2, 4]`, `fov: 30`
   - Pen: position `[0,0,0]`, rotation `[0.15, 0.4, 0]`, idle amplitudes 0.04/0.03
@@ -328,7 +328,7 @@ Key dependencies:
 - **Objective:** Load and display pen 3D model
 - **Why:** Pen is the absolute focal point
 - **Prerequisites:** T2.1, T2.2
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - `useGLTF` from drei; if no `.glb` model yet, use temporary capsule geometry as placeholder
   - Position/rotation from config
@@ -342,7 +342,7 @@ Key dependencies:
 - **Objective:** Three-point lighting for premium product presentation
 - **Why:** Lighting defines perceived quality more than geometry
 - **Prerequisites:** T2.3
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - Key (dominant spotlight/directional), Fill (soft ambient), Rim (back, silhouette edge) — positions from config
   - Optional `<Environment preset="studio" />` from drei for subtle reflections
@@ -357,7 +357,7 @@ Key dependencies:
 - **Objective:** Perspective camera with premium framing
 - **Why:** Camera angle is critical to "expensive" product feel
 - **Prerequisites:** T2.3
-- **Files affected:** `components/hero/HeroCanvas.tsx`
+- **Files affected:** `src/components/hero/HeroCanvas.tsx`
 - **Implementation notes:**
   - FOV ~30 (tight, cinematic — not wide-angle distortion)
   - Position from config; slight angle, not perfectly flat
@@ -377,7 +377,7 @@ Key dependencies:
 - **Objective:** Render hero text layer with proper typography
 - **Why:** Copy must be impactful regardless of 3D state
 - **Prerequisites:** T1.1, T1.2
-- **Files affected:** `components/hero/HeroContent.tsx`
+- **Files affected:** `src/components/hero/HeroContent.tsx`
 - **Implementation notes:**
   - h1: `text-6xl md:text-8xl lg:text-9xl font-semibold leading-[0.85] tracking-tight`, Montserrat
   - Subheadline: `text-lg md:text-xl text-gray-300/80 font-light leading-relaxed max-w-lg`
@@ -392,7 +392,7 @@ Key dependencies:
 - **Objective:** Primary and secondary CTA buttons with trust microcopy
 - **Why:** CTA is the conversion goal — must be visually dominant
 - **Prerequisites:** T3.1
-- **Files affected:** `components/hero/HeroCTA.tsx`
+- **Files affected:** `src/components/hero/HeroCTA.tsx`
 - **Implementation notes:**
   - Primary: "Join the Private Beta" — `bg-[#007bff] text-white text-xs font-semibold uppercase tracking-widest py-3 px-8 rounded-xl`, hover inverts to white bg
   - Secondary: "Watch the Experience" — glass-panel secondary button style
@@ -407,7 +407,7 @@ Key dependencies:
 - **Objective:** Subtle scroll indicator at hero bottom
 - **Why:** Guides user without stealing focus
 - **Prerequisites:** T1.2
-- **Files affected:** `components/hero/HeroScrollCue.tsx`
+- **Files affected:** `src/components/hero/HeroScrollCue.tsx`
 - **Implementation notes:**
   - Position: absolute bottom-center
   - Text: "Scroll Down" — `text-[10px] uppercase tracking-[0.2em] text-gray-500`
@@ -426,7 +426,7 @@ Key dependencies:
 - **Objective:** Create GSAP timeline for page-load animation
 - **Why:** Centralizes intro animation in one cleanable hook
 - **Prerequisites:** T0.3, T3.1, T3.2
-- **Files affected:** `hooks/useHeroTimeline.ts`
+- **Files affected:** `src/hooks/useHeroTimeline.ts`
 - **Implementation notes:**
   - Use `useGSAP` from `@gsap/react` — NOT raw `useEffect`
   - Pass container ref as `scope` to auto-scope selectors
@@ -443,7 +443,7 @@ Key dependencies:
 - **Objective:** Subtle idle float and rotational drift on pen
 - **Why:** Makes product feel alive without user interaction
 - **Prerequisites:** T2.3
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - `useFrame` with `delta` for frame-rate independence
   - Y float: `sin(time) * 0.04`; rotation drift: `sin(time * 0.7) * 0.03`
@@ -458,7 +458,7 @@ Key dependencies:
 - **Objective:** Camera/pen reacts subtly to mouse for depth perception
 - **Why:** Premium interactive feel without requiring scroll
 - **Prerequisites:** T2.5, T4.2
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - Track normalized pointer position (-1 to 1 on both axes)
   - Apply very slight rotation/position offset (~2-3° max)
@@ -479,7 +479,7 @@ Key dependencies:
 - **Objective:** Map scroll to normalized 0→1 progress value
 - **Why:** All scroll effects reference this single source
 - **Prerequisites:** T0.3
-- **Files affected:** `hooks/useHeroScrollProgress.ts`
+- **Files affected:** `src/hooks/useHeroScrollProgress.ts`
 - **Implementation notes:**
   - GSAP ScrollTrigger on hero section element
   - Start: `"top top"`, End: `"bottom top"` or `"+=100%"`
@@ -493,7 +493,7 @@ Key dependencies:
 - **Objective:** Rotate pen and shift camera based on scroll progress
 - **Why:** Deepens the scene and suggests product intelligence
 - **Prerequisites:** T5.1, T2.3
-- **Files affected:** `components/hero/HeroScene.tsx`
+- **Files affected:** `src/components/hero/HeroScene.tsx`
 - **Implementation notes:**
   - Read scroll progress ref in `useFrame`
   - Pen rotates 5-15° across full scroll range
@@ -508,7 +508,7 @@ Key dependencies:
 - **Objective:** Subtle text emphasis changes as user scrolls
 - **Why:** Reinforces narrative progression (Arrival → Reveal → Invitation)
 - **Prerequisites:** T5.1, T3.1
-- **Files affected:** `hooks/useHeroTimeline.ts`, `components/hero/HeroContent.tsx`
+- **Files affected:** `src/hooks/useHeroTimeline.ts`, `src/components/hero/HeroContent.tsx`
 - **Implementation notes:**
   - Headline may fade/compress slightly on scroll
   - Secondary copy/microcopy may appear
@@ -527,7 +527,7 @@ Key dependencies:
 #### T6.1 — useMediaQuery and useDeviceCapabilities
 - **Objective:** Detect viewport size and device capability
 - **Prerequisites:** T0.2
-- **Files affected:** `hooks/useMediaQuery.ts`, `hooks/useDeviceCapabilities.ts`
+- **Files affected:** `src/hooks/useMediaQuery.ts`, `src/hooks/useDeviceCapabilities.ts`
 - **Implementation notes:**
   - `useMediaQuery`: wraps `window.matchMedia`, returns boolean for breakpoints (md:768, lg:1024)
   - `useDeviceCapabilities`: checks DPR, `navigator.hardwareConcurrency`, `navigator.deviceMemory`; returns tier (high/medium/low)
@@ -539,7 +539,7 @@ Key dependencies:
 #### T6.2 — Responsive Layout Adjustments
 - **Objective:** Adapt hero layout for tablet and mobile
 - **Prerequisites:** T6.1, T1.2, T3.1
-- **Files affected:** `components/hero/HeroSection.tsx`, `HeroContent.tsx`
+- **Files affected:** `src/components/hero/HeroSection.tsx`, `HeroContent.tsx`
 - **Implementation notes:**
   - Mobile: shorter hero, stacked text, single CTA emphasis, hide/deprioritize secondary CTA
   - Tablet: maintain layout, reduce spacing
@@ -552,7 +552,7 @@ Key dependencies:
 #### T6.3 — Mobile Scene Reduction
 - **Objective:** Simplify or replace 3D on mobile
 - **Prerequisites:** T6.1, T2.1
-- **Files affected:** `components/hero/HeroSection.tsx`, `HeroMobile.tsx`
+- **Files affected:** `src/components/hero/HeroSection.tsx`, `HeroMobile.tsx`
 - **Implementation notes:**
   - Conditionally render `HeroMobile` instead of `HeroCanvas` on mobile
   - Options: video loop from `public/videos/animation.mp4`, static image, or very simplified 3D
@@ -571,7 +571,7 @@ Key dependencies:
 #### T7.1 — useReducedMotion Hook
 - **Objective:** Detect `prefers-reduced-motion` user preference
 - **Prerequisites:** T0.2
-- **Files affected:** `hooks/useReducedMotion.ts`
+- **Files affected:** `src/hooks/useReducedMotion.ts`
 - **Implementation notes:**
   - `window.matchMedia('(prefers-reduced-motion: reduce)')`
   - Return boolean, update on change; SSR-safe (default `false`)
@@ -592,7 +592,7 @@ Key dependencies:
 #### T7.3 — HeroFallback (Tier 3)
 - **Objective:** Non-WebGL fallback for unsupported devices
 - **Prerequisites:** T6.3
-- **Files affected:** `components/hero/HeroFallback.tsx`
+- **Files affected:** `src/components/hero/HeroFallback.tsx`
 - **Implementation notes:**
   - Detect WebGL support (try creating canvas context)
   - If no WebGL: high-quality static image or `<video>` of pen

@@ -280,7 +280,7 @@ When `prefers-reduced-motion` is active:
 ## 10. Component Architecture
 
 ```
-components/
+src/components/
 └── product-intro/
     ├── ProductIntroSection.tsx      # Layout shell, responsive gate, scroll orchestration
     ├── ProductIntroCanvas.tsx       # R3F Canvas wrapper (if using separate canvas)
@@ -292,11 +292,11 @@ components/
     ├── FeatureFocusMode.tsx         # Beat 4: focus content + visual
     └── ProductIntroCTA.tsx          # End-of-section CTA block
 
-hooks/
+src/hooks/
 ├── useProductIntroTimeline.ts      # GSAP entrance timeline for section
 └── useProductIntroScrollProgress.ts # Scroll progress 0→1 for this section
 
-lib/
+src/lib/
 └── three/
     └── productIntroSceneConfig.ts  # 3D pose targets per beat
 ```

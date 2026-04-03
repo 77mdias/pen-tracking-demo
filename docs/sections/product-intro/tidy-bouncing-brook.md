@@ -25,20 +25,20 @@ O site PenFlow77 tem animações 3D da caneta muito sutis: rotação de apenas 1
 
 | Arquivo                                            | Ação                                                                     |
 | -------------------------------------------------- | ------------------------------------------------------------------------ |
-| `components/hero/HeroScene.tsx`                    | Modificar — substituir beat logic por penTargetRef lerp + FOV animation  |
-| `components/hero/HeroCanvas.tsx`                   | Modificar — trocar `productIntroProgressRef` por `penTargetRef`          |
-| `components/hero/HeroSection.tsx`                  | Modificar — trocar `useProductIntroScrollProgress` por `useScrollHijack` |
-| `hooks/useScrollHijack.ts`                         | **Criar** — hook central do scroll hijack                                |
-| `lib/three/penPoses.ts`                            | **Criar** — todas as poses dramáticas por seção                          |
-| `lib/gsap/scrollHijackConfig.ts`                   | **Criar** — constantes de timing e altura                                |
-| `components/product-intro/ProductIntroSection.tsx` | Refatorar — remover bug de Bridge duplicada, remover hooks obsoletos     |
-| `components/product-intro/ProductIntroBridge.tsx`  | Redesign — texto flutuante sem card, com `data-scroll-section="bridge"`  |
-| `components/product-intro/FeatureAIWriting.tsx`    | Redesign — texto à direita, sem círculo de ícone                         |
-| `components/product-intro/FeatureSmartSync.tsx`    | Redesign — texto à esquerda, sem círculo de ícone                        |
-| `components/product-intro/FeatureFocusMode.tsx`    | Redesign — texto centralizado no fundo, sem círculo de ícone             |
-| `hooks/useProductIntroScrollProgress.ts`           | **Deletar**                                                              |
-| `hooks/useProductIntroTimeline.ts`                 | **Deletar**                                                              |
-| `lib/three/productIntroSceneConfig.ts`             | **Deletar**                                                              |
+| `src/components/hero/HeroScene.tsx`                    | Modificar — substituir beat logic por penTargetRef lerp + FOV animation  |
+| `src/components/hero/HeroCanvas.tsx`                   | Modificar — trocar `productIntroProgressRef` por `penTargetRef`          |
+| `src/components/hero/HeroSection.tsx`                  | Modificar — trocar `useProductIntroScrollProgress` por `useScrollHijack` |
+| `src/hooks/useScrollHijack.ts`                         | **Criar** — hook central do scroll hijack                                |
+| `src/lib/three/penPoses.ts`                            | **Criar** — todas as poses dramáticas por seção                          |
+| `src/lib/gsap/scrollHijackConfig.ts`                   | **Criar** — constantes de timing e altura                                |
+| `src/components/product-intro/ProductIntroSection.tsx` | Refatorar — remover bug de Bridge duplicada, remover hooks obsoletos     |
+| `src/components/product-intro/ProductIntroBridge.tsx`  | Redesign — texto flutuante sem card, com `data-scroll-section="bridge"`  |
+| `src/components/product-intro/FeatureAIWriting.tsx`    | Redesign — texto à direita, sem círculo de ícone                         |
+| `src/components/product-intro/FeatureSmartSync.tsx`    | Redesign — texto à esquerda, sem círculo de ícone                        |
+| `src/components/product-intro/FeatureFocusMode.tsx`    | Redesign — texto centralizado no fundo, sem círculo de ícone             |
+| `src/hooks/useProductIntroScrollProgress.ts`           | **Deletar**                                                              |
+| `src/hooks/useProductIntroTimeline.ts`                 | **Deletar**                                                              |
+| `src/lib/three/productIntroSceneConfig.ts`             | **Deletar**                                                              |
 
 ---
 
@@ -55,7 +55,7 @@ O site PenFlow77 tem animações 3D da caneta muito sutis: rotação de apenas 1
 - Ler `node_modules/next/dist/docs/` para confirmar se há breaking changes relevantes
 - Confirmar que `dynamic` import com `ssr: false` funciona igual
 
-### Task 0.3 — Criar `lib/three/penPoses.ts`
+### Task 0.3 — Criar `src/lib/three/penPoses.ts`
 
 Definir tipo `PenPose` e o objeto `PEN_POSES` com todas as seções:
 
@@ -115,7 +115,7 @@ export const PEN_POSES = {
 export type PoseName = keyof typeof PEN_POSES;
 ```
 
-### Task 0.4 — Criar `lib/gsap/scrollHijackConfig.ts`
+### Task 0.4 — Criar `src/lib/gsap/scrollHijackConfig.ts`
 
 ```typescript
 export const SCROLL_HIJACK_CONFIG = {
@@ -234,7 +234,7 @@ Em `HeroCanvas.tsx`:
 
 ## Phase 3: Hook useScrollHijack
 
-### Task 3.1 — Criar `hooks/useScrollHijack.ts`
+### Task 3.1 — Criar `src/hooks/useScrollHijack.ts`
 
 ```typescript
 "use client";
@@ -398,9 +398,9 @@ export default function ProductIntroSection() {
 ### Task 5.2 — Deletar arquivos obsoletos
 
 ```
-hooks/useProductIntroScrollProgress.ts
-hooks/useProductIntroTimeline.ts
-lib/three/productIntroSceneConfig.ts
+src/hooks/useProductIntroScrollProgress.ts
+src/hooks/useProductIntroTimeline.ts
+src/lib/three/productIntroSceneConfig.ts
 ```
 
 ---
@@ -511,7 +511,7 @@ Texto **centralizado no fundo**:
 
 ### Task 7.1 — Tuning de poses (iteração visual)
 
-- Abrir `lib/three/penPoses.ts` no browser com `bun run dev`
+- Abrir `src/lib/three/penPoses.ts` no browser com `bun run dev`
 - Ajustar valores das rotações para as poses visualmente corretas
 - Focar em: AI Writing não cortar o frustum, Smart Sync mostrar o lado correto da caneta
 - Lerp factor: `delta * 4.5` (atual) — se quiser mais snap usar `delta * 6`, mais suave `delta * 3`
@@ -530,7 +530,7 @@ Texto **centralizado no fundo**:
     }
   }
   ```
-  Adicionar em `app/globals.css`.
+  Adicionar em `src/app/globals.css`.
 
 ### Task 7.3 — Mobile
 
