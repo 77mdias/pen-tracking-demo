@@ -17,7 +17,9 @@ export default function ProductIntroBridge() {
         <span className="section-headline-line block opacity-0">More than</span>
         <span className="section-headline-line block opacity-0 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">a pen.</span>
       </h2>
-      <p className="section-body font-inter mt-8 max-w-xl text-lg md:text-xl text-zinc-500 leading-relaxed opacity-0">
+      <p
+        className="section-body font-inter mt-8 max-w-2xl rounded-sm border border-white/10 bg-black/35 px-5 py-3 text-lg leading-relaxed text-zinc-200 shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-sm md:text-xl opacity-0"
+      >
         A new kind of writing experience — where premium hardware meets an
         intelligent digital layer.
       </p>

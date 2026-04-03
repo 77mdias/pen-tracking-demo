@@ -24,11 +24,11 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
         <span className="font-inter text-[10px] uppercase tracking-[0.2em] text-zinc-400">Smart Pen Premium Demo</span>
       </div>
 
-      <h1 className="hero-headline font-manrope mt-8 text-6xl font-bold leading-[0.85] tracking-tight text-white drop-shadow-2xl md:text-8xl lg:text-9xl">
-        <span className="split-line">
+      <h1 className="hero-headline font-display mt-8 text-4xl font-semibold leading-[1.02] tracking-tight text-white drop-shadow-2xl md:text-6xl md:leading-[1] lg:text-7xl">
+        <span className="split-line pb-[0.24em] -mb-[0.24em]">
           <span className="hero-headline-line block">The pen,</span>
         </span>
-        <span className="split-line">
+        <span className="split-line pb-[0.24em] -mb-[0.24em]">
           <span className="hero-headline-line block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/40">
             reimagined.
           </span>
@@ -36,14 +36,14 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
       </h1>
 
       <p
-        className={`hero-subheadline font-inter max-w-lg rounded-lg p-2 text-lg font-light leading-relaxed text-zinc-400 md:text-xl ${
+        className={`hero-subheadline font-inter max-w-2xl rounded-sm border border-white/10 bg-black/35 px-5 py-3 text-lg font-normal leading-relaxed text-zinc-100 shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-sm md:text-xl ${
           isTablet ? "mt-6" : "mt-8"
         }`}
       >
         {subheadline}
       </p>
 
-      <p className="hero-support-copy font-inter mt-1 max-w-md text-center text-sm text-zinc-500 opacity-0">
+      <p className="hero-support-copy font-inter mt-2 max-w-md text-center text-sm text-zinc-300 opacity-0">
         Designed for focused writing sessions with a subtle intelligent layer.
       </p>
 

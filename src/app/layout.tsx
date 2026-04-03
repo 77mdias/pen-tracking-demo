@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Manrope, Montserrat, Open_Sans } from "next/font/google";
+import { Inter, Manrope, Montserrat, Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
 import "./globals.css";
 
@@ -21,6 +21,12 @@ const montserrat = Montserrat({
   weight: ["500", "600", "700"],
 });
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+});
+
 const openSans = Open_Sans({
   variable: "--font-body",
   subsets: ["latin"],
@@ -38,7 +44,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${openSans.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${plusJakartaSans.variable} ${openSans.variable} h-full antialiased`}
+    >
       <body className="font-inter min-h-full flex flex-col">
         <SiteHeader />
         <div className="flex-1">{children}</div>

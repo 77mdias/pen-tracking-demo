@@ -26,6 +26,7 @@
   --font-inter: var(--font-inter);
   --font-manrope: var(--font-manrope);
   --font-heading: var(--font-heading);
+  --font-display: var(--font-display);
 }
 
 body {
@@ -44,6 +45,10 @@ body {
 
 .font-heading {
   font-family: var(--font-manrope), var(--font-heading), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-manrope), sans-serif;
 }
 
 /* ── Editorial Design System Utilities ─────────────────────────── */

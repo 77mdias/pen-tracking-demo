@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { MouseEvent, useEffect, useMemo, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 type NavItem = {
@@ -91,11 +91,34 @@ export default function SiteHeader() {
     return `${base} border-zinc-800 bg-black/50 shadow-black/35`;
   }, [isScrolled]);
 
+  const handleHomeReentry = (event: MouseEvent<HTMLAnchorElement>) => {
+    const isPrimaryClick = event.button === 0;
+    const hasModifier = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+    if (!isPrimaryClick || hasModifier) {
+      return;
+    }
+
+    setIsMobileMenuOpen(false);
+
+    if (pathname !== '/') {
+      return;
+    }
+
+    event.preventDefault();
+    window.location.reload();
+  };
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-[60] flex justify-center px-4 pt-4 md:pt-6">
       <nav className={`${navShellClassName} pointer-events-auto`} aria-label="Global">
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr] md:gap-6">
-          <Link href="/" className="justify-self-start flex items-center gap-3" aria-label="PenFlow77 home">
+          <Link
+            href="/"
+            className="justify-self-start flex items-center gap-3"
+            aria-label="PenFlow77 home"
+            onClick={handleHomeReentry}
+          >
             <span className="grid h-6 w-6 grid-cols-2 gap-1 opacity-90" aria-hidden="true">
               <span className="rounded-sm bg-[#ef233c]" />
               <span className="rounded-sm bg-zinc-700" />
@@ -116,6 +139,7 @@ export default function SiteHeader() {
                   className={`site-header-link text-sm font-medium transition-colors ${
                     active ? 'text-white' : 'text-zinc-400 hover:text-white'
                   }`}
+                  onClick={item.href === '/' ? handleHomeReentry : undefined}
                 >
                   {item.label}
                 </Link>
@@ -159,7 +183,7 @@ export default function SiteHeader() {
                         ? 'border-[#ef233c]/60 bg-[#ef233c]/10 text-white'
                         : 'border-zinc-800 text-zinc-300 hover:border-[#ef233c]/40 hover:text-white'
                     }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={item.href === '/' ? handleHomeReentry : () => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
