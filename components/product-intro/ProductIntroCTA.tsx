@@ -2,7 +2,7 @@
 
 export default function ProductIntroCTA() {
   return (
-    <div className="cta-block relative flex flex-col items-center justify-center text-center py-32 px-6 overflow-hidden">
+    <div data-scroll-section="cta" className="cta-block relative min-h-screen flex flex-col items-center justify-center text-center py-32 px-6 overflow-hidden">
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(239,35,60,0.06),transparent_60%)]"

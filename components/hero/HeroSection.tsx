@@ -10,6 +10,7 @@ import VideoBackground from "@/components/hero/VideoBackground";
 import useDeviceCapabilities from "@/hooks/useDeviceCapabilities";
 import useHeroScrollProgress from "@/hooks/useHeroScrollProgress";
 import useScrollHijack from "@/hooks/useScrollHijack";
+import useSnapScroll from "@/hooks/useSnapScroll";
 import type { PenPose } from "@/lib/three/penPoses";
 import useHeroTimeline from "@/hooks/useHeroTimeline";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -48,8 +49,18 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
   });
   
   const penTargetRef = useRef<PenPose | null>(null);
+
+  // Content reveal animations (enter/exit) per section
   useScrollHijack({
     scope: productIntroContainerRef,
+    penTargetRef,
+    reducedMotion: !enableScrollNarrative,
+  });
+
+  // Wheel/touch snap navigation between sections
+  useSnapScroll({
+    heroRef: sectionRef,
+    containerRef: productIntroContainerRef,
     penTargetRef,
     reducedMotion: !enableScrollNarrative,
   });
