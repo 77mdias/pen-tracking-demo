@@ -98,7 +98,8 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
 
       <section
         ref={sectionRef}
-        className={`relative z-[10] text-white ${
+        id="experience"
+        className={`relative z-[10] scroll-mt-28 text-white ${
           isMobile ? "h-[92svh]" : "h-screen"
         }`}
       >

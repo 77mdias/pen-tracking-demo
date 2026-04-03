@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, Montserrat, Open_Sans } from "next/font/google";
+import SiteHeader from "@/components/layout/SiteHeader";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,7 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${openSans.variable} h-full antialiased`}>
-      <body className="font-inter min-h-full flex flex-col">{children}</body>
+      <body className="font-inter min-h-full flex flex-col">
+        <SiteHeader />
+        <div className="flex-1">{children}</div>
+      </body>
     </html>
   );
 }

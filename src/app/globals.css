@@ -253,3 +253,50 @@ body {
 [data-scroll-section] .glass-panel {
   will-change: opacity;
 }
+
+.site-header-link {
+  position: relative;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.site-header-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ef233c, transparent);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.site-header-link:hover::after,
+.site-header-link:focus-visible::after {
+  opacity: 1;
+}
+
+.ds2-nav-shell {
+  isolation: isolate;
+}
+
+.ds2-nav-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.22)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

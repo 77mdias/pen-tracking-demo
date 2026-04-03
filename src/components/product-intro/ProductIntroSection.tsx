@@ -9,7 +9,7 @@ import SectionDivider from '@/components/product-intro/SectionDivider';
 
 export default function ProductIntroSection() {
   return (
-    <section className="relative w-full">
+    <section id="product" className="relative w-full scroll-mt-28">
       <ProductIntroBridge />
       <SectionDivider />
       <FeatureAIWriting />
