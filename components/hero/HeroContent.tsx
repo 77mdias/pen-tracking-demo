@@ -18,31 +18,32 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
         isTablet ? "max-w-4xl" : "max-w-5xl"
       }`}
     >
-      <div className="glass-panel inline-flex items-center gap-2 rounded-full px-4 py-1.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#007bff] shadow-[0_0_10px_#007bff]" />
-        <span className="text-[10px] uppercase tracking-[0.2em] text-gray-300">Smart Pen Premium Demo</span>
+      {/* Editorial badge with border-gradient spin + red accent dot */}
+      <div className="border-gradient-spin inline-flex items-center gap-2 bg-black/60 px-4 py-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#ef233c] shadow-[0_0_8px_#ef233c]" />
+        <span className="font-inter text-[10px] uppercase tracking-[0.2em] text-zinc-400">Smart Pen Premium Demo</span>
       </div>
 
-      <h1 className="hero-headline font-heading mt-8 text-6xl font-semibold leading-[0.85] tracking-tight text-white drop-shadow-2xl md:text-8xl lg:text-9xl">
+      <h1 className="hero-headline font-manrope mt-8 text-6xl font-bold leading-[0.85] tracking-tight text-white drop-shadow-2xl md:text-8xl lg:text-9xl">
         <span className="split-line">
           <span className="hero-headline-line block">The pen,</span>
         </span>
         <span className="split-line">
-          <span className="hero-headline-line block text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">
+          <span className="hero-headline-line block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/40">
             reimagined.
           </span>
         </span>
       </h1>
 
       <p
-        className={`hero-subheadline max-w-lg rounded-lg p-2 text-lg font-light leading-relaxed text-gray-300/80 md:text-xl ${
+        className={`hero-subheadline font-inter max-w-lg rounded-lg p-2 text-lg font-light leading-relaxed text-zinc-400 md:text-xl ${
           isTablet ? "mt-6" : "mt-8"
         }`}
       >
         {subheadline}
       </p>
 
-      <p className="hero-support-copy mt-1 max-w-md text-center text-sm text-gray-400 opacity-0">
+      <p className="hero-support-copy font-inter mt-1 max-w-md text-center text-sm text-zinc-500 opacity-0">
         Designed for focused writing sessions with a subtle intelligent layer.
       </p>
 

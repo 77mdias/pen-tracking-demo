@@ -67,18 +67,26 @@ export default function useHeroTimeline({
       const setSupportCopyY = gsap.quickSetter(".hero-support-copy", "y", "px");
       const setCtaPrimaryScale = gsap.quickSetter(".hero-cta-primary", "scale");
       const setCtaSecondaryOpacity = gsap.quickSetter(".hero-cta-secondary", "opacity");
+      const setScrollCueOpacity = gsap.quickSetter(".hero-scroll-cue", "opacity");
+      const setCtaOpacity = gsap.quickSetter(".hero-cta", "opacity");
 
       const applyScrollProgress = () => {
         const progress = scrollProgressRef.current;
 
-        setHeadlineScale(1 - progress * 0.06);
-        setHeadlineOpacity(1 - progress * 0.18);
-        setSubheadlineOpacity(1 - progress * 0.2);
-        setSubheadlineY(-progress * 10);
-        setSupportCopyOpacity(progress * 0.9);
+        // Hero content fades out fully by ~60% scroll — clean handoff to bridge
+        const fadeOut = Math.max(0, 1 - progress * 2.5);
+        const aggressiveFade = Math.max(0, 1 - progress * 4);
+
+        setHeadlineScale(1 - progress * 0.08);
+        setHeadlineOpacity(fadeOut);
+        setSubheadlineOpacity(fadeOut);
+        setSubheadlineY(-progress * 30);
+        setSupportCopyOpacity(Math.min(1, progress * 3) * fadeOut);
         setSupportCopyY((1 - progress) * 10);
         setCtaPrimaryScale(1 + progress * 0.04);
-        setCtaSecondaryOpacity(1 - progress * 0.08);
+        setCtaSecondaryOpacity(fadeOut);
+        setScrollCueOpacity(aggressiveFade);
+        setCtaOpacity(fadeOut);
       };
 
       gsap.ticker.add(applyScrollProgress);

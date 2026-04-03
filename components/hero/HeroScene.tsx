@@ -65,9 +65,13 @@ export default function HeroScene({
     const scrollProgress = reducedMotion ? 0 : scrollProgressRef.current;
     const rotationRangeRadians = (heroSceneConfig.scroll.rotationRangeDegrees * Math.PI) / 180;
 
+    // Idle breathing — always active for organic feel
+    const idleY = Math.sin(elapsedTime * 0.8) * heroSceneConfig.pen.idle.yAmplitude * motionScale;
+    const idleRotZ = Math.sin(elapsedTime * 0.5) * heroSceneConfig.pen.idle.rotationAmplitude * motionScale * 0.6;
+
     if (!reducedMotion) {
-      targetPosY += Math.sin(elapsedTime) * heroSceneConfig.pen.idle.yAmplitude * motionScale;
-      targetRotZ += Math.sin(elapsedTime * 0.7) * heroSceneConfig.pen.idle.rotationAmplitude * motionScale;
+      targetPosY += idleY;
+      targetRotZ += idleRotZ;
     }
 
     if (enablePointerParallax && !reducedMotion) {
@@ -86,17 +90,20 @@ export default function HeroScene({
     let targetCameraZ = camBaseZ - scrollProgress * 0.12 * motionScale;
     let targetFov: number = heroSceneConfig.camera.fov;
 
-    const factor = clamp(delta * 4.5, 0, 1);
+    // Pen lerp — slower for cinematic transitions between section poses
+    const penFactor = clamp(delta * 2.2, 0, 1);
+    // Camera lerp — slightly faster to lead the eye
+    const camFactor = clamp(delta * 2.5, 0, 1);
 
-    // Product Intro: override com pose discreta quando penTargetRef está ativo
+    // Product Intro: override with section pose + add idle breathing on top
     const activePose = penTargetRef?.current;
     if (activePose && !reducedMotion) {
       targetPosX = activePose.pen.position[0];
-      targetPosY = activePose.pen.position[1];
+      targetPosY = activePose.pen.position[1] + idleY * 0.5; // reduced idle when posed
       targetPosZ = activePose.pen.position[2];
       targetRotX = activePose.pen.rotation[0];
       targetRotY = activePose.pen.rotation[1];
-      targetRotZ = activePose.pen.rotation[2];
+      targetRotZ = activePose.pen.rotation[2] + idleRotZ * 0.4;
       targetCameraX = activePose.camera.position[0];
       targetCameraY = activePose.camera.position[1];
       targetCameraZ = activePose.camera.position[2];
@@ -108,7 +115,7 @@ export default function HeroScene({
         accentLightRef.current.intensity = lerp(
           accentLightRef.current.intensity,
           targetIntensity,
-          factor,
+          penFactor,
         );
         if (acc) {
           accentLightRef.current.position.set(
@@ -121,20 +128,20 @@ export default function HeroScene({
       }
     }
 
-    penGroupRef.current.position.x = lerp(penGroupRef.current.position.x, targetPosX, factor);
-    penGroupRef.current.position.y = lerp(penGroupRef.current.position.y, targetPosY, factor);
-    penGroupRef.current.position.z = lerp(penGroupRef.current.position.z, targetPosZ, factor);
-    penGroupRef.current.rotation.x = lerp(penGroupRef.current.rotation.x, targetRotX, factor);
-    penGroupRef.current.rotation.y = lerp(penGroupRef.current.rotation.y, targetRotY, factor);
-    penGroupRef.current.rotation.z = lerp(penGroupRef.current.rotation.z, targetRotZ, factor);
+    penGroupRef.current.position.x = lerp(penGroupRef.current.position.x, targetPosX, penFactor);
+    penGroupRef.current.position.y = lerp(penGroupRef.current.position.y, targetPosY, penFactor);
+    penGroupRef.current.position.z = lerp(penGroupRef.current.position.z, targetPosZ, penFactor);
+    penGroupRef.current.rotation.x = lerp(penGroupRef.current.rotation.x, targetRotX, penFactor);
+    penGroupRef.current.rotation.y = lerp(penGroupRef.current.rotation.y, targetRotY, penFactor);
+    penGroupRef.current.rotation.z = lerp(penGroupRef.current.rotation.z, targetRotZ, penFactor);
 
-    state.camera.position.x = lerp(state.camera.position.x, targetCameraX, factor);
-    state.camera.position.y = lerp(state.camera.position.y, targetCameraY, factor);
-    state.camera.position.z = lerp(state.camera.position.z, targetCameraZ, factor);
+    state.camera.position.x = lerp(state.camera.position.x, targetCameraX, camFactor);
+    state.camera.position.y = lerp(state.camera.position.y, targetCameraY, camFactor);
+    state.camera.position.z = lerp(state.camera.position.z, targetCameraZ, camFactor);
     state.camera.lookAt(0, 0, 0);
 
     const cam = state.camera as PerspectiveCamera;
-    cam.fov = lerp(cam.fov, targetFov, factor);
+    cam.fov = lerp(cam.fov, targetFov, camFactor);
     cam.updateProjectionMatrix();
   });
 

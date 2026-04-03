@@ -38,6 +38,18 @@ export default function HeroAmbientDetails() {
           animationDelay: "-10s",
         }}
       />
+      <div
+        className="liquid-blob bg-[#ef233c]"
+        style={{
+          width: 350,
+          height: 350,
+          top: "30%",
+          left: "10%",
+          opacity: 0.1,
+          animationDuration: "18s",
+          animationDelay: "-7s",
+        }}
+      />
     </div>
   );
 }

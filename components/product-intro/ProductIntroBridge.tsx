@@ -6,41 +6,41 @@ export default function ProductIntroBridge() {
     >
       {/* Ambient background pulse */}
       <div
-        className="section-glow pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#007bff]/6 blur-[140px] opacity-0"
+        className="section-glow pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#ef233c]/5 blur-[140px] opacity-0"
         aria-hidden="true"
       />
 
-      <p className="section-label text-[10px] uppercase tracking-[0.2em] text-[#007bff] mb-6 opacity-0">
+      <p className="section-label font-inter text-[10px] uppercase tracking-[0.2em] text-[#ef233c] mb-6 opacity-0">
         The Ecosystem
       </p>
-      <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.85] tracking-tight text-white">
+      <h2 className="font-manrope text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.85] tracking-tight text-white">
         <span className="section-headline-line block opacity-0">More than</span>
-        <span className="section-headline-line block opacity-0">a pen.</span>
+        <span className="section-headline-line block opacity-0 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">a pen.</span>
       </h2>
-      <p className="section-body mt-8 max-w-xl text-lg md:text-xl text-white/50 leading-relaxed opacity-0">
+      <p className="section-body font-inter mt-8 max-w-xl text-lg md:text-xl text-zinc-500 leading-relaxed opacity-0">
         A new kind of writing experience — where premium hardware meets an
         intelligent digital layer.
       </p>
 
-      {/* Feature pillars preview */}
-      <div className="section-details mt-16 grid grid-cols-3 gap-6 max-w-lg w-full opacity-0">
-        <div className="text-center">
-          <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#ffbb33]/20 to-transparent border border-[#ffbb33]/15 flex items-center justify-center">
-            <span className="text-[#ffbb33] text-sm">✦</span>
+      {/* Feature pillars preview — dashed border cards with corner accents */}
+      <div className="section-details mt-16 grid grid-cols-3 gap-4 max-w-lg w-full opacity-0">
+        <div className="editorial-card corner-accent text-center p-5">
+          <div className="w-8 h-8 mx-auto mb-3 flex items-center justify-center border border-[#ef233c]/30 bg-[#ef233c]/5">
+            <span className="text-[#ef233c] text-sm font-bold">✦</span>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white/40">AI Assist</p>
+          <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">AI Assist</p>
         </div>
-        <div className="text-center">
-          <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#00bfff]/20 to-transparent border border-[#00bfff]/15 flex items-center justify-center">
-            <span className="text-[#00bfff] text-sm">⟳</span>
+        <div className="editorial-card corner-accent text-center p-5">
+          <div className="w-8 h-8 mx-auto mb-3 flex items-center justify-center border border-zinc-700/50 bg-white/3">
+            <span className="text-zinc-400 text-sm">⟳</span>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white/40">Smart Sync</p>
+          <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Smart Sync</p>
         </div>
-        <div className="text-center">
-          <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex items-center justify-center">
-            <span className="text-white/60 text-sm">◉</span>
+        <div className="editorial-card corner-accent text-center p-5">
+          <div className="w-8 h-8 mx-auto mb-3 flex items-center justify-center border border-zinc-700/50 bg-white/3">
+            <span className="text-zinc-400 text-sm">◉</span>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white/40">Focus</p>
+          <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Focus</p>
         </div>
       </div>
     </div>

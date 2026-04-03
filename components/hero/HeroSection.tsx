@@ -5,8 +5,8 @@ import { useRef } from "react";
 import HeroAmbientDetails from "@/components/hero/HeroAmbientDetails";
 import HeroContent from "@/components/hero/HeroContent";
 import HeroFallback from "@/components/hero/HeroFallback";
-import HeroMobile from "@/components/hero/HeroMobile";
 import HeroScrollCue from "@/components/hero/HeroScrollCue";
+import VideoBackground from "@/components/hero/VideoBackground";
 import useDeviceCapabilities from "@/hooks/useDeviceCapabilities";
 import useHeroScrollProgress from "@/hooks/useHeroScrollProgress";
 import useScrollHijack from "@/hooks/useScrollHijack";
@@ -66,10 +66,9 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
 
       <div className="hero-scene-layer absolute inset-0 z-[1] pointer-events-none">
         <div className="sticky top-0 h-screen w-full pointer-events-auto">
+          <VideoBackground className="z-[0]" />
           {shouldUseFallback ? (
-            <HeroFallback className="absolute inset-0" reducedMotion={reducedMotion} />
-          ) : isMobile ? (
-            <HeroMobile className="absolute inset-0" reducedMotion={reducedMotion} />
+            <HeroFallback className="absolute inset-0 z-[1]" reducedMotion={reducedMotion} />
           ) : (
             <HeroCanvas
               reducedMotion={reducedMotion}
@@ -77,8 +76,8 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
               scrollProgressRef={scrollProgressRef}
               penTargetRef={penTargetRef}
               motionScale={motionScale}
-              maxDpr={recommendedMaxDpr}
-              tier={tier}
+              maxDpr={isMobile ? Math.min(recommendedMaxDpr, 1.5) : recommendedMaxDpr}
+              tier={isMobile ? "medium" : tier}
             />
           )}
         </div>
