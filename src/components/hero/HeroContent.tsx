@@ -24,11 +24,11 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
         <span className="font-inter text-[10px] uppercase tracking-[0.2em] text-zinc-400">Smart Pen Premium Demo</span>
       </div>
 
-      <h1 className="hero-headline font-display mt-8 text-4xl font-semibold leading-[1.02] tracking-tight text-white drop-shadow-2xl md:text-6xl md:leading-[1] lg:text-7xl">
-        <span className="split-line pb-[0.24em] -mb-[0.24em]">
+      <h1 className="hero-headline font-display mt-8 text-6xl font-semibold leading-[0.85] tracking-tight text-white drop-shadow-2xl md:text-8xl lg:text-9xl">
+        <span className="split-line pb-[0.35em] -mb-[0.35em]">
           <span className="hero-headline-line block">The pen,</span>
         </span>
-        <span className="split-line pb-[0.24em] -mb-[0.24em]">
+        <span className="split-line pb-[0.35em] -mb-[0.35em]">
           <span className="hero-headline-line block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/40">
             reimagined.
           </span>
