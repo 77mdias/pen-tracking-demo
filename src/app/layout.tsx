@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${plusJakartaSans.variable} ${openSans.variable} h-full antialiased`}
     >
-      <body className="font-inter min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col">
         <SiteHeader />
         <div className="flex-1">{children}</div>
       </body>
