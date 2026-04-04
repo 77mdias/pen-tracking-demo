@@ -2,7 +2,7 @@
 title: Tasks - Phase 01 - Spec vs Implementation Audit
 type: phase-task-board
 mode: execution-tracking
-status: planned
+status: completed
 ---
 
 # Tasks — Fase 01: Spec vs Implementation Audit
@@ -10,12 +10,12 @@ status: planned
 > Este board é a fonte oficial de acompanhamento operacional da Fase 01 no PenFlow77.
 > A entrega canônica desta fase é `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`.
 
-**Status:** Planejada  
-**Última atualização:** 2026-04-03  
+**Status:** Concluída  
+**Última atualização:** 2026-04-04  
 **Sprint Atual:** SPRINT-01  
 **Modo principal:** mixed  
-**Status Geral:** 0% (0/6 tarefas completas) – Fase planejada  
-**ETA:** 1–2 dias  
+**Status Geral:** 100% (6/6 tarefas completas) – Fase concluída  
+**ETA:** Concluída em 1 dia  
 **Pré-requisito:** PHASE-00 concluída ou suficientemente estável  
 **Owner:** agent  
 **Docs relacionadas:** `docs/development/CURRENT-STATE.md`, `docs/development/ROADMAP.md`, `docs/development/SPRINTS.md`, `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`, `AGENTS.md`, `HERO_SPEC_smart_pen.md`, `HERO_TECHNICAL_BUILD_PLAN_smart_pen.md`, `PRD_production.md`, `TECH_SPEC_production.md`
@@ -26,10 +26,10 @@ status: planned
 
 | Categoria | Total | Concluído | Em Andamento | Pendente | Bloqueado |
 | --------- | ----- | --------- | ------------ | -------- | --------- |
-| Discovery e levantamento factual | 2 | 0 | 0 | 2 | 0 |
-| Consolidação da auditoria | 2 | 0 | 0 | 2 | 0 |
-| Decisões e handoff | 2 | 0 | 0 | 2 | 0 |
-| **TOTAL** | **6** | **0** | **0** | **6** | **0** |
+| Discovery e levantamento factual | 3 | 3 | 0 | 0 | 0 |
+| Consolidação da auditoria | 2 | 2 | 0 | 0 | 0 |
+| Decisões e handoff | 1 | 1 | 0 | 0 | 0 |
+| **TOTAL** | **6** | **6** | **0** | **0** | **0** |
 
 ### Principais Indicadores
 - O board parte do princípio já documentado de que landing e hero estão implementados com ressalvas.
@@ -95,7 +95,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
 
 #### S01.1 — Revisão das fontes primárias
 
-- [ ] **S01-T01** — Revalidar divergências de design system e tipografia entre `AGENTS.md` e `src/app/globals.css`
+- [x] **S01-T01** — Revalidar divergências de design system e tipografia entre `AGENTS.md` e `src/app/globals.css`
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -136,7 +136,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
   **Prioridade:** Crítica  
   **Estimativa:** 30–45 min  
   **Responsável:** agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
   **Definição de pronto:**
   - [ ] Implementação concluída
@@ -144,7 +144,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
   - [ ] Critérios de aceitação atendidos
   - [ ] Sem violação arquitetural evidente
 
-- [ ] **S01-T02** — Revalidar gaps do hero em scroll, reduced motion, fallback e mobile
+- [x] **S01-T02** — Revalidar gaps do hero em scroll, reduced motion, fallback e mobile
 
   **Modo recomendado:** frontend  
   **Tipo:** docs  
@@ -185,7 +185,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
   **Prioridade:** Crítica  
   **Estimativa:** 45–60 min  
   **Responsável:** agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
   **Definição de pronto:**
   - [ ] Implementação concluída
@@ -193,7 +193,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
   - [ ] Critérios de aceitação atendidos
   - [ ] Sem violação arquitetural evidente
 
-- [ ] **S01-T03** — Revalidar placeholders, stack real e naming operacional de deploy
+- [x] **S01-T03** — Revalidar placeholders, stack real e naming operacional de deploy
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -234,7 +234,7 @@ Levantar novamente, de forma organizada, as divergências reais entre documenta�
   **Prioridade:** Alta  
   **Estimativa:** 30–45 min  
   **Responsável:** agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
@@ -254,7 +254,7 @@ Transformar o material levantado em um documento canônico curto, acionável e p
 
 #### S01.2 — Documento canônico
 
-- [ ] **S01-T04** — Criar `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`
+- [x] **S01-T04** — Criar `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -295,7 +295,7 @@ Transformar o material levantado em um documento canônico curto, acionável e p
   **Prioridade:** Crítica  
   **Estimativa:** 60–90 min  
   **Responsável:** agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
   **Definição de pronto:**
   - [ ] Implementação concluída
@@ -303,7 +303,7 @@ Transformar o material levantado em um documento canônico curto, acionável e p
   - [ ] Critérios de aceitação atendidos
   - [ ] Sem violação arquitetural evidente
 
-- [ ] **S01-T05** — Revisar a auditoria para priorização, clareza e alinhamento com as próximas fases
+- [x] **S01-T05** — Revisar a auditoria para priorização, clareza e alinhamento com as próximas fases
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -344,7 +344,7 @@ Transformar o material levantado em um documento canônico curto, acionável e p
   **Prioridade:** Alta  
   **Estimativa:** 20–30 min  
   **Responsável:** agent / owner documental  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
@@ -364,7 +364,7 @@ Amarrar a auditoria ao restante da camada operacional, registrando decisões abe
 
 #### S01.3 — Handoff para execução
 
-- [ ] **S01-T06** — Registrar decisões pendentes e alimentar explicitamente PHASE-02, PHASE-03 e PHASE-04
+- [x] **S01-T06** — Registrar decisões pendentes e alimentar explicitamente PHASE-02, PHASE-03 e PHASE-04
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -405,7 +405,7 @@ Amarrar a auditoria ao restante da camada operacional, registrando decisões abe
   **Prioridade:** Alta  
   **Estimativa:** 20–30 min  
   **Responsável:** agent / owner do roadmap  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
