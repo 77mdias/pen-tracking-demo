@@ -443,23 +443,23 @@ Amarrar a auditoria ao restante da camada operacional, registrando decisões abe
 ## Documentação e Comunicação
 
 - [x] Atualizar `docs/development/TASKS.md`
-- [ ] Atualizar `docs/development/CHANGELOG.md`
-- [ ] Atualizar docs de schema, se aplicável
-- [ ] Atualizar docs de infraestrutura/deploy, se aplicável
-- [ ] Registrar fechamento da fase no board e no changelog, quando aplicável
-- [ ] Registrar desvios de escopo ou decisões estruturais
+- [x] Atualizar `docs/development/CHANGELOG.md`
+- [x] Atualizar docs de schema, se aplicável (N/A — sprint documental)
+- [x] Atualizar docs de infraestrutura/deploy, se aplicável (naming divergente registrado no audit)
+- [x] Registrar fechamento da fase no board e no changelog
+- [x] Registrar desvios de escopo ou decisões estruturais (3 decisões de owner registradas)
 
 ---
 
 ## Checklist de Encerramento da Fase
 
-- [ ] Todas as tarefas críticas concluídas
-- [ ] Tasks pendentes replanejadas ou formalmente adiadas
-- [ ] Migrations aplicadas e versionadas, se houver
-- [ ] Testes backend/frontend executados e passando
-- [ ] Fluxos críticos validados manualmente
-- [ ] Documentação atualizada
-- [ ] Revisão de segurança/arquitetura realizada
-- [ ] Aprovação final registrada
-- [ ] Fechamento da fase registrado
-- [ ] Changelog atualizado
+- [x] Todas as tarefas críticas concluídas
+- [x] Tasks pendentes replanejadas ou formalmente adiadas (3 decisões em PHASE-02; deploy naming pre-deploy)
+- [x] Migrations aplicadas e versionadas, se houver (N/A)
+- [x] Testes backend/frontend executados e passando (lint sem novos erros; Playwright 375px e 1440px)
+- [x] Fluxos críticos validados manualmente
+- [x] Documentação atualizada
+- [x] Revisão de segurança/arquitetura realizada (N/A — sprint documental)
+- [x] Aprovação final registrada (owner aprovou as 3 decisões de auditoria)
+- [x] Fechamento da fase registrado
+- [x] Changelog atualizado
