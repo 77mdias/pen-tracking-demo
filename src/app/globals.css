@@ -91,9 +91,20 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
+/* Centerpiece crossfade card — floats more prominently */
+.floating-badge-center {
+  animation: center-float 8s ease-in-out infinite alternate;
+}
+
 @keyframes badge-float {
   0% { transform: translateY(0px); }
   100% { transform: translateY(-4px); }
+}
+
+@keyframes center-float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.015); }
+  100% { transform: translateY(0px) scale(1); }
 }
 
 /* Corner accent brackets in #ef233c */
