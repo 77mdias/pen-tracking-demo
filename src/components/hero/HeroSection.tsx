@@ -15,6 +15,7 @@ import type { PenPose } from "@/lib/three/penPoses";
 import useHeroTimeline from "@/hooks/useHeroTimeline";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useReducedMotion from "@/hooks/useReducedMotion";
+import useMobilePenPoses from "@/hooks/useMobilePenPoses";
 
 const HeroCanvas = dynamic(() => import("@/components/hero/HeroCanvas"), {
   ssr: false,
@@ -65,6 +66,15 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     penTargetRef,
     reducedMotion: !enableScrollNarrative,
     isMobile,
+  });
+
+  // On mobile the full scroll narrative is disabled, but we still want the pen
+  // to move to the correct pose as the user scrolls through feature sections.
+  useMobilePenPoses({
+    containerRef: productIntroContainerRef,
+    penTargetRef,
+    isMobile,
+    reducedMotion,
   });
 
   useHeroTimeline({ scope: sectionRef, reducedMotion, scrollProgressRef, enableScrollNarrative });
