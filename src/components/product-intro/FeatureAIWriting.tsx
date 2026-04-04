@@ -1,3 +1,12 @@
+import { Zap, Brain, Shield } from 'lucide-react';
+import FloatingBadges, { type BadgeData } from './FloatingBadges';
+
+const aiWritingBadges: BadgeData[] = [
+  { icon: Zap, value: '<200ms', label: 'AI Response', description: 'Real-time inference' },
+  { icon: Brain, value: '64KB', label: 'Style Memory', description: 'Context-aware patterns' },
+  { icon: Shield, value: 'Local', label: 'Processing', description: 'Words never leave the pen' },
+];
+
 export default function FeatureAIWriting() {
   return (
     <div
@@ -9,6 +18,9 @@ export default function FeatureAIWriting() {
         className="section-glow pointer-events-none absolute right-[8%] top-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-[#ef233c]/6 blur-[120px] opacity-0"
         aria-hidden="true"
       />
+
+      {/* Floating spec badges — center gap, staggered entrance */}
+      <FloatingBadges badges={aiWritingBadges} side="right" className="floating-badge-group" />
 
       <div className="editorial-card corner-accent p-10 md:p-12 max-w-md w-full relative z-10">
         <p className="section-label font-inter text-[10px] uppercase tracking-[0.2em] text-[#ef233c] mb-5 opacity-0">

@@ -39,9 +39,14 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion, is
       const body = el.querySelector(".section-body");
       const details = el.querySelector(".section-details");
       const stat = el.querySelector(".section-stat");
+      const badgeContainer = el.querySelector(".floating-badge-group");
+      const badges = el.querySelectorAll(".floating-badge");
 
       // Set initial hidden state so elements start invisible
-      const hideable = [glow, editorialCard, label, ...Array.from(headlines), body, details, stat].filter(Boolean);
+      const hideable = [
+        glow, editorialCard, label, ...Array.from(headlines),
+        body, details, stat, badgeContainer, ...Array.from(badges),
+      ].filter(Boolean);
       gsap.set(hideable, { opacity: 0, y: 0 });
 
       const playEnter = () => {
@@ -87,10 +92,21 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion, is
         if (stat) {
           tl.fromTo(stat, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35 }, 0.52);
         }
+
+        // ── Floating badges: delayed entrance (~2s) so user reads the main card first ──
+        if (badgeContainer) {
+          tl.fromTo(badgeContainer, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 2.0);
+        }
+        if (badges.length) {
+          tl.fromTo(badges, { opacity: 0, y: 24, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.15, ease: "power2.out" }, 2.05);
+        }
       };
 
       const playExit = () => {
-        const exitables = [stat, details, body, ...Array.from(headlines), label, editorialCard, glow].filter(Boolean);
+        const exitables = [
+          badgeContainer, stat, details, body,
+          ...Array.from(headlines), label, editorialCard, glow,
+        ].filter(Boolean);
         gsap.to(exitables, { opacity: 0, y: -16, duration: 0.3, stagger: 0.03, ease: "power2.inOut" });
       };
 

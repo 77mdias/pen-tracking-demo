@@ -1,4 +1,11 @@
-import { CloudSync, MonitorSmartphone, PenLine } from 'lucide-react';
+import { CloudSync, MonitorSmartphone, PenLine, Zap, BatteryCharging, Feather } from 'lucide-react';
+import FloatingBadges, { type BadgeData } from './FloatingBadges';
+
+const smartSyncBadges: BadgeData[] = [
+  { icon: Zap, value: 'BLE 5.3', label: 'Connectivity', description: 'Low-latency bridge' },
+  { icon: BatteryCharging, value: '10h+', label: 'Battery Life', description: '45-min full charge' },
+  { icon: Feather, value: '15g', label: 'Weight', description: 'Featherlight precision' },
+];
 
 export default function FeatureSmartSync() {
   return (
@@ -11,6 +18,9 @@ export default function FeatureSmartSync() {
         className="section-glow pointer-events-none absolute left-[8%] top-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-[#ef233c]/5 blur-[120px] opacity-0"
         aria-hidden="true"
       />
+
+      {/* Floating spec badges — center gap, staggered entrance */}
+      <FloatingBadges badges={smartSyncBadges} side="left" className="floating-badge-group" />
 
       <div className="editorial-card corner-accent p-10 md:p-12 max-w-md w-full relative z-10">
         <p className="section-label font-inter text-[10px] uppercase tracking-[0.2em] text-[#ef233c] mb-5 opacity-0">
