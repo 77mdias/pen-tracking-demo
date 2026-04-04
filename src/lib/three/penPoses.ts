@@ -57,43 +57,44 @@ export const PEN_POSES = {
 
 /**
  * Mobile-specific pen poses (viewport ≤767px).
- * Rotations match desktop — only position and camera are adjusted
- * to keep the pen fully visible on narrow screens.
+ * On mobile, editorial cards are full-width and vertically centered,
+ * so the pen is positioned in the UPPER portion of the screen (Y ≈ 0.65–0.9)
+ * to stay visible above the card content area.
  * Hero pose omitted: hero uses null (scroll-driven defaults).
  */
 export const MOBILE_PEN_POSES = {
   bridge: {
-    // Pen centered, slightly forward — text-heavy section, pen stays neutral
-    pen: { rotation: [0.0, 0.3, 0.0], position: [0, 0.1, -0.5] },
-    camera: { position: [0, 0.2, 5.0], fov: 26 },
+    // Pen drifts upward and back — transitions between hero and features
+    pen: { rotation: [0.0, 0.25, 0.0], position: [0, 0.65, -0.4] },
+    camera: { position: [0, 0.1, 4.8], fov: 30 },
     lighting: { accent: null },
   },
   aiWriting: {
-    // Pen lightly left — keeps directionality without clipping on narrow viewport
-    pen: { rotation: [0.5, -0.4, 0.15], position: [-0.3, -0.1, 0] },
-    camera: { position: [0.05, 0.25, 4.0], fov: 30 },
+    // Pen rises to upper-center with a slight lean — visible above the card
+    pen: { rotation: [0.45, -0.25, 0.12], position: [0.1, 0.8, 0.1] },
+    camera: { position: [0, 0.2, 4.2], fov: 32 },
     lighting: {
-      accent: { position: [0.5, 0.5, 1], color: "#ffbb33", intensity: 0.6 },
+      accent: { position: [0.5, 0.5, 1], color: "#ffbb33", intensity: 0.55 },
     },
   },
   smartSync: {
-    // Pen lightly right — mirrored from aiWriting, both stay fully in frame
-    pen: { rotation: [0.05, 1.2, 0.0], position: [0.3, 0, 0] },
-    camera: { position: [-0.05, 0.1, 4.2], fov: 30 },
+    // Pen upper-center, rotated to show side profile — mirrors aiWriting
+    pen: { rotation: [0.05, 0.9, 0.0], position: [-0.1, 0.75, 0.1] },
+    camera: { position: [0, 0.15, 4.2], fov: 32 },
     lighting: {
-      accent: { position: [-1, 1, -2], color: "#00bfff", intensity: 0.7 },
+      accent: { position: [-1, 1, -2], color: "#00bfff", intensity: 0.65 },
     },
   },
   focusMode: {
-    // Pen centered, raised — y reduced from 1.1 to 0.5 to stay within viewport
-    pen: { rotation: [0.03, 0.0, 0.0], position: [0, 0.5, -0.3] },
-    camera: { position: [0, 0.15, 4.0], fov: 27 },
+    // Pen floats high and centered — tip peeks prominently above the card
+    pen: { rotation: [0.03, 0.0, 0.0], position: [0, 0.9, -0.2] },
+    camera: { position: [0, 0.1, 4.2], fov: 30 },
     lighting: { accent: null },
   },
   cta: {
-    // Pen slightly right, low — parks out of CTA text area without leaving frame
-    pen: { rotation: [0.15, 0.5, 0.05], position: [0.25, 0.2, -0.3] },
-    camera: { position: [0, 0.1, 4.5], fov: 28 },
+    // Pen elevated and angled — reinforces premium feel above the CTA card
+    pen: { rotation: [0.12, 0.4, 0.04], position: [0.15, 0.7, -0.2] },
+    camera: { position: [0, 0.1, 4.5], fov: 30 },
     lighting: { accent: null },
   },
 } satisfies Record<string, PenPose>;
