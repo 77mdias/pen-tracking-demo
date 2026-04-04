@@ -1,0 +1,113 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation "Global" [ref=e2]:
+      - generic [ref=e3]:
+        - link "PenFlow77 home" [ref=e4] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e10]: PenFlow77
+        - button "Open navigation menu" [ref=e12]:
+          - img [ref=e13]
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - generic [ref=e31]: Smart Pen Premium Demo
+          - heading "The pen, reimagined." [level=1] [ref=e32]:
+            - generic [ref=e34]: The pen,
+            - generic [ref=e36]: reimagined.
+          - paragraph [ref=e37]: A premium writing experience designed around precision, focus, and a new intelligent layer of control.
+          - paragraph [ref=e38]: Designed for focused writing sessions with a subtle intelligent layer.
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - button "Join the Private Beta" [ref=e42]
+              - button "Watch the Experience" [ref=e43]
+            - paragraph [ref=e44]: Limited early access to the demo system.
+        - generic:
+          - generic: Scroll Down
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - paragraph [ref=e48]: The Ecosystem
+          - heading "More than a pen." [level=2] [ref=e49]:
+            - generic [ref=e50]: More than
+            - generic [ref=e51]: a pen.
+          - paragraph [ref=e52]: A new kind of writing experience — where premium hardware meets an intelligent digital layer.
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e56]: ✦
+              - paragraph [ref=e57]: AI Assist
+            - generic [ref=e58]:
+              - generic [ref=e60]: ⟳
+              - paragraph [ref=e61]: Smart Sync
+            - generic [ref=e62]:
+              - generic [ref=e64]: ◉
+              - paragraph [ref=e65]: Focus
+        - generic [ref=e74]:
+          - paragraph [ref=e75]: AI Writing Assist
+          - heading "Write. Refine. Evolve." [level=3] [ref=e76]:
+            - text: Write. Refine.
+            - text: Evolve.
+          - paragraph [ref=e77]: Intelligent suggestions that sharpen your clarity without breaking your flow. The pen learns your style, suggests refinements, and keeps your voice intact.
+          - list [ref=e78]:
+            - listitem [ref=e79]:
+              - generic [ref=e81]: Context-aware grammar — fixes that respect your tone and intent
+            - listitem [ref=e82]:
+              - generic [ref=e84]: Style memory — adapts to your unique writing patterns over time
+            - listitem [ref=e85]:
+              - generic [ref=e87]: Privacy-first — on-device processing, your words never leave the pen
+          - generic [ref=e88]:
+            - generic [ref=e89]: 3×
+            - generic [ref=e90]: faster editing workflow
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: Smart Sync
+          - heading "Every stroke, everywhere." [level=3] [ref=e101]:
+            - text: Every stroke,
+            - text: everywhere.
+          - paragraph [ref=e102]: Your writing lives across every device, in real time. Capture a thought on the pen, find it on your laptop seconds later.
+          - generic [ref=e103]:
+            - generic [ref=e106]: Sync pipeline
+            - generic [ref=e108]:
+              - generic [ref=e109]:
+                - img [ref=e111]
+                - paragraph [ref=e113]: Capture
+                - paragraph [ref=e114]: On pen
+              - generic [ref=e115]:
+                - img [ref=e117]
+                - paragraph [ref=e123]: Sync
+                - paragraph [ref=e124]: <2s
+              - generic [ref=e125]:
+                - img [ref=e127]
+                - paragraph [ref=e130]: Access
+                - paragraph [ref=e131]: Any device
+          - generic [ref=e132]:
+            - generic [ref=e133]: ∞
+            - generic [ref=e134]: devices connected seamlessly
+        - generic [ref=e143]:
+          - paragraph [ref=e144]: Focus Mode
+          - heading "Silence the noise." [level=3] [ref=e145]
+          - paragraph [ref=e146]: A distraction-free writing mode that strips away everything but you and the page. Deep work, protected.
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - paragraph [ref=e149]: No notifications
+              - paragraph [ref=e150]: Every alert silenced
+            - generic [ref=e151]:
+              - paragraph [ref=e152]: Haptic timer
+              - paragraph [ref=e153]: Gentle pulse every 25 min
+            - generic [ref=e154]:
+              - paragraph [ref=e155]: Ambient breathing
+              - paragraph [ref=e156]: LED soft rhythm cue
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: Session reports
+              - paragraph [ref=e159]: Words, pace, flow score
+          - generic [ref=e160]:
+            - generic [ref=e161]: 87%
+            - generic [ref=e162]: of users report deeper focus
+        - generic [ref=e170]:
+          - paragraph [ref=e171]: Private Beta
+          - heading "Ready to write differently?" [level=2] [ref=e172]:
+            - text: Ready to write
+            - text: differently?
+          - paragraph [ref=e173]: Join the early access program and be among the first to experience the future of writing.
+          - button "Join the Private Beta" [ref=e175] [cursor=pointer]
+          - paragraph [ref=e176]: Limited spots available. Early access waves closing soon.
+  - button "Open Next.js Dev Tools" [ref=e182] [cursor=pointer]:
+    - img [ref=e183]

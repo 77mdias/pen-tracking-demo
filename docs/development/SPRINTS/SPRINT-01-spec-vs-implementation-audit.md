@@ -3,7 +3,7 @@ title: Sprint 01 - Spec vs Implementation Audit
 type: sprint
 mode: sprint
 approach: tdd-first-adapted-for-audit
-status: planned
+status: completed
 ---
 
 # Sprint SPRINT-01 — Spec vs Implementation Audit
@@ -43,21 +43,21 @@ Produzir uma auditoria verificável entre os specs do PenFlow77 e a implementaç
 
 ## 4. Critérios de Sucesso
 
-- [ ] Existe uma lista priorizada de divergências reais entre spec e implementação.
-- [ ] Cada divergência está classificada como ajuste no código, ajuste no spec ou decisão pendente.
-- [ ] O hero tem um diagnóstico específico sobre tokens, tipografia, scroll, reduced motion, fallback e mobile.
-- [ ] O escopo funcional de `/auth`, `/beta` e `/dashboard` está documentado como placeholder, não como feature pronta.
-- [ ] O naming de deploy entre `penflow77` e `pen-tracking-demo` foi explicitado como decisão operacional a tomar.
+- [x] Existe uma lista priorizada de divergências reais entre spec e implementação.
+- [x] Cada divergência está classificada como ajuste no código, ajuste no spec ou decisão pendente.
+- [x] O hero tem um diagnóstico específico sobre tokens, tipografia, scroll, reduced motion, fallback e mobile.
+- [x] O escopo funcional de `/auth`, `/beta` e `/dashboard` está documentado como placeholder, não como feature pronta.
+- [x] O naming de deploy entre `penflow77` e `pen-tracking-demo` foi explicitado como decisão operacional a tomar.
 
 ---
 
 ## 5. Dependências e Sequenciamento
 
 ### Dependências de entrada
-- [ ] `CURRENT-STATE.md` atualizado
-- [ ] `ROADMAP.md` atualizado
-- [ ] Índice mestre de sprints criado
-- [ ] Acesso aos docs-raiz e arquivos-chave do frontend
+- [x] `CURRENT-STATE.md` atualizado
+- [x] `ROADMAP.md` atualizado
+- [x] Índice mestre de sprints criado
+- [x] Acesso aos docs-raiz e arquivos-chave do frontend
 
 ### Ordem macro recomendada
 1. Levantar divergências factuais já conhecidas
@@ -85,13 +85,13 @@ Produzir uma auditoria verificável entre os specs do PenFlow77 e a implementaç
 Mapear, com evidência, onde os specs e o código se alinham, divergem ou envelheceram.
 
 ### Checklist
-- [ ] Revisar `AGENTS.md` para design system e stack declarada
-- [ ] Revisar `HERO_SPEC_smart_pen.md` e `HERO_TECHNICAL_BUILD_PLAN_smart_pen.md` nos pontos de motion, scroll e fallback
-- [ ] Revisar `PRD_production.md` e `TECH_SPEC_production.md` para escopo funcional aspiracional
-- [ ] Revisar `src/app/globals.css` para tokens e tipografia reais
-- [ ] Revisar `HeroSection` e hooks relacionados para política de scroll e fallback
-- [ ] Revisar `package.json`, `open-next.config.ts` e `wrangler.jsonc` para stack e naming operacional
-- [ ] Revisar `/auth`, `/beta` e `/dashboard` para confirmar status de placeholder
+- [x] Revisar `AGENTS.md` para design system e stack declarada
+- [x] Revisar `HERO_SPEC_smart_pen.md` e `HERO_TECHNICAL_BUILD_PLAN_smart_pen.md` nos pontos de motion, scroll e fallback
+- [x] Revisar `PRD_production.md` e `TECH_SPEC_production.md` para escopo funcional aspiracional
+- [x] Revisar `src/app/globals.css` para tokens e tipografia reais
+- [x] Revisar `HeroSection` e hooks relacionados para política de scroll e fallback
+- [x] Revisar `package.json`, `open-next.config.ts` e `wrangler.jsonc` para stack e naming operacional
+- [x] Revisar `/auth`, `/beta` e `/dashboard` para confirmar status de placeholder
 
 ### Saída esperada
 - Inventário de divergências com fonte documental e evidência de código
@@ -107,21 +107,21 @@ Mapear, com evidência, onde os specs e o código se alinham, divergem ou envelh
 Traduzir a auditoria em comportamento esperado e critérios verificáveis de alinhamento futuro.
 
 ### Checklist
-- [ ] Definir o que significa “alinhado” para docs versus código
-- [ ] Definir critérios de severidade para divergências
-- [ ] Definir estratégia de validação documental e operacional
-- [ ] Listar cenários onde o spec deve mudar e não o código
-- [ ] Listar cenários onde o código deve mudar e não o spec
-- [ ] Definir quais gaps bloqueiam SPRINT-02 e SPRINT-03
-- [ ] Confirmar evidências mínimas exigidas em cada conclusão da auditoria
+- [x] Definir o que significa “alinhado” para docs versus código
+- [x] Definir critérios de severidade para divergências
+- [x] Definir estratégia de validação documental e operacional
+- [x] Listar cenários onde o spec deve mudar e não o código
+- [x] Listar cenários onde o código deve mudar e não o spec
+- [x] Definir quais gaps bloqueiam SPRINT-02 e SPRINT-03
+- [x] Confirmar evidências mínimas exigidas em cada conclusão da auditoria
 
 ### Casos de teste planejados
-- [ ] Cenário 1: background base e tipografia são classificados como divergências de design system, não como bugs arbitrários.
-- [ ] Cenário 2: uso de `useScrollHijack` e `useSnapScroll` é documentado como hipótese de desalinhamento com a diretriz de evitar hijacking forte.
-- [ ] Cenário 3: dependências GSAP/R3F instaladas são classificadas como desatualização do spec, não como lacuna do código.
-- [ ] Cenário 4: `/auth`, `/beta` e `/dashboard` são classificados como superfícies visuais sem comportamento funcional real.
-- [ ] Edge case 1: a auditoria distingue naming de deploy de bug de experiência do usuário, mas o mantém visível por impacto operacional e de marca.
-- [ ] Regressão 1: nenhuma decisão de auditoria faz o time reinterpretar placeholders como fluxo funcional implementado.
+- [x] Cenário 1: background base e tipografia são classificados como divergências de design system, não como bugs arbitrários.
+- [x] Cenário 2: uso de `useScrollHijack` e `useSnapScroll` é documentado como hipótese de desalinhamento com a diretriz de evitar hijacking forte.
+- [x] Cenário 3: dependências GSAP/R3F instaladas são classificadas como desatualização do spec, não como lacuna do código.
+- [x] Cenário 4: `/auth`, `/beta` e `/dashboard` são classificados como superfícies visuais sem comportamento funcional real.
+- [x] Edge case 1: a auditoria distingue naming de deploy de bug de experiência do usuário, mas o mantém visível por impacto operacional e de marca.
+- [x] Regressão 1: nenhuma decisão de auditoria faz o time reinterpretar placeholders como fluxo funcional implementado.
 
 ### Matriz de testes
 | Tipo | Escopo | Obrigatório? | Observações |
@@ -140,20 +140,20 @@ Traduzir a auditoria em comportamento esperado e critérios verificáveis de ali
 Definir a régua de evidência antes de concluir qualquer gap como fato.
 
 ### Checklist
-- [ ] Definir um checklist de prova por divergência
-- [ ] Exigir ao menos uma fonte documental e uma fonte de implementação para cada gap crítico
-- [ ] Definir classificação de status: alinhado, divergente, desatualizado, indeterminado
-- [ ] Definir prova mínima para rotas placeholder
-- [ ] Definir prova mínima para naming e stack de deploy
-- [ ] Reservar automação futura para SPRINT-04, sem fingir cobertura existente
+- [x] Definir um checklist de prova por divergência
+- [x] Exigir ao menos uma fonte documental e uma fonte de implementação para cada gap crítico
+- [x] Definir classificação de status: alinhado, divergente, desatualizado, indeterminado
+- [x] Definir prova mínima para rotas placeholder
+- [x] Definir prova mínima para naming e stack de deploy
+- [x] Reservar automação futura para SPRINT-04, sem fingir cobertura existente
 
 ### Testes a implementar primeiro
-- [ ] Teste unitário: não aplicável nesta sprint.
-- [ ] Teste de integração: revisão cruzada entre spec e código por tema auditado.
-- [ ] Teste de regressão: conferir que já existem referências suficientes em `CURRENT-STATE.md` para sustentar a auditoria.
-- [ ] Teste de autorização/autenticação: comprovar que não há autenticação funcional nas rotas de placeholder.
-- [ ] Teste de edge case: identificar divergências onde o código está mais avançado que o spec.
-- [ ] Teste de contrato/API: confirmar que endpoints descritos no TECH_SPEC não têm implementação evidenciada neste snapshot.
+- [x] Teste unitário: não aplicável nesta sprint.
+- [x] Teste de integração: revisão cruzada entre spec e código por tema auditado.
+- [x] Teste de regressão: conferir que já existem referências suficientes em `CURRENT-STATE.md` para sustentar a auditoria.
+- [x] Teste de autorização/autenticação: comprovar que não há autenticação funcional nas rotas de placeholder.
+- [x] Teste de edge case: identificar divergências onde o código está mais avançado que o spec.
+- [x] Teste de contrato/API: confirmar que endpoints descritos no TECH_SPEC não têm implementação evidenciada neste snapshot.
 
 ### Evidência RED
 - **Comando executado:** leitura de docs-base e arquivos-chave do frontend.
@@ -168,13 +168,13 @@ Definir a régua de evidência antes de concluir qualquer gap como fato.
 Registrar a auditoria de forma operacional, acionável e priorizada.
 
 ### Checklist
-- [ ] Consolidar divergências no artefato canônico `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`
-- [ ] Separar gaps por categoria: design system, hero UX, placeholders, stack/spec e deploy naming
-- [ ] Priorizar divergências por impacto
-- [ ] Apontar consequência prática de cada divergência
-- [ ] Indicar qual sprint absorve cada correção posterior
-- [ ] Atualizar documentação mínima impactada, se necessário
-- [ ] Manter a análise específica ao PenFlow77
+- [x] Consolidar divergências no artefato canônico `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md`
+- [x] Separar gaps por categoria: design system, hero UX, placeholders, stack/spec e deploy naming
+- [x] Priorizar divergências por impacto
+- [x] Apontar consequência prática de cada divergência
+- [x] Indicar qual sprint absorve cada correção posterior
+- [x] Atualizar documentação mínima impactada, se necessário
+- [x] Manter a análise específica ao PenFlow77
 
 ### Regras obrigatórias
 - Não inventar backend, auth, queue persistida ou dashboard funcional.
@@ -200,12 +200,12 @@ Registrar a auditoria de forma operacional, acionável e priorizada.
 Reduzir ruído e deixar o documento de auditoria útil para decisão, não apenas para registro.
 
 ### Checklist
-- [ ] Fundir divergências duplicadas
-- [ ] Diferenciar sintomas de causas
-- [ ] Clarificar o que é bloqueio versus melhoria
-- [ ] Simplificar termos vagos como “precisa alinhar” sem ação concreta
-- [ ] Garantir ordem de prioridade compreensível
-- [ ] Revisar se cada gap tem próxima sprint associada
+- [x] Fundir divergências duplicadas
+- [x] Diferenciar sintomas de causas
+- [x] Clarificar o que é bloqueio versus melhoria
+- [x] Simplificar termos vagos como “precisa alinhar” sem ação concreta
+- [x] Garantir ordem de prioridade compreensível
+- [x] Revisar se cada gap tem próxima sprint associada
 
 ### Saída esperada
 - Auditoria curta o suficiente para uso contínuo
@@ -217,12 +217,12 @@ Reduzir ruído e deixar o documento de auditoria útil para decisão, não apena
 ## 11. Etapa 6 — Validação, QA e Rollout
 
 ### Testes obrigatórios finais
-- [ ] Revisar se todos os gaps citados têm evidência
-- [ ] Revisar se nenhuma implementação inexistente foi assumida
-- [ ] Validar se a priorização conversa com `ROADMAP.md`
-- [ ] Revisar checklist manual de homologação
-- [ ] Verificar se SPRINT-02, SPRINT-03 e SPRINT-04 podem ser executadas com base nesta auditoria
-- [ ] Executar lint apenas se algum arquivo de doc indexador ou código auxiliar tiver sido alterado e exigir validação geral do repositório
+- [x] Revisar se todos os gaps citados têm evidência
+- [x] Revisar se nenhuma implementação inexistente foi assumida
+- [x] Validar se a priorização conversa com `ROADMAP.md`
+- [x] Revisar checklist manual de homologação
+- [x] Verificar se SPRINT-02, SPRINT-03 e SPRINT-04 podem ser executadas com base nesta auditoria
+- [x] Executar lint apenas se algum arquivo de doc indexador ou código auxiliar tiver sido alterado e exigir validação geral do repositório
 
 ### Comandos finais
 ```bash
@@ -251,19 +251,19 @@ bun run lint
 
 ## 12. Checkpoints do Agent OS
 
-- [ ] Checkpoint 1 — Discovery validado
-- [ ] Checkpoint 2 — Estratégia de testes aprovada
-- [ ] Checkpoint 3 — RED tests concluídos
-- [ ] Checkpoint 4 — GREEN alcançado
-- [ ] Checkpoint 5 — Refatoração concluída
-- [ ] Checkpoint 6 — Validação final concluída
+- [x] Checkpoint 1 — Discovery validado
+- [x] Checkpoint 2 — Estratégia de testes aprovada
+- [x] Checkpoint 3 — RED tests concluídos
+- [x] Checkpoint 4 — GREEN alcançado
+- [x] Checkpoint 5 — Refatoração concluída
+- [x] Checkpoint 6 — Validação final concluída
 
 ### Log resumido dos checkpoints
 | Checkpoint | Responsável | Resultado | Observações |
 |-----------|-------------|-----------|-------------|
-| Levantamento dos gaps | agent | Pendente | Confirmar evidências por tema |
-| Priorização | agent + owner | Pendente | Classificar código vs spec |
-| Handoff | agent | Pendente | Alimentar SPRINT-02, 03 e 04 |
+| Levantamento dos gaps | agent | Concluído | 3 agentes paralelos; evidências path:line em todos os gaps |
+| Priorização | agent + owner | Concluído | 8 gaps classificados: update code / update spec / pending decision |
+| Handoff | agent | Concluído | Auditoria publicada; SPRINT-02/03/04 alimentadas |
 
 ---
 
@@ -271,10 +271,10 @@ bun run lint
 
 | Cenário | Resultado esperado | Evidência | Status |
 | ------- | ------------------ | --------- | ------ |
-| Design system auditado | tokens e tipografia reais versus spec estão explicitados | documento de auditoria | Pendente |
-| Hero auditado | scroll, fallback, mobile e reduced motion têm diagnóstico claro | documento de auditoria | Pendente |
-| Placeholders auditados | `/auth`, `/beta` e `/dashboard` seguem como placeholders | documento de auditoria | Pendente |
-| Stack e deploy auditados | dependências já instaladas e naming divergente aparecem como decisões | documento de auditoria | Pendente |
+| Design system auditado | tokens e tipografia reais versus spec estão explicitados | `AUDIT-SPEC-VS-IMPLEMENTATION.md` Tema A | Concluído |
+| Hero auditado | scroll, fallback, mobile e reduced motion têm diagnóstico claro | `AUDIT-SPEC-VS-IMPLEMENTATION.md` Tema B | Concluído |
+| Placeholders auditados | `/auth`, `/beta` e `/dashboard` seguem como placeholders | `AUDIT-SPEC-VS-IMPLEMENTATION.md` Tema C | Concluído |
+| Stack e deploy auditados | dependências já instaladas e naming divergente aparecem como decisões | `AUDIT-SPEC-VS-IMPLEMENTATION.md` Temas D e E | Concluído |
 
 ---
 
@@ -306,14 +306,14 @@ bun run lint
 
 ## 15. Critérios de Aceite
 
-- [ ] `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md` existe e é específico ao projeto
-- [ ] Cada gap crítico tem evidência documental e de código
-- [ ] O hero recebeu diagnóstico específico e acionável
-- [ ] As rotas secundárias foram mantidas como placeholders
-- [ ] O naming de deploy foi explicitado como ponto de decisão
-- [ ] Checklist manual executado
-- [ ] Rollback definido
-- [ ] Critérios de sucesso da sprint foram atingidos
+- [x] `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md` existe e é específico ao projeto
+- [x] Cada gap crítico tem evidência documental e de código
+- [x] O hero recebeu diagnóstico específico e acionável
+- [x] As rotas secundárias foram mantidas como placeholders
+- [x] O naming de deploy foi explicitado como ponto de decisão
+- [x] Checklist manual executado
+- [x] Rollback definido
+- [x] Critérios de sucesso da sprint foram atingidos
 
 ---
 
@@ -321,11 +321,11 @@ bun run lint
 
 A sprint só pode ser considerada concluída quando:
 
-- [ ] `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md` estiver publicado
-- [ ] A classificação código vs spec vs decisão estiver clara
-- [ ] SPRINT-02, SPRINT-03 e SPRINT-04 tiverem insumos suficientes para execução
-- [ ] Não houver ambiguidade material sobre o que já está implementado
-- [ ] Documentação relacionada tiver sido atualizada, quando aplicável
+- [x] `docs/development/AUDIT-SPEC-VS-IMPLEMENTATION.md` estiver publicado
+- [x] A classificação código vs spec vs decisão estiver clara
+- [x] SPRINT-02, SPRINT-03 e SPRINT-04 tiverem insumos suficientes para execução
+- [x] Não houver ambiguidade material sobre o que já está implementado
+- [x] Documentação relacionada tiver sido atualizada, quando aplicável
 
 ---
 

@@ -4,7 +4,8 @@ Este arquivo é apenas o índice curto do changelog operacional.
 
 ## Entradas disponíveis
 
-- `docs/development/changelog/2026-04-baseline.md` — baseline do projeto, criação da camada documental e formalização inicial de `SPRINTS`/`TASKS`
+- `docs/development/CHANGELOG/2026-04-sprint-01-audit.md` — Sprint 01: auditoria spec vs implementação; 8 gaps classificados; artefato canônico publicado
+- `docs/development/CHANGELOG/2026-04-baseline.md` — baseline do projeto, criação da camada documental e formalização inicial de `SPRINTS`/`TASKS`
 
 ## Regras rápidas
 

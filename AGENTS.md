@@ -26,8 +26,8 @@ PenFlow77 is a **premium, Apple-like product demo website** for a fictional smar
 | Language | TypeScript (strict) | ^5 |
 | UI | React | 19.2.4 |
 | Styling | TailwindCSS | ^4 (v4 syntax with `@theme inline`) |
-| 3D Rendering | React Three Fiber + drei | (to be installed) |
-| Animation (timelines) | GSAP + @gsap/react | (to be installed) |
+| 3D Rendering | React Three Fiber (`@react-three/fiber`) + drei (`@react-three/drei`) + three.js | ^9.5.0 / ^10.7.7 / ^0.183.2 |
+| Animation (timelines) | GSAP + @gsap/react | ^3.14.2 / ^2.1.2 |
 | Animation (UI micro) | Framer Motion (optional) | only if needed |
 | Package Manager | bun | — |
 
@@ -205,3 +205,19 @@ bun run lint     # ESLint
 5. Fetch external library docs (GSAP, R3F, drei) if using unfamiliar APIs
 6. Verify `prefers-reduced-motion` behavior for any animation you add
 7. Test at 375px, 768px, 1024px, and 1440px viewports
+
+---
+
+## Process & Execution (Agent OS)
+
+This project follows a rigorous execution framework located in `.agents-os/`.
+
+1.  **Planning**: Use `.agents-os/PROMPTS/sprint-specification.md` to generate new Sprints and Tasks using the templates in `.agents-os/TEMPLATES/`.
+2.  **Execution**: Use `.agents-os/PROMPTS/sprint-mode.md` for active development.
+3.  **Rigor**:
+    - **TDD First**: Tests must be written and validated as RED before any implementation.
+    - **Continuous Validation**: Every task requires `npm run lint`, `tsc`, and relevant tests to be green before completion.
+    - **Traceability**: All tasks must be linked to binary acceptance criteria in the Sprint Document.
+    - **Documentation**: Update the "Log de Execução" and provide validation evidence for every task.
+
+**A task is not DONE until it is validated, documented, and architecture-compliant.**
