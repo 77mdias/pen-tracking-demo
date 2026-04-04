@@ -47,3 +47,5 @@ next-env.d.ts
 
 # local worktrees
 .worktrees/
+
+.playwright*
