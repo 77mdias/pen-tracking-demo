@@ -83,7 +83,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     <div className="relative w-full bg-[var(--color-bg)]">
       {/* Base background restricted to the Hero's initial height */}
       <div className={`absolute top-0 left-0 right-0 z-0 overflow-hidden ${isMobile ? "h-[92svh]" : "h-screen"}`} aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(0,123,255,0.14),transparent_52%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.025),transparent_52%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050a14] via-[#050a14]/50 to-transparent" />
       </div>
 

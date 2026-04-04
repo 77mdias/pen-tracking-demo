@@ -10,30 +10,30 @@ export default function HeroAmbientDetails() {
           height: 500,
           top: -100,
           left: -100,
-          opacity: 0.2,
+          opacity: 0.04,
           animationDuration: "15s",
         }}
       />
       <div
-        className="liquid-blob bg-purple-600"
+        className="liquid-blob bg-white"
         style={{
           width: 400,
           height: 400,
           top: "40%",
           right: -100,
-          opacity: 0.15,
+          opacity: 0.03,
           animationDuration: "20s",
           animationDelay: "-5s",
         }}
       />
       <div
-        className="liquid-blob bg-cyan-600"
+        className="liquid-blob bg-white"
         style={{
           width: 600,
           height: 600,
           bottom: -150,
           left: "20%",
-          opacity: 0.15,
+          opacity: 0.04,
           animationDuration: "25s",
           animationDelay: "-10s",
         }}
@@ -45,7 +45,7 @@ export default function HeroAmbientDetails() {
           height: 350,
           top: "30%",
           left: "10%",
-          opacity: 0.1,
+          opacity: 0.025,
           animationDuration: "18s",
           animationDelay: "-7s",
         }}

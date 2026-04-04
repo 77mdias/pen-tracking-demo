@@ -147,7 +147,7 @@ export default function HeroScene({
 
   return (
     <>
-      <ambientLight intensity={0.24} color="#cdd6ea" />
+      <ambientLight intensity={0.12} color="#ffffff" />
       <directionalLight
         position={[keyX, keyY, keyZ]}
         intensity={heroLighting.key.intensity * (tier === "low" ? 0.85 : 1)}
@@ -155,10 +155,10 @@ export default function HeroScene({
       />
       <directionalLight
         position={[fillX, fillY, fillZ]}
-        intensity={heroLighting.fill.intensity * (tier === "low" ? 0.9 : 1)}
-        color="#8da8d7"
+        intensity={heroLighting.fill.intensity * (tier === "low" ? 0.9 : 1) * 0.55}
+        color="#d0d0d0"
       />
-      <pointLight position={[rimX, rimY, rimZ]} intensity={heroLighting.rim.intensity} color="#7cc2ff" />
+      <pointLight position={[rimX, rimY, rimZ]} intensity={heroLighting.rim.intensity * 0.5} color="#b0bec5" />
       <pointLight ref={accentLightRef} intensity={0} />
 
       <group ref={penGroupRef} position={[penX, penY, penZ]} rotation={[penRotX, penRotY, penRotZ]}>

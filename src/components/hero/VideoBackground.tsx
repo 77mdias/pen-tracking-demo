@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import useReducedMotion from "@/hooks/useReducedMotion";
 
@@ -17,7 +17,7 @@ export default function VideoBackground({ className }: VideoBackgroundProps) {
       <video
         className="absolute inset-0 h-full w-full object-cover"
         style={{
-          filter: "blur(20px) saturate(1.4)",
+          filter: "blur(24px) saturate(0.8) brightness(0.65)",
           opacity: 0.28,
           transform: "scale(1.05)",
         }}
@@ -29,7 +29,7 @@ export default function VideoBackground({ className }: VideoBackgroundProps) {
         preload="metadata"
       />
       {/* Dark overlay to ensure 3D pen remains the protagonist */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/50" />
     </div>
   );
 }
