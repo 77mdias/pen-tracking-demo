@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Build artifacts do not need linting
     ".open-next/**",
+    ".wrangler/**",
   ]),
 ]);
 
