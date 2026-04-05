@@ -9,7 +9,7 @@ type UseSnapScrollProps = {
   heroRef: RefObject<HTMLElement | null>;
   containerRef: RefObject<HTMLDivElement | null>;
   penTargetRef: MutableRefObject<PenPose | null>;
-  reducedMotion: boolean;
+  disableSnapScroll: boolean;
   isMobile: boolean;
 };
 
@@ -34,11 +34,11 @@ export default function useSnapScroll({
   heroRef,
   containerRef,
   penTargetRef,
-  reducedMotion,
+  disableSnapScroll,
   isMobile,
 }: UseSnapScrollProps) {
   useEffect(() => {
-    if (reducedMotion) return;
+    if (disableSnapScroll) return;
     if (!heroRef.current || !containerRef.current) return;
 
     const { threshold, touchThreshold, duration, ease, cooldown } =
@@ -127,5 +127,5 @@ export default function useSnapScroll({
       window.removeEventListener("touchend", handleTouchEnd);
       if (scrollTween) scrollTween.kill();
     };
-  }, [reducedMotion, heroRef, containerRef, penTargetRef, isMobile]);
+  }, [disableSnapScroll, heroRef, containerRef, penTargetRef, isMobile]);
 }

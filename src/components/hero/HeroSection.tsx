@@ -64,7 +64,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     heroRef: sectionRef,
     containerRef: productIntroContainerRef,
     penTargetRef,
-    reducedMotion: !enableScrollNarrative,
+    disableSnapScroll: !enableScrollNarrative,
     isMobile,
   });
 
