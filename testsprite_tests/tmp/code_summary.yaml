@@ -1,0 +1,90 @@
+---
+version: "2"
+type: frontend
+tech_stack:
+  - typescript
+  - next.js 16
+  - react 19
+  - tailwindcss 4
+  - gsap 3.14
+  - three.js 0.183
+  - react-three-fiber 9.5
+  - react-three-drei 10.7
+  - bun (package manager)
+  - opennext-cloudflare
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: false
+    description: Landing page with premium 3D hero, product narrative, and CTA to join beta
+  - path: /auth
+    file: src/app/auth/page.tsx
+    auth_required: false
+    description: Simulated auth form - enter email and sign in, stores context in localStorage
+  - path: /beta
+    file: src/app/beta/page.tsx
+    auth_required: false
+    description: Simulated beta queue page with join status and personalized queue position
+  - path: /dashboard
+    file: src/app/dashboard/page.tsx
+    auth_required: false
+    description: Personalized welcome dashboard with beta status or preview with CTA
+features:
+  - name: Landing Page / Hero
+    description: Full page marketing landing with 3D hero, product sections, and CTA to join beta
+    files:
+      - src/app/page.tsx
+      - src/components/hero/HeroSection.tsx
+      - src/components/hero/HeroCanvas.tsx
+      - src/components/hero/HeroScene.tsx
+      - src/components/hero/HeroContent.tsx
+      - src/components/hero/HeroCTA.tsx
+      - src/components/hero/HeroFallback.tsx
+      - src/components/hero/HeroMobile.tsx
+      - src/components/product-intro/ProductIntroSection.tsx
+      - src/hooks/useHeroTimeline.ts
+      - src/hooks/useHeroScrollProgress.ts
+      - src/hooks/useReducedMotion.ts
+      - src/hooks/useDeviceCapabilities.ts
+    entry_route: /
+    user_interactions:
+      - View 3D hero above the fold
+      - Click CTA button to navigate to /auth
+      - Observe scroll narrative below the fold
+      - Observe reduced-motion fallback when system preference changes
+    known_limitations:
+      - issue: Hero requires WebGL; fallback exists but not fully tested
+        location: src/components/hero/HeroScene.tsx
+        impact: Users without WebGL see fallback experience
+  - name: Beta Funnel (Simulated Auth)
+    description: Three-page simulated flow /auth to /beta to /dashboard using localStorage for shared state
+    files:
+      - src/app/auth/page.tsx
+      - src/app/beta/page.tsx
+      - src/app/dashboard/page.tsx
+      - src/hooks/useFunnel.ts
+    entry_route: /auth
+    user_interactions:
+      - Enter email in auth form and submit
+      - See validation message for invalid email
+      - See welcome message if already signed in
+      - View beta queue position and click join button
+      - View dashboard personalized welcome
+      - See dashboard preview with CTA if not signed in
+    known_limitations:
+      - issue: Backend does not exist; auth and queue are simulated
+        location: src/hooks/useFunnel.ts
+        impact: No real authentication or persistence
+      - issue: Dashboard route is not protected
+        location: src/app/dashboard/page.tsx
+        impact: Anyone can access /dashboard directly
+known_limitations:
+  - issue: Backend/API/DB does not exist
+    location: PRD_production.md, TECH_SPEC_production.md
+    impact: Auth, queue, and dashboard are all simulated
+  - issue: No automated test suite exists
+    location: package.json
+    impact: Only lint and build are validated today
+  - issue: No typecheck script
+    location: package.json
+    impact: TypeScript compilation not in validation pipeline

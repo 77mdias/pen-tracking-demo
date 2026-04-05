@@ -49,6 +49,7 @@ next-env.d.ts
 .worktrees/
 
 .playwright*
+.testsprite*
 
 .qwen
 .claude
