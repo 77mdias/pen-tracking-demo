@@ -76,6 +76,8 @@ export default function useHeroTimeline({
         // Hero content fades out fully by ~60% scroll — clean handoff to bridge
         const fadeOut = Math.max(0, 1 - progress * 2.5);
         const aggressiveFade = Math.max(0, 1 - progress * 4);
+        // CTA fades only in the final 20% of scroll range (handoff to next section)
+        const ctaFade = Math.max(0, 1 - Math.max(0, progress - 0.8) * 5);
 
         setHeadlineScale(1 - progress * 0.08);
         setHeadlineOpacity(fadeOut);
@@ -86,7 +88,8 @@ export default function useHeroTimeline({
         setCtaPrimaryScale(1 + progress * 0.04);
         setCtaSecondaryOpacity(fadeOut);
         setScrollCueOpacity(aggressiveFade);
-        setCtaOpacity(fadeOut);
+        // CTA stays accessible throughout scroll — only fades at very end (>80%)
+        setCtaOpacity(ctaFade);
       };
 
       gsap.ticker.add(applyScrollProgress);
