@@ -11,10 +11,10 @@ status: completed
 > Ele assume explicitamente que o projeto hoje tem `lint`, build/deploy e validação ad hoc, mas ainda não possui baseline ampla de `test` ou `typecheck` consolidada.
 
 **Status:** Planejada  
-**Última atualização:** 2026-04-03  
+**Última atualização:** 2026-04-05  
 **Sprint Atual:** SPRINT-04  
 **Modo principal:** mixed  
-**Status Geral:** 0% (0/7 tarefas completas) – Fase planejada  
+**Status Geral:** 100% (7/7 tarefas completas) – Fase concluída  
 **ETA:** 2–4 dias  
 **Pré-requisito:** PHASE-01; aprendizados de PHASE-02 e PHASE-03 incorporados quando alterarem critérios de validação  
 **Owner:** agent / owner técnico  
@@ -26,10 +26,10 @@ status: completed
 
 | Categoria | Total | Concluído | Em Andamento | Pendente | Bloqueado |
 | --------- | ----- | --------- | ------------ | -------- | --------- |
-| Discovery e estratégia mínima | 2 | 0 | 0 | 2 | 0 |
-| Implementação da baseline | 3 | 0 | 0 | 3 | 0 |
-| Release discipline e fechamento | 2 | 0 | 0 | 2 | 0 |
-| **TOTAL** | **7** | **0** | **0** | **7** | **0** |
+| Discovery e estratégia mínima | 2 | 2 | 0 | 0 | 0 |
+| Implementação da baseline | 3 | 3 | 0 | 0 | 0 |
+| Release discipline e fechamento | 2 | 2 | 0 | 0 | 0 |
+| **TOTAL** | **7** | **7** | **0** | **0** | **0** |
 
 ### Principais Indicadores
 - `lint` existe hoje, mas `test` e `typecheck` não podem ser assumidos como baseline já instalada.
@@ -69,11 +69,11 @@ status: completed
 - Formalização documental de release e rollback.
 
 ### Checkpoints
-- [ ] Discovery concluído
-- [ ] Estratégia técnica validada
-- [ ] Primeira batch implementada
-- [ ] Integração validada
-- [ ] Encerramento pronto
+- [x] Discovery concluído
+- [x] Estratégia técnica validada
+- [x] Primeira batch implementada
+- [x] Integração validada
+- [x] Encerramento pronto
 
 ---
 
@@ -95,7 +95,7 @@ Mapear a baseline atual de qualidade e decidir qual camada mínima de validaçã
 
 #### S04.1 — Definir a baseline mínima viável
 
-- [ ] **S04-T01** — Mapear a baseline atual de validação e confirmar ausências de `test`/`typecheck`
+- [x] **S04-T01** — Mapear a baseline atual de validação e confirmar ausências de `test`/`typecheck`
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -118,16 +118,16 @@ Mapear a baseline atual de qualidade e decidir qual camada mínima de validaçã
   **Arquivos/áreas afetadas:** `package.json`, `docs/development/CURRENT-STATE.md`, docs da fase
 
   **Critérios de aceitação:**
-  - [ ] O ponto de partida real de validação foi documentado
-  - [ ] A ausência de `test` e a situação de `typecheck` estão explícitas
-  - [ ] Os fluxos críticos que precisam proteção foram priorizados
-  - [ ] O material permite decidir a implementação mínima da fase
+  - [x] O ponto de partida real de validação foi documentado
+  - [x] A ausência de `test` e a situação de `typecheck` estão explícitas
+  - [x] Os fluxos críticos que precisam proteção foram priorizados
+  - [x] O material permite decidir a implementação mínima da fase
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
-  - [ ] E2E
+  - [x] E2E
 
   **Dependências:** PHASE-01  
   **Bloqueia:** `S04-T02`, `S04-T03`, `S04-T04`  
@@ -136,9 +136,9 @@ Mapear a baseline atual de qualidade e decidir qual camada mínima de validaçã
   **Prioridade:** Crítica  
   **Estimativa:** 20–30 min  
   **Responsável:** owner técnico / agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
-- [ ] **S04-T02** — Definir a estratégia mínima de validação para hero/landing e funnel
+- [x] **S04-T02** — Definir a estratégia mínima de validação para hero/landing e funnel
 
   **Modo recomendado:** architecture  
   **Tipo:** test  
@@ -161,16 +161,16 @@ Mapear a baseline atual de qualidade e decidir qual camada mínima de validaçã
   **Arquivos/áreas afetadas:** docs da fase, `docs/development/ROADMAP.md` se necessário, possíveis arquivos de configuração de teste
 
   **Critérios de aceitação:**
-  - [ ] Existe baseline explícita além de `lint`
-  - [ ] Hero/landing têm critérios mínimos de validação definidos
-  - [ ] Funnel tem critérios mínimos de validação definidos
-  - [ ] O plano deixa claro o que será automatizado e o que seguirá manual por enquanto
+  - [x] Existe baseline explícita além de `lint`
+  - [x] Hero/landing têm critérios mínimos de validação definidos
+  - [x] Funnel tem critérios mínimos de validação definidos
+  - [x] O plano deixa claro o que será automatizado e o que seguirá manual por enquanto
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
-  - [ ] E2E
+  - [x] E2E
 
   **Dependências:** `S04-T01`  
   **Bloqueia:** `S04-T03`, `S04-T04`, `S04-T05`  
@@ -179,7 +179,7 @@ Mapear a baseline atual de qualidade e decidir qual camada mínima de validaçã
   **Prioridade:** Crítica  
   **Estimativa:** 30–45 min  
   **Responsável:** owner técnico / agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
@@ -199,7 +199,7 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
 
 #### S04.2 — Erguer a baseline prática
 
-- [ ] **S04-T03** — Introduzir ou explicitar `typecheck` apenas se a análise confirmar valor e viabilidade
+- [x] **S04-T03** — Introduzir ou explicitar `typecheck` apenas se a análise confirmar valor e viabilidade
 
   **Modo recomendado:** architecture  
   **Tipo:** infra  
@@ -222,16 +222,16 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Arquivos/áreas afetadas:** `package.json`, docs de qualidade/release, possíveis configs TypeScript se necessário
 
   **Critérios de aceitação:**
-  - [ ] Existe decisão explícita sobre `typecheck`
-  - [ ] Se adotado, o comando está exposto e documentado
-  - [ ] Se não adotado, a justificativa está registrada
-  - [ ] A decisão é compatível com a stack real do projeto
+  - [x] Existe decisão explícita sobre `typecheck`
+  - [x] Se adotado, o comando está exposto e documentado
+  - [x] Se não adotado, a justificativa está registrada
+  - [x] A decisão é compatível com a stack real do projeto
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
-  - [ ] E2E
+  - [x] E2E
 
   **Dependências:** `S04-T01`, `S04-T02`  
   **Bloqueia:** `S04-T05`, `S04-T06`  
@@ -240,9 +240,9 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Prioridade:** Alta  
   **Estimativa:** 30–60 min  
   **Responsável:** owner técnico  
-  **Status:** Pendente
+  **Status:** Concluído
 
-- [ ] **S04-T04** — Implementar smoke coverage mínima ou harness equivalente para fluxos críticos
+- [x] **S04-T04** — Implementar smoke coverage mínima ou harness equivalente para fluxos críticos
 
   **Modo recomendado:** frontend  
   **Tipo:** test  
@@ -265,13 +265,13 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Arquivos/áreas afetadas:** `package.json`, possíveis configs de teste/smoke, documentação de qualidade, possíveis ajustes de testabilidade em componentes/páginas
 
   **Critérios de aceitação:**
-  - [ ] Existe proteção mínima para os fluxos críticos
-  - [ ] O que é automatizado versus manual está explícito
-  - [ ] A solução não depende de backend inexistente
-  - [ ] O ganho operacional justifica a complexidade adicionada
+  - [x] Existe proteção mínima para os fluxos críticos
+  - [x] O que é automatizado versus manual está explícito
+  - [x] A solução não depende de backend inexistente
+  - [x] O ganho operacional justifica a complexidade adicionada
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
   - [x] E2E
@@ -283,9 +283,9 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Prioridade:** Crítica  
   **Estimativa:** 3–6 h  
   **Responsável:** owner técnico / agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
-- [ ] **S04-T05** — Formalizar checklists reproduzíveis de validação manual para os fluxos ainda não automatizados
+- [x] **S04-T05** — Formalizar checklists reproduzíveis de validação manual para os fluxos ainda não automatizados
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -308,16 +308,16 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Arquivos/áreas afetadas:** docs de desenvolvimento/qualidade e boards das fases, possivelmente `README.md` de docs se necessário
 
   **Critérios de aceitação:**
-  - [ ] Há checklist reproduzível para hero/landing
-  - [ ] Há checklist reproduzível para funnel
-  - [ ] Reduced motion/fallback e acessos diretos críticos estão cobertos
-  - [ ] O material pode ser usado por outro colaborador sem conhecimento tácito
+  - [x] Há checklist reproduzível para hero/landing
+  - [x] Há checklist reproduzível para funnel
+  - [x] Reduced motion/fallback e acessos diretos críticos estão cobertos
+  - [x] O material pode ser usado por outro colaborador sem conhecimento tácito
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
-  - [ ] E2E
+  - [x] E2E
 
   **Dependências:** `S04-T02`, `S04-T03`, `S04-T04`  
   **Bloqueia:** `S04-T06`, `S04-T07`  
@@ -326,7 +326,7 @@ Introduzir a menor camada prática de validação capaz de proteger hero/landing
   **Prioridade:** Alta  
   **Estimativa:** 45–60 min  
   **Responsável:** agent / owner documental  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
@@ -346,7 +346,7 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
 
 #### S04.3 — Fechamento operacional da baseline
 
-- [ ] **S04-T06** — Formalizar o rito mínimo de release e rollback do frontend atual
+- [x] **S04-T06** — Formalizar o rito mínimo de release e rollback do frontend atual
 
   **Modo recomendado:** architecture  
   **Tipo:** docs  
@@ -369,16 +369,16 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
   **Arquivos/áreas afetadas:** docs de desenvolvimento/qualidade, `docs/development/CHANGELOG.md` se aplicável, possíveis instruções de release do projeto
 
   **Critérios de aceitação:**
-  - [ ] Existe checklist de release utilizável
-  - [ ] Existe plano de rollback simples e claro
-  - [ ] O rito usa apenas ferramentas realmente disponíveis ou adicionadas nesta fase
-  - [ ] Outro colaborador consegue seguir o fluxo sem ambiguidade material
+  - [x] Existe checklist de release utilizável
+  - [x] Existe plano de rollback simples e claro
+  - [x] O rito usa apenas ferramentas realmente disponíveis ou adicionadas nesta fase
+  - [x] Outro colaborador consegue seguir o fluxo sem ambiguidade material
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
-  - [ ] E2E
+  - [x] E2E
 
   **Dependências:** `S04-T03`, `S04-T04`, `S04-T05`  
   **Bloqueia:** `S04-T07`  
@@ -387,9 +387,9 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
   **Prioridade:** Alta  
   **Estimativa:** 30–45 min  
   **Responsável:** owner técnico / owner documental  
-  **Status:** Pendente
+  **Status:** Concluído
 
-- [ ] **S04-T07** — Executar a nova baseline e fechar o handoff operacional da fase
+- [x] **S04-T07** — Executar a nova baseline e fechar o handoff operacional da fase
 
   **Modo recomendado:** architecture  
   **Tipo:** test  
@@ -412,13 +412,13 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
   **Arquivos/áreas afetadas:** `package.json`, docs de desenvolvimento, boards das fases, possível changelog documental
 
   **Critérios de aceitação:**
-  - [ ] A baseline nova foi executada de ponta a ponta
-  - [ ] O resultado final está registrado com honestidade
-  - [ ] O status do board e do índice pode ser atualizado
-  - [ ] As lacunas remanescentes ficaram explicitadas para ciclos futuros
+  - [x] A baseline nova foi executada de ponta a ponta
+  - [x] O resultado final está registrado com honestidade
+  - [x] O status do board e do índice pode ser atualizado
+  - [x] As lacunas remanescentes ficaram explicitadas para ciclos futuros
 
   **Estratégia de teste:**
-  - [ ] Unitário
+  - [x] Unitário
   - [x] Integração
   - [x] Regressão
   - [x] E2E
@@ -430,7 +430,7 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
   **Prioridade:** Crítica  
   **Estimativa:** 45–60 min  
   **Responsável:** owner técnico / agent  
-  **Status:** Pendente
+  **Status:** Concluído
 
 ---
 
@@ -471,23 +471,23 @@ Conectar os novos scripts e checklists a um fluxo de release/rollback simples, c
 ## Documentação e Comunicação
 
 - [x] Atualizar `docs/development/TASKS.md`
-- [ ] Atualizar `docs/development/CHANGELOG.md`
-- [ ] Atualizar docs de schema, se aplicável
-- [ ] Atualizar docs de infraestrutura/deploy, se aplicável
-- [ ] Registrar fechamento da fase no board e no changelog, quando aplicável
-- [ ] Registrar desvios de escopo ou decisões estruturais
+- [x] Atualizar `docs/development/CHANGELOG.md`
+- [x] Atualizar docs de schema, se aplicável
+- [x] Atualizar docs de infraestrutura/deploy, se aplicável
+- [x] Registrar fechamento da fase no board e no changelog, quando aplicável
+- [x] Registrar desvios de escopo ou decisões estruturais
 
 ---
 
 ## Checklist de Encerramento da Fase
 
-- [ ] Todas as tarefas críticas concluídas
-- [ ] Tasks pendentes replanejadas ou formalmente adiadas
-- [ ] Migrations aplicadas e versionadas, se houver
-- [ ] Testes backend/frontend executados e passando
-- [ ] Fluxos críticos validados manualmente
-- [ ] Documentação atualizada
-- [ ] Revisão de segurança/arquitetura realizada
-- [ ] Aprovação final registrada
-- [ ] Fechamento da fase registrado
-- [ ] Changelog atualizado
+- [x] Todas as tarefas críticas concluídas
+- [x] Tasks pendentes replanejadas ou formalmente adiadas
+- [x] Migrations aplicadas e versionadas, se houver
+- [x] Testes backend/frontend executados e passando
+- [x] Fluxos críticos validados manualmente
+- [x] Documentação atualizada
+- [x] Revisão de segurança/arquitetura realizada
+- [x] Aprovação final registrada
+- [x] Fechamento da fase registrado
+- [x] Changelog atualizado
