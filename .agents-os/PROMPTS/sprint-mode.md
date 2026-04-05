@@ -17,6 +17,11 @@ Use this prompt to execute an active sprint with maximum rigor, continuous valid
     - `tsc` (or equivalent type check)
     - Relevant test suites.
 6.  **Progress Tracking**: Update the "Log de Execução" in the task/sprint document immediately after completion.
+7.  **Final Checkout & Closure**: 
+    - Before finishing the sprint/batch, verify the "Checklist de Encerramento" in the corresponding `PHASE-BOARD` or `SPRINT` document.
+    - Ensure all Acceptance Criteria (AC) are marked as DONE.
+    - Validate that no technical debt was left undocumented.
+    - Perform the official checkout of the final checklist items.
 
 ## 🛡️ Mandatory Validation Checklist (Every Turn)
 
@@ -25,6 +30,7 @@ Before responding, the agent MUST verify:
 - [ ] Did I run the validation commands (lint, types, tests)?
 - [ ] Is the architecture being preserved (no shortcuts)?
 - [ ] Is the Sprint/Task document updated with the latest status?
+- [ ] Did I perform the Final Checkout of the completion checklist?
 - [ ] Are there any new blockers or risks identified?
 
 ## 📝 Documentation Requirements
