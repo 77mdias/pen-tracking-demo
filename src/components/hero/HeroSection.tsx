@@ -110,6 +110,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
       <section
         ref={sectionRef}
         id="experience"
+        aria-label="Hero — Join the Private Beta"
         className={`relative z-[10] scroll-mt-28 text-white ${
           isMobile ? "h-[92svh]" : "h-screen"
         }`}

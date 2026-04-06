@@ -28,7 +28,7 @@ export default function HeroCTA({ isMobile = false }: HeroCTAProps) {
         ) : null}
       </div>
 
-      <p className="font-inter text-center text-xs text-zinc-600 uppercase tracking-widest">
+      <p className="font-inter text-center text-xs text-zinc-400 uppercase tracking-widest">
         Limited early access to the demo system.
       </p>
     </div>
