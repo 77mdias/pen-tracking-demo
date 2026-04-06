@@ -83,7 +83,9 @@ export default function useHeroTimeline({
         setHeadlineOpacity(fadeOut);
         setSubheadlineOpacity(fadeOut);
         setSubheadlineY(-progress * 30);
-        setSupportCopyOpacity(Math.min(1, progress * 3) * fadeOut);
+        const supportCopyFadeIn = Math.max(0, Math.min(1, (progress - 0.20) / 0.20));
+        const supportCopyFadeOut = Math.max(0, Math.min(1, (0.60 - progress) / 0.20));
+        setSupportCopyOpacity(supportCopyFadeIn * supportCopyFadeOut);
         setSupportCopyY((1 - progress) * 10);
         setCtaPrimaryScale(1 + progress * 0.04);
         setCtaSecondaryOpacity(fadeOut);

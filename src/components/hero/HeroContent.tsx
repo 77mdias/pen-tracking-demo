@@ -43,8 +43,8 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
         {subheadline}
       </p>
 
-      <p className="hero-support-copy font-inter mt-2 max-w-md text-center text-sm text-zinc-300 opacity-0">
-        Designed for focused writing sessions with a subtle intelligent layer.
+      <p className="hero-support-copy font-inter mt-2 max-w-md text-center text-base text-zinc-200 italic opacity-0">
+        Built for the way you actually think.
       </p>
 
       <HeroCTA isMobile={isMobile} />
