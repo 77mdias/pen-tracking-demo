@@ -2,7 +2,7 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
-status: verifying
+status: complete
 last_updated: "2026-04-06T18:49:59.229Z"
 last_activity: 2026-04-06
 progress:
@@ -24,9 +24,9 @@ See: .planning/PROJECT.md (updated 2026-04-05)
 
 ## Current Position
 
-Phase: 07 (fallbacks-and-reduced-motion) — EXECUTING
+Phase: 07 (fallbacks-and-reduced-motion) — COMPLETE ✅
 Plan: 3 of 3
-Status: Phase complete — ready for verification
+Status: Verified — all 14 acceptance criteria passed
 Last activity: 2026-04-06
 
 Progress: [████████░░░░░░░░░░░░] 40%
