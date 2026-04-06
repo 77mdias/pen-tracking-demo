@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
 status: executing
-last_updated: "2026-04-06T18:43:18.558Z"
+last_updated: "2026-04-06T18:46:12.783Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 8
   completed_phases: 2
   total_plans: 9
-  completed_plans: 7
-  percent: 78
+  completed_plans: 8
+  percent: 89
 ---
 
 # Project State
@@ -25,7 +25,7 @@ See: .planning/PROJECT.md (updated 2026-04-05)
 ## Current Position
 
 Phase: 07 (fallbacks-and-reduced-motion) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-04-06
 
@@ -52,6 +52,7 @@ Progress: [████████░░░░░░░░░░░░] 40%
 
 *Updated after GSD initialization*
 | Phase 07 P01 | 5m | 2 tasks | 2 files |
+| Phase 07 P02 | 2m | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -63,6 +64,8 @@ Progress: [████████░░░░░░░░░░░░] 40%
 - Phase 4: `useGSAP` from `@gsap/react` used throughout — auto-cleanup via gsap.context()
 - [Phase 07]: Video opacity raised from 40% to 70% without mix-blend-screen for clear fallback visibility
 - [Phase 07]: aria-hidden=true added to HeroCanvas wrapper — 3D canvas is decorative content
+- [Phase 07-02]: transition-duration:0.01ms instead of 0/none — preserves animationend/transitionend event firing for JS listeners
+- [Phase 07-02]: HeroMobile GSAP scoped to containerRef to prevent selector leaks to desktop HeroContent
 
 ### Roadmap Evolution
 
