@@ -2,18 +2,29 @@
 
 import { useGLTF, ContactShadows } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, type MutableRefObject } from 'react';
 import { Group, Object3D } from 'three';
 import { aliasSceneConfig } from '@/lib/three/aliasSceneConfig';
+import { lerp } from '@/lib/utils/lerp';
 import type { DeviceTier } from '@/hooks/useDeviceCapabilities';
 
 type AliasPenSceneProps = {
   reducedMotion: boolean;
   motionScale: number;
   tier: DeviceTier;
+  isDraggingRef: MutableRefObject<boolean>;
+  dragRotXRef: MutableRefObject<number>;
+  dragRotYRef: MutableRefObject<number>;
 };
 
-export default function AliasPenScene({ reducedMotion, motionScale, tier }: AliasPenSceneProps) {
+export default function AliasPenScene({
+  reducedMotion,
+  motionScale,
+  tier,
+  isDraggingRef,
+  dragRotXRef,
+  dragRotYRef,
+}: AliasPenSceneProps) {
   const penGroupRef = useRef<Group>(null);
   const gltf = useGLTF('/models/pen3D.glb');
 
@@ -37,16 +48,35 @@ export default function AliasPenScene({ reducedMotion, motionScale, tier }: Alia
     if (!penGroupRef.current || reducedMotion) return;
     const t = state.clock.elapsedTime;
 
-    // Float: sin-wave Y oscillation
+    // Float: sin-wave Y oscillation (always active)
     penGroupRef.current.position.y =
       py +
       Math.sin(t * aliasSceneConfig.pen.idle.yFrequency) *
         aliasSceneConfig.pen.idle.yAmplitude *
         motionScale;
 
-    // Slow continuous Y rotation — "display case" spin
-    penGroupRef.current.rotation.y +=
-      delta * aliasSceneConfig.pen.idle.rotationYSpeed * motionScale;
+    // Smooth drag X rotation toward accumulated drag offset
+    penGroupRef.current.rotation.x = lerp(
+      penGroupRef.current.rotation.x,
+      rx + dragRotXRef.current,
+      0.1,
+    );
+
+    if (isDraggingRef.current) {
+      // Dragging: lerp Y toward drag target, pause idle spin
+      penGroupRef.current.rotation.y = lerp(
+        penGroupRef.current.rotation.y,
+        aliasSceneConfig.pen.rotation[1] + dragRotYRef.current,
+        0.1,
+      );
+    } else {
+      // Idle: continuous Y rotation
+      penGroupRef.current.rotation.y +=
+        delta * aliasSceneConfig.pen.idle.rotationYSpeed * motionScale;
+      // Sync dragRotY so no jump when user grabs mid-spin
+      dragRotYRef.current =
+        penGroupRef.current.rotation.y - aliasSceneConfig.pen.rotation[1];
+    }
   });
 
   return (
