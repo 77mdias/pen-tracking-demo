@@ -16,41 +16,57 @@ const VideoBackground = dynamic(
 
 type AliasLayoutProps = {
   children: React.ReactNode;
+  /** When true, pen column renders first (left), form column second (right) */
+  reversed?: boolean;
+  /** Pass false when the parent page already provides a VideoBackground */
+  showVideo?: boolean;
 };
 
-export default function AliasLayout({ children }: AliasLayoutProps) {
+export default function AliasLayout({ children, reversed = false, showVideo = true }: AliasLayoutProps) {
   const reducedMotion = useReducedMotion();
   const { tier, supportsWebGL, recommendedMaxDpr } = useDeviceCapabilities();
 
-  // motionScale per tier — same mapping as HeroSection
   const motionScale = tier === 'low' ? 0.5 : tier === 'medium' ? 0.8 : 1;
+
+  const penColumn = (
+    <div
+      className="relative z-10 hidden min-h-[500px] md:block overflow-visible"
+      style={{ height: '70vh' }}
+      aria-hidden="true"
+    >
+      {supportsWebGL && (
+        <AliasPenCanvas
+          reducedMotion={reducedMotion}
+          motionScale={motionScale}
+          maxDpr={recommendedMaxDpr}
+          tier={tier}
+        />
+      )}
+    </div>
+  );
+
+  const formColumn = (
+    <div className="relative z-10 w-full max-w-2xl">
+      {children}
+    </div>
+  );
 
   return (
     <div className="relative min-h-screen bg-black">
-      {/* Video background — fullscreen, not constrained by max-w-7xl */}
-      <VideoBackground className="z-0" />
+      {showVideo && <VideoBackground className="z-0" />}
 
       <main className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 items-center gap-0 px-6 pt-28 pb-12 md:grid-cols-2 md:gap-8">
-        {/* Left column: glass panel form content (always visible) */}
-        <div className="relative z-10 w-full max-w-2xl">
-          {children}
-        </div>
-
-        {/* Right column: 3D pen — hidden below md (per D-7), hidden if no WebGL */}
-        <div
-          className="relative z-10 hidden min-h-[500px] md:block overflow-visible"
-          style={{ height: '70vh' }}
-          aria-hidden="true"
-        >
-          {supportsWebGL && (
-            <AliasPenCanvas
-              reducedMotion={reducedMotion}
-              motionScale={motionScale}
-              maxDpr={recommendedMaxDpr}
-              tier={tier}
-            />
-          )}
-        </div>
+        {reversed ? (
+          <>
+            {penColumn}
+            {formColumn}
+          </>
+        ) : (
+          <>
+            {formColumn}
+            {penColumn}
+          </>
+        )}
       </main>
     </div>
   );

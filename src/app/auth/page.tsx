@@ -42,7 +42,7 @@ function AuthContent() {
   // Already signed in — show welcome + nav
   if (isHydrated && state.isSignedIn) {
     return (
-      <AliasLayout>
+      <AliasLayout reversed>
         <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#ef233c]/50 transition-all duration-500">
           {/* Corner markers — DS2 signature */}
           <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />
@@ -84,7 +84,7 @@ function AuthContent() {
 
   // Sign-in form
   return (
-    <AliasLayout>
+    <AliasLayout reversed>
       <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#ef233c]/50 transition-all duration-500">
         {/* Corner markers — DS2 signature */}
         <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />

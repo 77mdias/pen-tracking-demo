@@ -50,8 +50,8 @@ export default function AboutSection({ variant = 'home' }: AboutSectionProps) {
         className="relative flex min-h-screen w-full items-center py-12 lg:py-16 scroll-mt-28"
       >
         <div className="mx-auto w-full max-w-7xl px-6">
-          {/* Compact header */}
-          <div className="mb-8 flex flex-col items-center text-center">
+          {/* Compact header — glass backdrop for legibility over video/pen */}
+          <div className="mb-8 flex flex-col items-center text-center rounded-none bg-black/45 py-6 px-4 backdrop-blur-sm">
             <span className="editorial-border-dashed mb-4 inline-block px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest font-bold" style={{ color: accent }}>
               [ Smart Pen Platform ]
             </span>
@@ -59,7 +59,7 @@ export default function AboutSection({ variant = 'home' }: AboutSectionProps) {
               About the{' '}
               <span style={{ color: accent }}>Project</span>
             </h2>
-            <p className="font-inter max-w-2xl text-base leading-relaxed text-white/70">
+            <p className="font-inter max-w-2xl text-base leading-relaxed text-white/80">
               A full-stack showcase of modern web tech — AI, 3D, and buttery
               animations wrapped around a smart pen product concept.
             </p>
@@ -67,16 +67,16 @@ export default function AboutSection({ variant = 'home' }: AboutSectionProps) {
 
           {/* Two-column grid — compact for single fold */}
           <div className="grid gap-6 md:grid-cols-2 lg:gap-10">
-            {/* LEFT: condensed description + highlights */}
-            <div className="flex flex-col gap-4">
-              <p className="font-inter text-sm leading-6 text-white/70">
+            {/* LEFT: condensed description + highlights — dark glass for legibility over video/pen */}
+            <div className="flex flex-col gap-4 rounded-none bg-black/55 p-5 backdrop-blur-md border border-zinc-800/40">
+              <p className="font-inter text-sm leading-6 text-white/80">
                 {descParagraphs[0]?.trim()}
               </p>
               <ul className="flex flex-col gap-2">
                 {PRODUCT_HIGHLIGHTS.map((highlight, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-xs" style={{ color: accent }}>✓</span>
-                    <span className="font-inter text-sm leading-5 text-white/80">{highlight.text}</span>
+                    <span className="font-inter text-sm leading-5 text-white/90">{highlight.text}</span>
                   </li>
                 ))}
               </ul>
