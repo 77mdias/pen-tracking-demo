@@ -116,6 +116,6 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 08-01: Asset optimization (Draco/Meshopt compression, DPR cap validation, lazy loading below fold)
-- [ ] 08-02: Performance profiling — 60fps target, no unnecessary re-renders, frameloop audit
-- [ ] 08-03: Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
+- [ ] 08-01-PLAN.md — Asset optimization (Meshopt GLB compression, below-fold lazy loading)
+- [ ] 08-02-PLAN.md — Performance cleanup (dead useMemo removal, FOV optimization, DPR/frameloop verification)
+- [ ] 08-03-PLAN.md — Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
