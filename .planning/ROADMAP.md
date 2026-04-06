@@ -119,3 +119,13 @@ Plans:
 - [x] 08-01-PLAN.md — Asset optimization (Meshopt GLB compression, below-fold lazy loading)
 - [ ] 08-02-PLAN.md — Performance cleanup (dead useMemo removal, FOV optimization, DPR/frameloop verification)
 - [ ] 08-03-PLAN.md — Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
+
+### Phase 9: Alias Routes Polish — Hero video background, centered layout, 3D pen variants, and About section
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 8
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 9 to break down)
