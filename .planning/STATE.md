@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
-status: complete
-last_updated: "2026-04-06T18:49:59.229Z"
-last_activity: 2026-04-06
+status: executing
+last_updated: "2026-04-06T19:23:30.201Z"
+last_activity: 2026-04-06 -- Phase null execution started
 progress:
   total_phases: 8
   completed_phases: 3
-  total_plans: 9
-  completed_plans: 9
-  percent: 100
+  total_plans: 12
+  completed_plans: 10
+  percent: 83
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-05)
 
 **Core value:** A hero section so cinematically premium that visitors feel compelled to join the private beta before scrolling past it.
-**Current focus:** Phase 07 — fallbacks-and-reduced-motion
+**Current focus:** Phase null
 
 ## Current Position
 
-Phase: 07 (fallbacks-and-reduced-motion) — COMPLETE ✅
-Plan: 3 of 3
-Status: Verified — all 14 acceptance criteria passed
-Last activity: 2026-04-06
+Phase: null — EXECUTING
+Plan: 1 of ?
+Status: Executing Phase null
+Last activity: 2026-04-06 -- Phase null execution started
 
 Progress: [████████░░░░░░░░░░░░] 40%
 
@@ -54,6 +54,7 @@ Progress: [████████░░░░░░░░░░░░] 40%
 | Phase 07 P01 | 5m | 2 tasks | 2 files |
 | Phase 07 P02 | 2m | 2 tasks | 2 files |
 | Phase 07 P03 | 3m | 2 tasks | 3 files |
+| Phase 08 P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,8 @@ Progress: [████████░░░░░░░░░░░░] 40%
 - [Phase 07-02]: HeroMobile GSAP scoped to containerRef to prevent selector leaks to desktop HeroContent
 - [Phase 07]: text-zinc-400 selected for disclaimer to match secondary CTA styling while achieving 7.73:1 WCAG AA contrast
 - [Phase 07]: aria-label wording 'Hero — Join the Private Beta' matches primary CTA action for consistent screen reader experience
+- [Phase 08]: Meshopt GLB compression via gltf-transform optimize reduced pen3D.glb from 7.7MB to 1.1MB (86% reduction)
+- [Phase 08]: next/dynamic with ssr:true for ProductIntroSection — SSR preserves DOM for ScrollTrigger, JS still code-split
 
 ### Roadmap Evolution
 
