@@ -43,11 +43,16 @@ function AuthContent() {
   if (isHydrated && state.isSignedIn) {
     return (
       <AliasLayout>
-        <section className="glass-panel w-full p-8 md:p-10">
+        <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+          {/* Corner markers — DS2 signature */}
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
           </div>
-          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Access</p>
+          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Access ]</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Welcome back{state.displayName ? `, ${state.displayName}` : ''}
           </h1>
@@ -80,11 +85,16 @@ function AuthContent() {
   // Sign-in form
   return (
     <AliasLayout>
-      <section className="glass-panel w-full p-8 md:p-10">
+      <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+        {/* Corner markers — DS2 signature */}
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
         <div className="mb-6 flex items-center justify-between">
           <FunnelStatusBadge />
         </div>
-        <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Access</p>
+        <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Access ]</p>
         <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
           Sign in to PenFlow77
         </h1>
@@ -104,7 +114,7 @@ function AuthContent() {
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-sm border border-zinc-700 bg-black/40 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-[#007bff] focus:outline-none focus:ring-1 focus:ring-[#007bff]"
+              className="w-full rounded-none border border-zinc-700 bg-black/40 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-[#007bff] focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               required
             />
             {error && (

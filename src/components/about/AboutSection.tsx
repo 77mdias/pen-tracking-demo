@@ -15,15 +15,13 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-[#050a14] py-24 lg:py-32 scroll-mt-28"
+      className="relative w-full bg-black py-24 lg:py-32 scroll-mt-28"
     >
       <div className="mx-auto max-w-7xl px-6">
         {/* Section header */}
         <div className="mb-14 flex flex-col items-center text-center">
           {/* Chip tag */}
-          <span className="glass-panel mb-6 inline-block rounded-full border border-[#007bff]/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#007bff]">
-            Smart Pen Platform
-          </span>
+          <span className="mb-6 inline-block bg-black border border-zinc-800 border-dashed rounded-none px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Smart Pen Platform ]</span>
 
           {/* H2 heading */}
           <h2 className="font-manrope mb-4 text-4xl font-bold leading-tight text-white md:text-5xl">
@@ -58,7 +56,7 @@ export default function AboutSection() {
             <ul className="flex flex-col gap-3">
               {PRODUCT_HIGHLIGHTS.map((highlight, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#007bff]/20 text-xs text-[#007bff]">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-[#007bff]/20 text-xs text-[#007bff]">
                     ✓
                   </span>
                   <span className="font-inter text-sm leading-6 text-white/80">
@@ -73,15 +71,18 @@ export default function AboutSection() {
           <div className="flex flex-col gap-8">
             {/* Tech stack cards grid */}
             <div>
-              <h3 className="font-manrope mb-4 text-sm font-semibold uppercase tracking-widest text-[#007bff]">
-                Tech Stack
-              </h3>
+              <h3 className="font-mono mb-4 text-[10px] font-bold uppercase tracking-widest text-[#007bff]">[ Tech Stack ]</h3>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {TECH_STACK_CARDS.map((card) => (
                   <div
                     key={card.name}
-                    className="glass-panel flex flex-col gap-2 rounded-xl border border-[#007bff]/20 p-4"
+                    className="relative flex flex-col gap-2 bg-black border border-zinc-800 border-dashed rounded-none p-4 group hover:border-[#007bff]/50 transition-all duration-500"
                   >
+                    {/* Corner markers */}
+                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+                    <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
                     <span className="text-2xl leading-none">{card.icon}</span>
                     <span className="font-manrope text-sm font-semibold text-white">
                       {card.name}
@@ -95,18 +96,21 @@ export default function AboutSection() {
             </div>
 
             {/* Stats panel */}
-            <div className="glass-panel rounded-2xl border border-[#007bff]/20 p-6">
+            <div className="relative bg-black border border-zinc-800 border-dashed rounded-none p-6">
+              {/* Corner markers */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
               {/* Codebase stats */}
-              <p className="font-manrope mb-3 text-xs font-semibold uppercase tracking-widest text-[#007bff]">
-                Codebase
-              </p>
+              <p className="font-mono mb-3 text-[10px] font-bold uppercase tracking-widest text-[#007bff]">[ Codebase ]</p>
               <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {codestats.map((stat) => (
                   <div key={stat.label} className="flex flex-col gap-1">
-                    <span className="font-manrope text-2xl font-bold text-white">
+                    <span className="font-manrope text-5xl font-medium text-white tracking-tighter">
                       {stat.value}
                     </span>
-                    <span className="font-inter text-xs text-white/50">
+                    <span className="font-inter text-xs text-zinc-400">
                       {stat.label}
                     </span>
                   </div>
@@ -114,19 +118,17 @@ export default function AboutSection() {
               </div>
 
               {/* Divider */}
-              <div className="mb-5 h-px bg-white/10" />
+              <div className="mb-5 h-px bg-zinc-800" />
 
               {/* Product stats */}
-              <p className="font-manrope mb-3 text-xs font-semibold uppercase tracking-widest text-[#007bff]">
-                Product
-              </p>
+              <p className="font-mono mb-3 text-[10px] font-bold uppercase tracking-widest text-[#007bff]">[ Product ]</p>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {productstats.map((stat) => (
                   <div key={stat.label} className="flex flex-col gap-1">
-                    <span className="font-manrope text-2xl font-bold text-white">
+                    <span className="font-manrope text-5xl font-medium text-white tracking-tighter">
                       {stat.value}
                     </span>
-                    <span className="font-inter text-xs text-white/50">
+                    <span className="font-inter text-xs text-zinc-400">
                       {stat.label}
                     </span>
                   </div>
@@ -140,7 +142,7 @@ export default function AboutSection() {
         <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/beta"
-            className="inline-flex items-center gap-2 rounded-full bg-[#007bff] px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-none bg-transparent border border-[#007bff] text-[#007bff] hover:bg-[#007bff] hover:text-white px-7 py-4 text-[11px] font-bold uppercase tracking-widest transition-all"
           >
             Join Private Beta
           </Link>
@@ -148,7 +150,7 @@ export default function AboutSection() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[#007bff]/60 px-7 py-3 text-sm font-semibold text-[#007bff] transition-colors hover:border-[#007bff] hover:bg-[#007bff]/10"
+            className="inline-flex items-center gap-2 rounded-none border border-zinc-700 px-7 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
           >
             View on GitHub
             <svg

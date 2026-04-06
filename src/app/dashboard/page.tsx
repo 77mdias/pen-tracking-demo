@@ -18,12 +18,17 @@ function DashboardContent() {
   // Direct access without funnel context — show preview + CTA
   if (!hasContext) {
     return (
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-28 pb-12">
-        <section className="glass-panel w-full max-w-2xl p-8 md:p-10">
+      <main className="bg-black mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-28 pb-12">
+        <section className="relative w-full max-w-2xl bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+          {/* Corner markers — DS2 signature */}
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
           </div>
-          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Dashboard Preview</p>
+          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Dashboard Preview ]</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Control center preview
           </h1>
@@ -34,7 +39,12 @@ function DashboardContent() {
           {/* Demo cards — static preview */}
           <section className="mt-8 grid gap-4 sm:grid-cols-3">
             {demoCards.map((card) => (
-              <article key={card.label} className="glass-panel p-5">
+              <article key={card.label} className="relative bg-black border border-zinc-800 border-dashed rounded-none p-5">
+                {/* Corner markers */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
                 <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">{card.label}</p>
                 <p className="font-manrope mt-2 text-2xl font-semibold text-white">{card.value}</p>
               </article>
@@ -62,12 +72,12 @@ function DashboardContent() {
 
   // Has funnel context — show personalized dashboard
   return (
-    <main className="mx-auto min-h-screen w-full max-w-6xl px-6 pt-28 pb-12">
+    <main className="bg-black mx-auto min-h-screen w-full max-w-6xl px-6 pt-28 pb-12">
       <section className="mb-8">
         <div className="mb-4 flex items-center gap-3">
           <FunnelStatusBadge />
           {state.betaJoined && (
-            <span className="rounded-full border border-emerald-800/50 bg-emerald-950/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest text-emerald-400">
+            <span className="rounded-none border border-emerald-800/50 bg-emerald-950/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest text-emerald-400">
               Beta member
             </span>
           )}
@@ -85,7 +95,12 @@ function DashboardContent() {
       {/* Status cards */}
       <section className="grid gap-4 sm:grid-cols-3">
         {demoCards.map((card) => (
-          <article key={card.label} className="glass-panel p-6">
+          <article key={card.label} className="relative bg-black border border-zinc-800 border-dashed rounded-none p-6">
+            {/* Corner markers */}
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
             <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">{card.label}</p>
             <p className="font-manrope mt-2 text-2xl font-semibold text-white">{card.value}</p>
           </article>

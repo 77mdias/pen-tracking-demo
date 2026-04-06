@@ -24,7 +24,12 @@ function BetaContent() {
     <>
       <AliasLayout>
         {/* Glass panel form — becomes left column of AliasLayout */}
-        <section className="glass-panel w-full p-8 md:p-10">
+        <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+          {/* Corner markers — DS2 signature */}
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
             {hasContext && state.displayName && (
@@ -34,7 +39,7 @@ function BetaContent() {
             )}
           </div>
 
-          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Private Beta</p>
+          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Private Beta ]</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Beta queue status
           </h1>
@@ -45,18 +50,29 @@ function BetaContent() {
           </p>
 
           {/* Queue stats */}
-          <div className="mt-8 grid gap-4 border border-zinc-800 bg-black/40 p-5 sm:grid-cols-2">
-            <div>
-              <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Current position</p>
-              <p className="font-manrope mt-2 text-4xl font-semibold text-white">
-                {displayPosition}
-              </p>
+          <div className="mt-8 border border-zinc-800 border-dashed bg-black rounded-none">
+            {/* DS2 status header bar */}
+            <div className="flex items-center justify-between border-b border-zinc-800 border-dashed p-4">
+              <span className="font-mono text-[10px] text-[#007bff] tracking-widest uppercase font-bold">[ Queue Status ]</span>
+              <div className="flex gap-1.5">
+                <div className="w-1.5 h-1.5 bg-[#007bff] animate-pulse rounded-none"></div>
+                <div className="w-1.5 h-1.5 bg-zinc-800 rounded-none"></div>
+                <div className="w-1.5 h-1.5 bg-zinc-800 rounded-none"></div>
+              </div>
             </div>
-            <div>
-              <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Wave</p>
-              <p className="font-manrope mt-2 text-4xl font-semibold text-white">
-                {displayWave}
-              </p>
+            <div className="grid gap-4 p-5 sm:grid-cols-2">
+              <div>
+                <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Current position</p>
+                <p className="font-manrope mt-2 text-5xl font-medium text-white tracking-tighter">
+                  {displayPosition}
+                </p>
+              </div>
+              <div>
+                <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">Wave</p>
+                <p className="font-manrope mt-2 text-5xl font-medium text-white tracking-tighter">
+                  {displayWave}
+                </p>
+              </div>
             </div>
           </div>
 
