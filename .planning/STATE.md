@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
 status: executing
-last_updated: "2026-04-06T20:22:19.423Z"
+last_updated: "2026-04-06T20:26:54.459Z"
 last_activity: 2026-04-06 -- Phase null execution started
 progress:
   total_phases: 9
   completed_phases: 4
   total_plans: 15
-  completed_plans: 13
-  percent: 87
+  completed_plans: 14
+  percent: 93
 ---
 
 # Project State
@@ -57,6 +57,7 @@ Progress: [████████████████████] 100%
 | Phase 08 P01 | 2 | 2 tasks | 4 files |
 | Phase 08 P02 | 8m | 2 tasks | 1 file |
 | Phase 09 P01 | 4 | 3 tasks | 5 files |
+| Phase 09-alias-routes-polish-hero-video-background-centered-layout-3d P02 | 10 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -79,6 +80,7 @@ Progress: [████████████████████] 100%
 - [Phase 08-02]: DPR cap wiring verified: useDeviceCapabilities (low→1, medium→1.25, high→1.5) → HeroSection → HeroCanvas dpr=[1,maxDpr]
 - [Phase 09]: aliasSceneConfig uses gentler idle values than heroSceneConfig: yFrequency=0.6 (slower), continuous Y rotation instead of oscillating Z
 - [Phase 09]: AliasLayout uses CSS hidden md:block exclusively for responsive hiding — no JS/useMediaQuery to prevent hydration mismatch
+- [Phase 09-alias-routes-polish-hero-video-background-centered-layout-3d]: Added @/ path alias to vitest.config.ts for server component smoke tests
 
 ### Roadmap Evolution
 
