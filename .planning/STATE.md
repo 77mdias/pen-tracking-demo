@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
 status: verifying
-last_updated: "2026-04-06T21:17:08.920Z"
+last_updated: "2026-04-06T21:22:01.227Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 10
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 18
-  completed_plans: 17
-  percent: 94
+  completed_plans: 18
+  percent: 100
 ---
 
 # Project State
@@ -61,6 +61,7 @@ Progress: [████████████████████] 100%
 | Phase 09 P03 | 8m | 3 tasks | 4 files |
 | Phase 10 P02 | 5 | 3 tasks | 3 files |
 | Phase 10 P10-01 | 3m | 5 tasks | 5 files |
+| Phase 10 P03 | 7 | 4 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -86,6 +87,7 @@ Progress: [████████████████████] 100%
 - [Phase 09-alias-routes-polish-hero-video-background-centered-layout-3d]: Added @/ path alias to vitest.config.ts for server component smoke tests
 - [Phase 09]: AliasLayout replaces main wrapper in /beta and /auth pages; auth error text preserves #ef233c for semantic validity
 - [Phase 10]: DS2 product highlight bullet icons changed to rounded-none for validation consistency
+- [Phase 10]: Pointer capture on drag-down so movement outside element is tracked; dragRotYRef synced on idle frames to prevent jump on mid-spin grab
 
 ### Roadmap Evolution
 
