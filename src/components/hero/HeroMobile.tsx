@@ -1,5 +1,8 @@
 'use client';
 
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import HeroCTA from "@/components/hero/HeroCTA";
 
 type HeroMobileProps = {
@@ -7,12 +10,35 @@ type HeroMobileProps = {
 };
 
 export default function HeroMobile({ reducedMotion = false }: HeroMobileProps) {
-  // reducedMotion is accepted and forwarded to Phase 7 animation hooks.
-  // No GSAP / ScrollTrigger here — enableScrollNarrative is false on mobile.
-  void reducedMotion;
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (reducedMotion) {
+      gsap.set([".hero-cta", ".hero-headline", ".hero-subheadline"], {
+        opacity: 1,
+        y: 0,
+      });
+      return;
+    }
+
+    // Set initial hidden state — GSAP will animate FROM these values
+    gsap.set([".hero-cta", ".hero-headline", ".hero-subheadline"], {
+      opacity: 0,
+      y: 16,
+    });
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      delay: 0.2,
+    });
+
+    tl.to(".hero-cta", { opacity: 1, y: 0, duration: 0.6 })
+      .to(".hero-headline", { opacity: 1, y: 0, duration: 0.7 }, "-=0.3")
+      .to(".hero-subheadline", { opacity: 1, y: 0, duration: 0.5 }, "-=0.25");
+  }, { scope: containerRef, dependencies: [reducedMotion], revertOnUpdate: true });
 
   return (
-    <div className="mx-auto flex w-full max-w-sm flex-col items-center text-center px-6">
+    <div ref={containerRef} className="mx-auto flex w-full max-w-sm flex-col items-center text-center px-6">
       {/* 1. Editorial badge — identical classes to HeroContent badge */}
       <div className="border-gradient-spin inline-flex items-center gap-2 bg-black/60 px-4 py-1.5">
         <span className="h-1.5 w-1.5 rounded-full bg-[#ef233c] shadow-[0_0_8px_#ef233c]" />
