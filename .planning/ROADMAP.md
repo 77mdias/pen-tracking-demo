@@ -108,19 +108,19 @@ Plans:
 - [x] 07-02-PLAN.md — CSS transition kill-switch + HeroMobile entrance animation with reduced-motion gate
 - [x] 07-03-PLAN.md — Contrast fix, ARIA attributes, keyboard navigation verification
 
-### Phase 8: Optimization and Polish
+### Phase 8: Optimization and Polish ✅ Complete
 
 **Goal:** Ship-ready, performant, premium hero section with stable 60fps on desktop and validated cross-browser quality
 **Requirements**: TBD
 **Depends on:** Phase 7
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 08-01-PLAN.md — Asset optimization (Meshopt GLB compression, below-fold lazy loading)
-- [ ] 08-02-PLAN.md — Performance cleanup (dead useMemo removal, FOV optimization, DPR/frameloop verification)
-- [ ] 08-03-PLAN.md — Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
+- [x] 08-02-PLAN.md — Performance cleanup (dead useMemo removal, FOV optimization, DPR/frameloop verification)
+- [x] 08-03-PLAN.md — Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
 
-### Phase 9: Alias Routes Polish — 3D pen side panel, AboutSection, color alignment
+### Phase 9: Alias Routes Polish — 3D pen side panel, AboutSection, color alignment ✅ Complete
 
 **Goal:** Add two-column AliasLayout (glass form left + 3D idle pen right) to /beta and /auth, create AboutSection with tech stack + project stats, integrate into home + /beta, migrate alias route colors from red to design system blue (#007bff)
 **Requirements**: REQ-9.1, REQ-9.2, REQ-9.3, REQ-9.4, REQ-9.5, REQ-9.6, REQ-9.7
