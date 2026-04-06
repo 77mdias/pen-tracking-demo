@@ -29,6 +29,7 @@
     "vitest": "^4.1.2"
   },
   "devDependencies": {
+    "@gltf-transform/cli": "^4.3.0",
     "@opennextjs/cloudflare": "^1.18.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
