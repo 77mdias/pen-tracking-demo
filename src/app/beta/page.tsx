@@ -24,12 +24,12 @@ function BetaContent() {
     <>
       <AliasLayout>
         {/* Glass panel form — becomes left column of AliasLayout */}
-        <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+        <section className="relative w-full bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#ef233c]/50 transition-all duration-500">
           {/* Corner markers — DS2 signature */}
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]" />
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
             {hasContext && state.displayName && (
@@ -39,7 +39,7 @@ function BetaContent() {
             )}
           </div>
 
-          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Private Beta ]</p>
+          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#ef233c] font-bold">[ Private Beta ]</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Beta queue status
           </h1>
@@ -53,9 +53,9 @@ function BetaContent() {
           <div className="mt-8 border border-zinc-800 border-dashed bg-black rounded-none">
             {/* DS2 status header bar */}
             <div className="flex items-center justify-between border-b border-zinc-800 border-dashed p-4">
-              <span className="font-mono text-[10px] text-[#007bff] tracking-widest uppercase font-bold">[ Queue Status ]</span>
+              <span className="font-mono text-[10px] text-[#ef233c] tracking-widest uppercase font-bold">[ Queue Status ]</span>
               <div className="flex gap-1.5">
-                <div className="w-1.5 h-1.5 bg-[#007bff] animate-pulse rounded-none"></div>
+                <div className="w-1.5 h-1.5 bg-[#ef233c] animate-pulse rounded-none"></div>
                 <div className="w-1.5 h-1.5 bg-zinc-800 rounded-none"></div>
                 <div className="w-1.5 h-1.5 bg-zinc-800 rounded-none"></div>
               </div>
@@ -91,7 +91,7 @@ function BetaContent() {
               <button
                 type="button"
                 onClick={() => joinBeta()}
-                className="border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#007bff]"
+                className="border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#ef233c]"
               >
                 Join private beta
               </button>
@@ -102,7 +102,7 @@ function BetaContent() {
             ) : (
               <Link
                 href="/auth"
-                className="inline-flex items-center justify-center border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#007bff]"
+                className="inline-flex items-center justify-center border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#ef233c]"
               >
                 Sign in to join
               </Link>
@@ -110,7 +110,7 @@ function BetaContent() {
 
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
+              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
             >
               Open dashboard
             </Link>
@@ -123,8 +123,8 @@ function BetaContent() {
         </section>
       </AliasLayout>
 
-      {/* AboutSection below AliasLayout — per D-4: full-width, below queue card */}
-      <AboutSection variant="alias" />
+      {/* AboutSection below AliasLayout — same compact home variant */}
+      <AboutSection variant="home" />
     </>
   );
 }

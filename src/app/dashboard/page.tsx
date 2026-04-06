@@ -19,16 +19,16 @@ function DashboardContent() {
   if (!hasContext) {
     return (
       <main className="bg-black mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-28 pb-12">
-        <section className="relative w-full max-w-2xl bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#007bff]/50 transition-all duration-500">
+        <section className="relative w-full max-w-2xl bg-black border border-zinc-800 border-dashed rounded-none p-8 md:p-10 group hover:border-[#ef233c]/50 transition-all duration-500">
           {/* Corner markers — DS2 signature */}
-          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
+          <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />
+          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]" />
+          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]" />
+          <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]" />
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
           </div>
-          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#007bff] font-bold">[ Dashboard Preview ]</p>
+          <p className="font-mono mb-4 text-[10px] uppercase tracking-widest text-[#ef233c] font-bold">[ Dashboard Preview ]</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Control center preview
           </h1>
@@ -41,10 +41,10 @@ function DashboardContent() {
             {demoCards.map((card) => (
               <article key={card.label} className="relative bg-black border border-zinc-800 border-dashed rounded-none p-5">
                 {/* Corner markers */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
-                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]" />
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]" />
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]" />
                 <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">{card.label}</p>
                 <p className="font-manrope mt-2 text-2xl font-semibold text-white">{card.value}</p>
               </article>
@@ -54,13 +54,13 @@ function DashboardContent() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/auth"
-              className="inline-flex items-center justify-center border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#007bff]"
+              className="inline-flex items-center justify-center border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#ef233c]"
             >
               Start the journey
             </Link>
             <Link
               href="/"
-              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
+              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
             >
               Back to landing
             </Link>
@@ -97,10 +97,10 @@ function DashboardContent() {
         {demoCards.map((card) => (
           <article key={card.label} className="relative bg-black border border-zinc-800 border-dashed rounded-none p-6">
             {/* Corner markers */}
-            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#007bff]" />
-            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#007bff]" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#007bff]" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#007bff]" />
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#ef233c]" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#ef233c]" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#ef233c]" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#ef233c]" />
             <p className="font-inter text-[10px] uppercase tracking-widest text-zinc-500">{card.label}</p>
             <p className="font-manrope mt-2 text-2xl font-semibold text-white">{card.value}</p>
           </article>
@@ -128,13 +128,13 @@ function DashboardContent() {
       <div className="mt-10 flex flex-wrap gap-3">
         <Link
           href="/beta"
-          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
+          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
         >
           Beta queue
         </Link>
         <Link
           href="/"
-          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
+          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
         >
           Back to landing
         </Link>

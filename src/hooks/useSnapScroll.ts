@@ -20,6 +20,7 @@ const SECTION_TO_POSE: Record<string, PoseName> = {
   smartSync: "smartSync",
   focusMode: "focusMode",
   cta: "cta",
+  about: "about",
 };
 
 /**

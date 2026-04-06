@@ -46,6 +46,7 @@ export default function AboutSection({ variant = 'home' }: AboutSectionProps) {
     return (
       <section
         id="about"
+        data-scroll-section="about"
         className="relative flex min-h-screen w-full items-center py-12 lg:py-16 scroll-mt-28"
       >
         <div className="mx-auto w-full max-w-7xl px-6">
