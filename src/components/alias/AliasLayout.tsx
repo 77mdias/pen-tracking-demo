@@ -52,7 +52,7 @@ export default function AliasLayout({ children, reversed = false, showVideo = tr
   );
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className={`relative min-h-screen ${showVideo ? 'bg-black' : 'bg-transparent'}`}>
       {showVideo && <VideoBackground className="z-0" />}
 
       <main className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 items-center gap-0 px-6 pt-28 pb-12 md:grid-cols-2 md:gap-8">
