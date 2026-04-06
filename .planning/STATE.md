@@ -1,3 +1,18 @@
+---
+gsd_state_version: 1.0
+milestone: v1.1
+milestone_name: Hero Experience
+status: executing
+last_updated: "2026-04-06T18:43:18.558Z"
+last_activity: 2026-04-06
+progress:
+  total_phases: 8
+  completed_phases: 2
+  total_plans: 9
+  completed_plans: 7
+  percent: 78
+---
+
 # Project State
 
 ## Project Reference
@@ -5,20 +20,21 @@
 See: .planning/PROJECT.md (updated 2026-04-05)
 
 **Core value:** A hero section so cinematically premium that visitors feel compelled to join the private beta before scrolling past it.
-**Current focus:** Phase 5 — Scroll Orchestration
+**Current focus:** Phase 07 — fallbacks-and-reduced-motion
 
 ## Current Position
 
-Phase: 5 of 8 (Scroll Orchestration)
-Plan: 3 of 3 in current phase
-Status: Complete ✅
-Last activity: 2026-04-05 — Phase 6 executed; HeroMobile CTA-first built; routing wired; tablet audit confirmed
+Phase: 07 (fallbacks-and-reduced-motion) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-04-06
 
 Progress: [████████░░░░░░░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: ~12 (Phases 1–4, estimated)
 - Average duration: —
 - Total execution time: —
@@ -35,6 +51,7 @@ Progress: [████████░░░░░░░░░░░░] 40%
 | 6 | 3/3 | ✅ Done |
 
 *Updated after GSD initialization*
+| Phase 07 P01 | 5m | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -44,6 +61,8 @@ Progress: [████████░░░░░░░░░░░░] 40%
 - Phase 2: DPR capped at 1.5 mobile / recommendedMaxDpr desktop via useDeviceCapabilities
 - Phase 3: CSS classes established for GSAP targeting: `.hero-headline`, `.hero-subheadline`, `.hero-support-copy`, `.hero-cta`, `.hero-cta-primary`, `.hero-cta-secondary`, `.hero-scroll-cue`
 - Phase 4: `useGSAP` from `@gsap/react` used throughout — auto-cleanup via gsap.context()
+- [Phase 07]: Video opacity raised from 40% to 70% without mix-blend-screen for clear fallback visibility
+- [Phase 07]: aria-hidden=true added to HeroCanvas wrapper — 3D canvas is decorative content
 
 ### Roadmap Evolution
 

@@ -66,7 +66,7 @@ Plans:
 | 4. Intro Motion | v1.0 | ✅ Complete | 2026-04-05 |
 | 5. Scroll Orchestration | v1.1 | 🚧 Ready to plan | - |
 | 6. Responsive and Mobile | v1.1 | 📋 Planned | - |
-| 7. Fallbacks and Reduced Motion | v1.1 | 📋 Planned | - |
+| 7. Fallbacks and Reduced Motion | 1/3 | In Progress|  |
 | 8. Optimization and Polish | v1.1 | 📋 Planned | - |
 
 
@@ -101,10 +101,10 @@ Plans:
 **Goal:** Graceful degradation — non-WebGL HeroFallback, full prefers-reduced-motion compliance, keyboard accessibility
 **Requirements**: TBD
 **Depends on:** Phase 6
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
-- [ ] 07-01-PLAN.md — HeroFallback premium non-WebGL visual + HeroCanvas aria-hidden
+- [x] 07-01-PLAN.md — HeroFallback premium non-WebGL visual + HeroCanvas aria-hidden
 - [ ] 07-02-PLAN.md — CSS transition kill-switch + HeroMobile entrance animation with reduced-motion gate
 - [ ] 07-03-PLAN.md — Contrast fix, ARIA attributes, keyboard navigation verification
 
