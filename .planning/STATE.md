@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-04-05)
 Phase: 5 of 8 (Scroll Orchestration)
 Plan: 3 of 3 in current phase
 Status: Complete ✅
-Last activity: 2026-04-05 — Phase 5 executed; 05-01/02 brownfield audits; 05-03 support copy updated; lint + build passing
+Last activity: 2026-04-05 — Phase 6 executed; HeroMobile CTA-first built; routing wired; tablet audit confirmed
 
 Progress: [████████░░░░░░░░░░░░] 40%
 
@@ -32,6 +32,7 @@ Progress: [████████░░░░░░░░░░░░] 40%
 | 3 | ~3 | ✅ Done |
 | 4 | ~3 | ✅ Done |
 | 5 | 3/3 | ✅ Done |
+| 6 | 3/3 | ✅ Done |
 
 *Updated after GSD initialization*
 
