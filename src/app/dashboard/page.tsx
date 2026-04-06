@@ -23,7 +23,7 @@ function DashboardContent() {
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
           </div>
-          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#ef233c]">Dashboard Preview</p>
+          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Dashboard Preview</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Control center preview
           </h1>
@@ -44,13 +44,13 @@ function DashboardContent() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/auth"
-              className="inline-flex items-center justify-center border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#ef233c]"
+              className="inline-flex items-center justify-center border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#007bff]"
             >
               Start the journey
             </Link>
             <Link
               href="/"
-              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
+              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
             >
               Back to landing
             </Link>
@@ -113,13 +113,13 @@ function DashboardContent() {
       <div className="mt-10 flex flex-wrap gap-3">
         <Link
           href="/beta"
-          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
+          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
         >
           Beta queue
         </Link>
         <Link
           href="/"
-          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
+          className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
         >
           Back to landing
         </Link>

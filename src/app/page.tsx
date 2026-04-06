@@ -6,12 +6,18 @@ const ProductIntroSection = dynamic(
   { ssr: true }
 );
 
+const AboutSection = dynamic(
+  () => import("@/components/about/AboutSection"),
+  { ssr: true }
+);
+
 export default function Home() {
   return (
     <main>
       <HeroSection>
         <ProductIntroSection />
       </HeroSection>
+      <AboutSection />
     </main>
   );
 }

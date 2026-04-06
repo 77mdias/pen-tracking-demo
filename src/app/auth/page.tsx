@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FunnelProvider, useFunnel } from '@/components/funnel/FunnelProvider';
 import FunnelStatusBadge from '@/components/funnel/FunnelStatusBadge';
+import AliasLayout from '@/components/alias/AliasLayout';
 
 function AuthContent() {
   const { state, signIn, isHydrated } = useFunnel();
@@ -38,15 +39,15 @@ function AuthContent() {
     }, 600);
   };
 
-  // If already signed in, show a different state
+  // Already signed in — show welcome + nav
   if (isHydrated && state.isSignedIn) {
     return (
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-28 pb-12">
-        <section className="glass-panel w-full max-w-xl p-8 md:p-10">
+      <AliasLayout>
+        <section className="glass-panel w-full p-8 md:p-10">
           <div className="mb-6 flex items-center justify-between">
             <FunnelStatusBadge />
           </div>
-          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#ef233c]">Access</p>
+          <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Access</p>
           <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
             Welcome back{state.displayName ? `, ${state.displayName}` : ''}
           </h1>
@@ -57,7 +58,7 @@ function AuthContent() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/beta"
-              className="inline-flex items-center justify-center border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#ef233c]"
+              className="inline-flex items-center justify-center border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[#007bff]"
             >
               Continue to beta
             </Link>
@@ -66,23 +67,24 @@ function AuthContent() {
               onClick={() => {
                 router.push('/');
               }}
-              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
+              className="inline-flex items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
             >
               Back to landing
             </button>
           </div>
         </section>
-      </main>
+      </AliasLayout>
     );
   }
 
+  // Sign-in form
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-28 pb-12">
-      <section className="glass-panel w-full max-w-xl p-8 md:p-10">
+    <AliasLayout>
+      <section className="glass-panel w-full p-8 md:p-10">
         <div className="mb-6 flex items-center justify-between">
           <FunnelStatusBadge />
         </div>
-        <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#ef233c]">Access</p>
+        <p className="font-inter mb-4 text-[10px] uppercase tracking-[0.2em] text-[#007bff]">Access</p>
         <h1 className="font-manrope text-4xl font-semibold tracking-tight text-white md:text-5xl">
           Sign in to PenFlow77
         </h1>
@@ -102,7 +104,7 @@ function AuthContent() {
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-sm border border-zinc-700 bg-black/40 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-[#ef233c] focus:outline-none focus:ring-1 focus:ring-[#ef233c]"
+              className="w-full rounded-sm border border-zinc-700 bg-black/40 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-[#007bff] focus:outline-none focus:ring-1 focus:ring-[#007bff]"
               required
             />
             {error && (
@@ -115,7 +117,7 @@ function AuthContent() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full border border-[#ef233c] bg-[#ef233c] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-150 hover:bg-transparent hover:text-[#ef233c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ef233c] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full border border-[#007bff] bg-[#007bff] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-150 hover:bg-transparent hover:text-[#007bff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007bff] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSubmitting ? 'Signing in...' : 'Continue with email'}
           </button>
@@ -124,13 +126,13 @@ function AuthContent() {
         <div className="mt-6">
           <Link
             href="/beta"
-            className="inline-flex w-full items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#ef233c] hover:text-white"
+            className="inline-flex w-full items-center justify-center border border-zinc-700 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-300 transition-colors hover:border-[#007bff] hover:text-white"
           >
             Skip to beta status
           </Link>
         </div>
       </section>
-    </main>
+    </AliasLayout>
   );
 }
 
