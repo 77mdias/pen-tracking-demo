@@ -53,6 +53,14 @@ export const PEN_POSES = {
     camera: { position: [0, 0.1, 4.5], fov: 28 },
     lighting: { accent: null },
   },
+  about: {
+    // Pen resting/tilted forward — "platform overview" energy
+    pen: { rotation: [0.35, -0.2, 0.08], position: [-0.5, -0.3, 0] },
+    camera: { position: [0, 0.05, 5.0], fov: 26 },
+    lighting: {
+      accent: { position: [-1, 0.5, 2], color: "#00e5ff", intensity: 0.5 },
+    },
+  },
 } satisfies Record<string, PenPose>;
 
 /**
@@ -96,6 +104,14 @@ export const MOBILE_PEN_POSES = {
     pen: { rotation: [0.12, 0.4, 0.04], position: [0.15, 0.7, -0.2] },
     camera: { position: [0, 0.1, 4.5], fov: 30 },
     lighting: { accent: null },
+  },
+  about: {
+    // Pen resting/tilted forward — mobile variant for AboutSection
+    pen: { rotation: [0.3, -0.15, 0.06], position: [0, 0.5, -0.2] },
+    camera: { position: [0, 0.1, 4.8], fov: 30 },
+    lighting: {
+      accent: { position: [-1, 0.5, 2], color: "#00e5ff", intensity: 0.45 },
+    },
   },
 } satisfies Record<string, PenPose>;
 

@@ -99,6 +99,8 @@ export default function useSnapScroll({
     };
 
     const handleWheel = (e: WheelEvent) => {
+      // If at last section and scrolling down, release to natural scroll
+      if (currentIndex === targets.length - 1 && e.deltaY > 0) return;
       e.preventDefault();
       if (isTransitioning) return;
       const { deltaY } = e;
