@@ -6,7 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import type { DeviceTier } from "@/hooks/useDeviceCapabilities";
 import { clamp } from "@/lib/utils/clamp";
 import { lerp } from "@/lib/utils/lerp";
-import { Group, Object3D, Color, PointLight, PerspectiveCamera } from "three";
+import { Group, Object3D, PointLight, PerspectiveCamera } from "three";
 import { useMemo, useRef } from "react";
 import { heroLighting } from "@/lib/three/heroLighting";
 import { heroSceneConfig } from "@/lib/three/heroSceneConfig";
@@ -30,8 +30,6 @@ export default function HeroScene({
 }: HeroSceneProps) {
   const penGroupRef = useRef<Group>(null);
   const accentLightRef = useRef<PointLight>(null);
-  const accentColor = useMemo(() => new Color(), []);
-  const tempColor = useMemo(() => new Color(), []);
 
   const gltf = useGLTF("/models/pen3D.glb");
   const penModel = useMemo(() => {
@@ -141,8 +139,11 @@ export default function HeroScene({
     state.camera.lookAt(0, 0, 0);
 
     const cam = state.camera as PerspectiveCamera;
-    cam.fov = lerp(cam.fov, targetFov, camFactor);
-    cam.updateProjectionMatrix();
+    const newFov = lerp(cam.fov, targetFov, camFactor);
+    if (Math.abs(newFov - cam.fov) > 0.001) {
+      cam.fov = newFov;
+      cam.updateProjectionMatrix();
+    }
   });
 
   return (

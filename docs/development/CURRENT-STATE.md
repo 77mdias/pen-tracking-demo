@@ -3,22 +3,23 @@
 ## Snapshot
 
 Data de baseline: 2026-04-03.
+Última atualização: 2026-04-05 (pós SPRINT-02 e SPRINT-03).
 
-PenFlow77 é, hoje, um frontend de demonstração premium centrado na landing page. A implementação mais madura está na experiência de marketing em `/`, com hero visual avançado e seções narrativas de produto. As rotas `/auth`, `/beta` e `/dashboard` existem, mas operam como placeholders visuais e não como fluxos funcionais de produto.
+PenFlow77 é um frontend de demonstração premium centrado na landing page, com um funil beta simulado navegável além da landing. A implementação mais madura está na experiência de marketing em `/`, com hero visual avançado e seções narrativas de produto. As rotas `/auth`, `/beta` e `/dashboard` agora compõem um fluxo simulado coerente com estado compartilhado via localStorage.
 
 ## Classificação rápida
 
 | Área | Status | Leitura correta |
 | --- | --- | --- |
 | Landing `/` | Implementado | Principal entrega atual do repositório |
-| Hero premium | Implementado com ressalvas | Já combina 3D, fallback, vídeo e hooks de scroll, mas ainda precisa validação contra os próprios specs |
-| Storytelling abaixo do hero | Implementado | Há composição explícita de seções de produto |
-| `/auth` | Placeholder | Tela estática sem autenticação real |
-| `/beta` | Placeholder | Fila simulada com valor fixo |
-| `/dashboard` | Placeholder | Painel visual com dados mockados |
-| Backend/API/DB/email | Planejado | Descrito nos specs, não evidenciado como implementação ativa neste snapshot |
-| Testes automatizados | Parcial/inexistente | Há lint, mas não há script de teste no `package.json` |
-| Documentação operacional | Parcial | Esta baseline cria a base em `docs/development/` |
+| Hero premium | Alinhado e polido | 3D, fallback, vídeo, hooks de scroll; tokens alinhados ao design system; reduced-motion corrigido |
+| Storytelling abaixo do hero | Implementado | Composição explícita de seções de produto |
+| `/auth` | Funil simulado | Form de email → simulated sign-in → localStorage → redirect `/beta` |
+| `/beta` | Funil simulado | Queue status dinâmica (posição 180-250), botão join, contexto do usuário |
+| `/dashboard` | Funil simulado | Personalizado com funnel context; acesso direto mostra preview + CTA |
+| Backend/API/DB/email | Planejado | Descrito nos specs, não evidenciado como implementação ativa |
+| Testes automatizados | Parcial/inexistente | Lint e tsc passam; sem suite de testes UI |
+| Documentação operacional | Completa | Baseline, auditoria, sprints 01-03 concluídas, changelog atualizado |
 
 ## 1. O que está implementado
 
@@ -71,68 +72,36 @@ A configuração de runtime e deploy também está presente:
 
 ### 2.1 Hero vs. recomendações dos próprios specs
 
-Os specs pedem evitar scroll hijacking pesado e sequências que prendam o usuário (`HERO_SPEC_smart_pen.md:401-408`, `HERO_TECHNICAL_BUILD_PLAN_smart_pen.md:574-586`).
-
-A implementação atual do hero usa hooks chamados `useScrollHijack` e `useSnapScroll`, ligados diretamente ao container das seções abaixo do hero em `src/components/hero/HeroSection.tsx:11-12` e `src/components/hero/HeroSection.tsx:53-68`.
-
-Isso não significa, por si só, que a experiência esteja errada, mas significa que existe uma área clara de verificação: o comportamento real de scroll precisa ser validado contra a diretriz documental de não travar nem forçar a navegação.
+**Status atualizado (pós SPRINT-02):** Policy de scroll decidida pelo owner — manter `e.preventDefault()` no wheel e validar manualmente. Naming clarificado (`disableSnapScroll`). Sem risco de regressão de UX identificado na validação.
 
 ### 2.2 Design system parcialmente alinhado
 
-`AGENTS.md` define `#050a14` como background da página e especifica uma família tipográfica baseada em Montserrat/Open Sans (`AGENTS.md:101-115`).
-
-A implementação atual diverge em pontos importantes:
-- `src/app/globals.css:2-18` define `--color-bg: #000000`
-- `src/app/globals.css:24-29` e `src/app/globals.css:41-50` mostram o uso de famílias ligadas a `Inter`, `Manrope`, `font-heading` e `font-display`, não a uma implementação evidente de Montserrat/Open Sans
-
-Leitura correta:
-- há um design system em uso na aplicação
-- mas ele não está totalmente alinhado ao design system descrito em `AGENTS.md`
-- a documentação precisava separar intenção de spec e realidade do CSS atual
+**Status atualizado (pós SPRINT-02):** Background root corrigido (`#050a14`). Reduced-motion CSS expandido para cobrir `.liquid-blob`, `.border-gradient-spin::before`, `.floating-badge`, `.floating-badge-center`, `.fade-slide-in`. H1 scale (`lg:text-9xl`) e body font (`Open Sans` via `var(--font-body)`) confirmados como conformantes.
 
 ### 2.3 Deploy configurado, mas com sinais de inconsistência de nomenclatura
 
-O nome do pacote é `penflow77` em `package.json:1`, enquanto o worker configurado em `wrangler.jsonc:3` usa `pen-tracking-demo`, e o serviço auto-referenciado segue esse mesmo nome em `wrangler.jsonc:10-15`.
+**Status:** Pendente de decisão do owner — `penflow77` (npm/brand) vs `pen-tracking-demo` (Cloudflare). Adiado conscientemente para antes do próximo deploy para produção.
 
-Isto sugere pelo menos uma divergência operacional de naming entre produto/repo e infraestrutura publicada.
-
-## 3. O que é placeholder
+## 3. O que é funil simulado (pós SPRINT-03)
 
 ### 3.1 `/auth`
 
-A rota `/auth` é uma tela estática com texto institucional, um botão visual de continuação por email e um link para `/beta` em `src/app/auth/page.tsx:4-25`.
+Client component com form de email, validação básica (presença de `@` e `.`), simulated sign-in que gera contexto no localStorage (`simulateSignIn`) e redireciona para `/beta` após 600ms de delay simulado. Usuário já logado vê "Welcome back, {displayName}" com link para beta.
 
-O que não aparece neste arquivo:
-- formulário real
-- validação
-- chamada de API
-- sessão
-- estado autenticado
-
-Classificação correta: placeholder visual de entrada no funil.
+Componentes: `FunnelProvider`, `useFunnel()`, `FunnelStatusBadge`.
+Estado: `{ isSignedIn, userEmail, displayName, ... }`.
 
 ### 3.2 `/beta`
 
-A rota `/beta` representa a fila da private beta, mas os dados são estáticos. O cartão mostra posição `#214` e wave `Waiting`, além de um botão visual de join e link para `/dashboard` em `src/app/beta/page.tsx:12-35`.
+Client component com posição dinâmica (gerada aleatoriamente entre 180-250 no momento do join), botão "Join private beta" que chama `simulateJoinBeta()` e atualiza estado, confirmação visual com data de join, nome do usuário exibido. Acesso sem contexto mostra explicação "Sign in from the auth page to get your personalized queue status" + CTA "Sign in to join".
 
-O que isso significa operacionalmente:
-- a página comunica a ideia do fluxo
-- mas ainda não existe fila dinâmica, persistência ou integração
-- o botão principal ainda não executa a entrada em uma fila real
-
-Classificação correta: placeholder de estado de beta.
+Footnote honesta: "This is a simulated queue. Your position is generated locally and is not connected to a real waiting list."
 
 ### 3.3 `/dashboard`
 
-A rota `/dashboard` é um mock visual sustentado por um array local com três cards: `Device`, `Sync` e `AI` em `src/app/dashboard/page.tsx:1-7`. Os cards são renderizados diretamente a partir desse array em `src/app/dashboard/page.tsx:20-26`.
+Client component personalizado com greeting ("Welcome back, {displayName}") e queue status inline quando `betaJoined = true`. Acesso direto sem contexto mostra "Dashboard Preview" com cards estáticos e CTA "Start the journey" → `/auth`. Não parece rota protegida — comportamento honesto e compreensível.
 
-Não há evidência, neste snapshot, de:
-- autenticação protegendo a rota
-- fetch de dados
-- mutações
-- integrações com backend
-
-Classificação correta: dashboard demonstrativo, não produto funcional.
+Classificação correta: funil simulado coerente, não produto funcional com backend.
 
 ## 4. O que continua apenas planejado
 
@@ -211,26 +180,23 @@ Mesmo assim, as camadas de `SPRINTS` e `TASKS` passam a existir como planejament
 ## 8. Divergências importantes de spec vs implementação
 
 ### Divergência 1 — Background base
-- Spec: `#050a14` como page background em `AGENTS.md:103-109`
-- Código: `--color-bg: #000000` em `src/app/globals.css:2-4`
+**Resolvida (SPRINT-02):** `--color-bg` corrigido para `#050a14` em `globals.css:4`.
 
 ### Divergência 2 — Tipografia base
-- Spec: Montserrat/Open Sans em `AGENTS.md:111-115`
-- Código: tokens e utility classes apontam para Inter/Manrope/display fonts em `src/app/globals.css:24-29` e `src/app/globals.css:37-50`
+**Resolvida (SPRINT-02):** Body font usa `var(--font-body)` = Open Sans. H1 usa `lg:text-9xl`. Ambos conformantes.
 
 ### Divergência 3 — Maturidade funcional das rotas
-- PRD/TECH_SPEC descrevem auth, beta queue, dashboard e backend em `PRD_production.md:28-50` e `TECH_SPEC_production.md:22-68`
-- Código atual entrega apenas superfícies visuais estáticas em `src/app/auth/page.tsx:4-25`, `src/app/beta/page.tsx:12-35` e `src/app/dashboard/page.tsx:19-40`
+**Atualizada (SPRINT-03):** `/auth`, `/beta` e `/dashboard` agora são um funil simulado coerente com estado compartilhado via localStorage. Não são mais placeholders estáticos. Continuam sem backend real.
 
 ### Divergência 4 — Política de scroll do hero
-- Specs recomendam evitar hijacking forte em `HERO_SPEC_smart_pen.md:401-408`
-- Hero atual declara hooks `useScrollHijack` e `useSnapScroll` em `src/components/hero/HeroSection.tsx:11-12` e `src/components/hero/HeroSection.tsx:53-68`
+**Resolvida (SPRINT-02):** Owner decidiu manter scroll hijack e validar manualmente. Naming clarificado (`disableSnapScroll`).
 
 ## 9. Resumo executivo
 
 Se alguém entrar neste repositório hoje, a leitura correta é:
 - este projeto já possui uma landing premium relevante e tecnicamente ambiciosa
-- o hero é a parte mais madura e mais próxima do posicionamento desejado
-- o fluxo de produto completo ainda não foi implementado
+- o hero está alinhado ao design system e com acessibilidade (reduced-motion) corrigida
+- o fluxo de produto existe como funil simulado coerente (`/auth` → `/beta` → `/dashboard`) com estado compartilhado via localStorage
+- o backend real, autenticação, fila persistida e dashboard com dados reais continuam como roadmap
 - os specs continuam úteis, mas não substituem a inspeção do código
-- a governança documental precisava de uma camada factual, e esta baseline passa a oferecer isso
+- a governança documental está atualizada com baseline, auditoria, 3 sprints concluídas e changelog

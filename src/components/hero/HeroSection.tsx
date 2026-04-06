@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useRef } from "react";
 import HeroAmbientDetails from "@/components/hero/HeroAmbientDetails";
 import HeroContent from "@/components/hero/HeroContent";
+import HeroMobile from "@/components/hero/HeroMobile";
 import HeroFallback from "@/components/hero/HeroFallback";
 import HeroScrollCue from "@/components/hero/HeroScrollCue";
 import VideoBackground from "@/components/hero/VideoBackground";
@@ -64,7 +65,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
     heroRef: sectionRef,
     containerRef: productIntroContainerRef,
     penTargetRef,
-    reducedMotion: !enableScrollNarrative,
+    disableSnapScroll: !enableScrollNarrative,
     isMobile,
   });
 
@@ -109,6 +110,7 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
       <section
         ref={sectionRef}
         id="experience"
+        aria-label="Hero — Join the Private Beta"
         className={`relative z-[10] scroll-mt-28 text-white ${
           isMobile ? "h-[92svh]" : "h-screen"
         }`}
@@ -124,7 +126,11 @@ export default function HeroSection({ children }: { children?: React.ReactNode }
                 : "items-center justify-center"
           }`}
         >
-          <HeroContent isMobile={isMobile} isTablet={isTablet} />
+          {isMobile ? (
+            <HeroMobile reducedMotion={reducedMotion} />
+          ) : (
+            <HeroContent isTablet={isTablet} />
+          )}
         </div>
 
         {!isMobile && tier !== "low" && !reducedMotion ? <HeroAmbientDetails /> : null}

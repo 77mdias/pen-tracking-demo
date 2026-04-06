@@ -3,7 +3,7 @@ title: Sprint 04 - Quality Testing and Release Foundation
 type: sprint
 mode: sprint
 approach: tdd-first
-status: planned
+status: completed
 ---
 
 # Sprint SPRINT-04 — Quality Testing and Release Foundation
@@ -43,11 +43,11 @@ Estabelecer a baseline mínima de qualidade, validação e release do PenFlow77,
 
 ## 4. Critérios de Sucesso
 
-- [ ] O projeto passa a ter uma estratégia mínima explícita de validação além de `lint`.
-- [ ] Existe disciplina definida para `lint`, `typecheck`, `build` e smoke tests críticos.
-- [ ] Landing/hero e o funil `/auth` -> `/beta` -> `/dashboard` possuem critérios de verificação claros.
-- [ ] O processo de release inclui checklist, janela de validação e plano de rollback coerentes com o projeto.
-- [ ] A nova baseline é proporcional ao estágio atual do PenFlow77 e não inventa maturidade inexistente.
+- [x] O projeto passa a ter uma estratégia mínima explícita de validação além de `lint`.
+- [x] Existe disciplina definida para `lint`, `typecheck`, `build` e smoke tests críticos.
+- [x] Landing/hero e o funil `/auth` -> `/beta` -> `/dashboard` possuem critérios de verificação claros.
+- [x] O processo de release inclui checklist, janela de validação e plano de rollback coerentes com o projeto.
+- [x] A nova baseline é proporcional ao estágio atual do PenFlow77 e não inventa maturidade inexistente.
 
 ---
 

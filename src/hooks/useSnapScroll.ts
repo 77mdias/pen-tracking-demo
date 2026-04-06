@@ -9,7 +9,7 @@ type UseSnapScrollProps = {
   heroRef: RefObject<HTMLElement | null>;
   containerRef: RefObject<HTMLDivElement | null>;
   penTargetRef: MutableRefObject<PenPose | null>;
-  reducedMotion: boolean;
+  disableSnapScroll: boolean;
   isMobile: boolean;
 };
 
@@ -20,6 +20,7 @@ const SECTION_TO_POSE: Record<string, PoseName> = {
   smartSync: "smartSync",
   focusMode: "focusMode",
   cta: "cta",
+  about: "about",
 };
 
 /**
@@ -34,11 +35,11 @@ export default function useSnapScroll({
   heroRef,
   containerRef,
   penTargetRef,
-  reducedMotion,
+  disableSnapScroll,
   isMobile,
 }: UseSnapScrollProps) {
   useEffect(() => {
-    if (reducedMotion) return;
+    if (disableSnapScroll) return;
     if (!heroRef.current || !containerRef.current) return;
 
     const { threshold, touchThreshold, duration, ease, cooldown } =
@@ -99,6 +100,8 @@ export default function useSnapScroll({
     };
 
     const handleWheel = (e: WheelEvent) => {
+      // If at last section and scrolling down, release to natural scroll
+      if (currentIndex === targets.length - 1 && e.deltaY > 0) return;
       e.preventDefault();
       if (isTransitioning) return;
       const { deltaY } = e;
@@ -127,5 +130,5 @@ export default function useSnapScroll({
       window.removeEventListener("touchend", handleTouchEnd);
       if (scrollTween) scrollTween.kill();
     };
-  }, [reducedMotion, heroRef, containerRef, penTargetRef, isMobile]);
+  }, [disableSnapScroll, heroRef, containerRef, penTargetRef, isMobile]);
 }

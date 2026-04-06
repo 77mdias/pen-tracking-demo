@@ -3,14 +3,11 @@
 import HeroCTA from "@/components/hero/HeroCTA";
 
 type HeroContentProps = {
-  isMobile?: boolean;
   isTablet?: boolean;
 };
 
-export default function HeroContent({ isMobile = false, isTablet = false }: HeroContentProps) {
-  const subheadline = isMobile
-    ? "Premium writing precision with an intelligent layer built for focus."
-    : "A premium writing experience designed around precision, focus, and a new intelligent layer of control.";
+export default function HeroContent({ isTablet = false }: HeroContentProps) {
+  const subheadline = "A premium writing experience designed around precision, focus, and a new intelligent layer of control.";
 
   return (
     <div
@@ -43,11 +40,11 @@ export default function HeroContent({ isMobile = false, isTablet = false }: Hero
         {subheadline}
       </p>
 
-      <p className="hero-support-copy font-inter mt-2 max-w-md text-center text-sm text-zinc-300 opacity-0">
-        Designed for focused writing sessions with a subtle intelligent layer.
+      <p className="hero-support-copy font-inter mt-2 max-w-md text-center text-base text-zinc-200 italic opacity-0">
+        Built for the way you actually think.
       </p>
 
-      <HeroCTA isMobile={isMobile} />
+      <HeroCTA />
     </div>
   );
 }

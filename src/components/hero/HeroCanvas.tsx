@@ -28,7 +28,7 @@ export default function HeroCanvas({
   const [camX, camY, camZ] = heroCamera.position;
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0" aria-hidden="true">
       <Canvas
         className="absolute inset-0"
         dpr={[1, maxDpr]}

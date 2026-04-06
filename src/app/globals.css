@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #000000;
+  --color-bg: #050a14;
   --color-primary: #007bff;
   --color-primary-end: #00bfff;
   --color-accent: #ef233c;
@@ -277,6 +277,25 @@ body {
   .section-glow {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  /* Disable all decorative CSS animations for users preferring reduced motion */
+  .liquid-blob,
+  .border-gradient-spin::before,
+  .floating-badge,
+  .floating-badge-center,
+  .fade-slide-in {
+    animation: none !important;
+  }
+
+  /* Kill all CSS transitions — button hover states, decorative fades, etc.
+     Using 0.01ms (not 0/none) so animationend/transitionend events still fire
+     for any JS that listens to them. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -140,5 +140,20 @@ export default function useScrollHijack({ scope, penTargetRef, reducedMotion, is
         },
       });
     }
+
+    // AboutSection: transition pen to "about" pose when section enters viewport
+    const aboutEl = document.getElementById('about');
+    if (aboutEl) {
+      ScrollTrigger.create({
+        trigger: aboutEl,
+        start: "top 60%",
+        onEnter: () => {
+          penTargetRef.current = isMobile ? (MOBILE_PEN_POSES as Record<string, PenPose>).about : PEN_POSES.about;
+        },
+        onLeaveBack: () => {
+          penTargetRef.current = isMobile ? MOBILE_PEN_POSES.cta : PEN_POSES.cta;
+        },
+      });
+    }
   }, { scope, dependencies: [reducedMotion, isMobile, penTargetRef] });
 }
