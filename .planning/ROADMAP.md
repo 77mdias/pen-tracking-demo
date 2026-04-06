@@ -104,9 +104,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 07-01: HeroFallback (non-WebGL static/video path — premium feel, not broken)
-- [ ] 07-02: Full reduced-motion audit — all animations disabled, content immediately visible
-- [ ] 07-03: Accessibility pass — keyboard CTAs, visible focus states, contrast check
+- [ ] 07-01-PLAN.md — HeroFallback premium non-WebGL visual + HeroCanvas aria-hidden
+- [ ] 07-02-PLAN.md — CSS transition kill-switch + HeroMobile entrance animation with reduced-motion gate
+- [ ] 07-03-PLAN.md — Contrast fix, ARIA attributes, keyboard navigation verification
 
 ### Phase 8: Optimization and Polish
 
