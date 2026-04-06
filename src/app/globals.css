@@ -287,6 +287,16 @@ body {
   .fade-slide-in {
     animation: none !important;
   }
+
+  /* Kill all CSS transitions — button hover states, decorative fades, etc.
+     Using 0.01ms (not 0/none) so animationend/transitionend events still fire
+     for any JS that listens to them. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Ensure smooth will-change for GSAP-animated section elements */
