@@ -40,6 +40,7 @@ export default function AliasPenScene({
 
   const [px, py, pz] = aliasSceneConfig.pen.position;
   const [rx, , rz] = aliasSceneConfig.pen.rotation;
+  const penScale = aliasSceneConfig.pen.scale;
   const showContactShadows = tier !== 'low';
 
   // Per D-2: continuous idle animation — NOT scroll-coupled
@@ -92,6 +93,7 @@ export default function AliasPenScene({
         ref={penGroupRef}
         position={[px, py, pz]}
         rotation={[rx, aliasSceneConfig.pen.rotation[1], rz]}
+        scale={[penScale, penScale, penScale]}
       >
         <primitive object={penModel} />
       </group>

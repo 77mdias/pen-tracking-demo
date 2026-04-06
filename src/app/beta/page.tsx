@@ -124,7 +124,7 @@ function BetaContent() {
       </AliasLayout>
 
       {/* AboutSection below AliasLayout — per D-4: full-width, below queue card */}
-      <AboutSection />
+      <AboutSection variant="alias" />
     </>
   );
 }

@@ -16,8 +16,8 @@ export default function Home() {
     <main>
       <HeroSection>
         <ProductIntroSection />
+        <AboutSection variant="home" />
       </HeroSection>
-      <AboutSection />
     </main>
   );
 }

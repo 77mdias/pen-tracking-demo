@@ -11,14 +11,14 @@ describe('TECH_STACK_CARDS', () => {
     expect(TECH_STACK_CARDS).toHaveLength(6);
   });
 
-  it('every entry has name, description, and icon', () => {
+  it('every entry has name, description, and iconPath', () => {
     TECH_STACK_CARDS.forEach((card) => {
       expect(typeof card.name).toBe('string');
       expect(card.name.length).toBeGreaterThan(0);
       expect(typeof card.description).toBe('string');
       expect(card.description.length).toBeGreaterThan(0);
-      expect(typeof card.icon).toBe('string');
-      expect(card.icon.length).toBeGreaterThan(0);
+      expect(typeof card.iconPath).toBe('string');
+      expect(card.iconPath.length).toBeGreaterThan(0);
     });
   });
 });
