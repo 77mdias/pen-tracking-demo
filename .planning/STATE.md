@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Hero Experience
-status: complete
-last_updated: "2026-04-06T20:00:00Z"
-last_activity: 2026-04-06 -- Phase 08 complete — all 8 phases done, milestone v1.1 Hero Experience COMPLETE
+status: executing
+last_updated: "2026-04-06T20:22:19.423Z"
+last_activity: 2026-04-06 -- Phase null execution started
 progress:
-  total_phases: 8
-  completed_phases: 8
-  total_plans: 12
-  completed_plans: 12
-  percent: 100
+  total_phases: 9
+  completed_phases: 4
+  total_plans: 15
+  completed_plans: 13
+  percent: 87
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-05)
 
 **Core value:** A hero section so cinematically premium that visitors feel compelled to join the private beta before scrolling past it.
-**Current focus:** Phase 08 — complete
+**Current focus:** Phase null
 
 ## Current Position
 
-Phase: 08-optimization-and-polish — COMPLETE
-Plan: 2 of 2
-Status: All plans complete
-Last activity: 2026-04-06 -- Phase 08-02 complete
+Phase: null — EXECUTING
+Plan: 1 of ?
+Status: Executing Phase null
+Last activity: 2026-04-06 -- Phase null execution started
 
 Progress: [████████████████████] 100%
 
@@ -56,6 +56,7 @@ Progress: [████████████████████] 100%
 | Phase 07 P03 | 3m | 2 tasks | 3 files |
 | Phase 08 P01 | 2 | 2 tasks | 4 files |
 | Phase 08 P02 | 8m | 2 tasks | 1 file |
+| Phase 09 P01 | 4 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,8 @@ Progress: [████████████████████] 100%
 - [Phase 08-02]: Guard cam.updateProjectionMatrix() with Math.abs(newFov - cam.fov) > 0.001 — skips expensive matrix multiply every frame when FOV is stable
 - [Phase 08-02]: frameloop='always' correct for all non-reducedMotion tiers — 'demand' would freeze idle float animation; low tier uses motionScale=0.5 instead
 - [Phase 08-02]: DPR cap wiring verified: useDeviceCapabilities (low→1, medium→1.25, high→1.5) → HeroSection → HeroCanvas dpr=[1,maxDpr]
+- [Phase 09]: aliasSceneConfig uses gentler idle values than heroSceneConfig: yFrequency=0.6 (slower), continuous Y rotation instead of oscillating Z
+- [Phase 09]: AliasLayout uses CSS hidden md:block exclusively for responsive hiding — no JS/useMediaQuery to prevent hydration mismatch
 
 ### Roadmap Evolution
 

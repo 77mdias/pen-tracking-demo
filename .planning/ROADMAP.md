@@ -125,9 +125,9 @@ Plans:
 **Goal:** Add two-column AliasLayout (glass form left + 3D idle pen right) to /beta and /auth, create AboutSection with tech stack + project stats, integrate into home + /beta, migrate alias route colors from red to design system blue (#007bff)
 **Requirements**: REQ-9.1, REQ-9.2, REQ-9.3, REQ-9.4, REQ-9.5, REQ-9.6, REQ-9.7
 **Depends on:** Phase 8
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
-- [ ] 09-01-PLAN.md — AliasCanvas + AliasPenScene + aliasSceneConfig + AliasLayout (3D pen system)
+- [x] 09-01-PLAN.md — AliasCanvas + AliasPenScene + aliasSceneConfig + AliasLayout (3D pen system)
 - [ ] 09-02-PLAN.md — AboutSection + aboutData (about section component + data)
 - [ ] 09-03-PLAN.md — Integration: wire into routes, color migration, home page AboutSection
