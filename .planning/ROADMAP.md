@@ -120,12 +120,14 @@ Plans:
 - [ ] 08-02-PLAN.md — Performance cleanup (dead useMemo removal, FOV optimization, DPR/frameloop verification)
 - [ ] 08-03-PLAN.md — Final polish and cross-browser QA (375px, 768px, 1024px, 1440px viewports)
 
-### Phase 9: Alias Routes Polish — Hero video background, centered layout, 3D pen variants, and About section
+### Phase 9: Alias Routes Polish — 3D pen side panel, AboutSection, color alignment
 
-**Goal:** [To be planned]
-**Requirements**: TBD
+**Goal:** Add two-column AliasLayout (glass form left + 3D idle pen right) to /beta and /auth, create AboutSection with tech stack + project stats, integrate into home + /beta, migrate alias route colors from red to design system blue (#007bff)
+**Requirements**: REQ-9.1, REQ-9.2, REQ-9.3, REQ-9.4, REQ-9.5, REQ-9.6, REQ-9.7
 **Depends on:** Phase 8
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd-plan-phase 9 to break down)
+- [ ] 09-01-PLAN.md — AliasCanvas + AliasPenScene + aliasSceneConfig + AliasLayout (3D pen system)
+- [ ] 09-02-PLAN.md — AboutSection + aboutData (about section component + data)
+- [ ] 09-03-PLAN.md — Integration: wire into routes, color migration, home page AboutSection
