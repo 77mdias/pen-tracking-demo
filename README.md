@@ -1,23 +1,26 @@
 # <p align="center">🖋️ PenFlow — Smart Pen Ecosystem</p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Project-Technical%20Portfolio-blueviolet?style=for-the-badge" alt="Portfolio Project" />
   <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
   <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind" />
   <img src="https://img.shields.io/badge/Three.js-Black?style=for-the-badge&logo=three.js" alt="Three.js" />
-  <img src="https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare" />
 </p>
 
 <p align="center">
   <strong>"Write. Think. Evolve."</strong><br />
-  A premium, Apple-level product demonstration for a smart pen ecosystem, blending high-end hardware concepts with AI-assisted software.
+  <em>A high-end technical demonstration of a premium product ecosystem.</em>
 </p>
+
+> [!NOTE]
+> **Portfolio Demo:** This project is a production-level frontend demonstration designed to showcase advanced 3D orchestration, motion design, and modern web architecture. All backend features (Auth, Beta Queue, Dashboard) are **simulated** to provide a complete, interactive user experience without requiring a live database.
 
 ---
 
 ## 🚀 Vision & Narrative
 
-PenFlow isn't just a pen; it's a cognitive augment. Our goal is to create a high-fidelity, interactive product demo that convincingly presents a future where physical writing is seamlessly integrated with digital intelligence.
+PenFlow is a **technical portfolio project** that pushes the boundaries of web-based product storytelling. It is not a commercial product, but a cognitive augment concept designed to demonstrate engineering excellence.
 
 - **Narrative**: Augmenting human thought through AI-assisted writing and instant cloud synchronization.
 - **Experience**: Minimalist, motion-driven, and focused on "Apple-level" perceived quality.
